@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var searchText = ""
+    @State private var isSearching = false
+    @State private var showingAlert = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Circle();
     }
 }
 
