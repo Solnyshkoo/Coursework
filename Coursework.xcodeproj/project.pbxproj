@@ -10,55 +10,55 @@
 		5E59707C28196B6D00BF3240 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707B28196B6D00BF3240 /* Service.swift */; };
 		5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707D28196F1800BF3240 /* ValidateUserModel.swift */; };
 		5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707F2819723E00BF3240 /* ValidateUserError.swift */; };
-		5E5970822819772400BF3240 /* LogInBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5970812819772400BF3240 /* LogInBuilder.swift */; };
 		5E5970852819F72300BF3240 /* RegistrationUserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5970842819F72300BF3240 /* RegistrationUserError.swift */; };
 		5E5970AB281C8C0C00BF3240 /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5970AA281C8C0C00BF3240 /* EventsView.swift */; };
-		5E5970AD281C8EF600BF3240 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5970AC281C8EF600BF3240 /* SearchBar.swift */; };
 		5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4D4C127FDDD2B00873CAA /* ContentView.swift */; };
 		5ED4D4C427FDDD2E00873CAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ED4D4C327FDDD2E00873CAA /* Assets.xcassets */; };
 		5ED4D4C727FDDD2E00873CAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ED4D4C627FDDD2E00873CAA /* Preview Assets.xcassets */; };
 		5EE034DD281EE7B400754267 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034DC281EE7B400754267 /* CustomButton.swift */; };
-		5EF3BDF928102CA300525E74 /* CourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDF528102CA300525E74 /* CourseApp.swift */; };
-		5EF3BDFA28102CA300525E74 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDF628102CA300525E74 /* TabBar.swift */; };
-		5EF3BDFB28102CA300525E74 /* ActialPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDF728102CA300525E74 /* ActialPerson.swift */; };
-		5EF3BDFC28102CA300525E74 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDF828102CA300525E74 /* ColorPalette.swift */; };
-		5EF3BE0928102CB000525E74 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BDFF28102CB000525E74 /* LogInViewModel.swift */; };
-		5EF3BE0A28102CB000525E74 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0228102CB000525E74 /* RegistrationView.swift */; };
-		5EF3BE0B28102CB000525E74 /* ClassicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0328102CB000525E74 /* ClassicButton.swift */; };
-		5EF3BE0C28102CB000525E74 /* SecretTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0428102CB000525E74 /* SecretTextField.swift */; };
-		5EF3BE0D28102CB000525E74 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0528102CB000525E74 /* PasswordView.swift */; };
-		5EF3BE0E28102CB000525E74 /* MailConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0628102CB000525E74 /* MailConfirmationView.swift */; };
-		5EF3BE0F28102CB000525E74 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0728102CB000525E74 /* MainView.swift */; };
-		5EF3BE1028102CB000525E74 /* ClassicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE0828102CB000525E74 /* ClassicTextField.swift */; };
-		5EF3BE1228102D5100525E74 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF3BE1128102D5100525E74 /* UserInfo.swift */; };
+		5EE034EC281F12CD00754267 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E0281F12CD00754267 /* LogInViewModel.swift */; };
+		5EE034ED281F12CD00754267 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E2281F12CD00754267 /* UserInfo.swift */; };
+		5EE034EE281F12CD00754267 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E4281F12CD00754267 /* RegistrationView.swift */; };
+		5EE034EF281F12CD00754267 /* ClassicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E5281F12CD00754267 /* ClassicButton.swift */; };
+		5EE034F0281F12CD00754267 /* SecretTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E6281F12CD00754267 /* SecretTextField.swift */; };
+		5EE034F1281F12CD00754267 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E7281F12CD00754267 /* PasswordView.swift */; };
+		5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E8281F12CD00754267 /* MailConfirmationView.swift */; };
+		5EE034F3281F12CD00754267 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034E9281F12CD00754267 /* MainView.swift */; };
+		5EE034F4281F12CD00754267 /* ClassicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034EA281F12CD00754267 /* ClassicTextField.swift */; };
+		5EE034F5281F12CD00754267 /* LogInBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034EB281F12CD00754267 /* LogInBuilder.swift */; };
+		5EE034FC281F12E900754267 /* CourseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034F7281F12E900754267 /* CourseApp.swift */; };
+		5EE034FD281F12E900754267 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034F8281F12E900754267 /* TabBar.swift */; };
+		5EE034FE281F12E900754267 /* ActialPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034F9281F12E900754267 /* ActialPerson.swift */; };
+		5EE034FF281F12E900754267 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034FA281F12E900754267 /* SearchBar.swift */; };
+		5EE03500281F12E900754267 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034FB281F12E900754267 /* ColorPalette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5E59707B28196B6D00BF3240 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5E59707D28196F1800BF3240 /* ValidateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserModel.swift; sourceTree = "<group>"; };
 		5E59707F2819723E00BF3240 /* ValidateUserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserError.swift; sourceTree = "<group>"; };
-		5E5970812819772400BF3240 /* LogInBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInBuilder.swift; sourceTree = "<group>"; };
 		5E5970842819F72300BF3240 /* RegistrationUserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUserError.swift; sourceTree = "<group>"; };
 		5E5970AA281C8C0C00BF3240 /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
-		5E5970AC281C8EF600BF3240 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		5ED4D4BC27FDDD2B00873CAA /* Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ED4D4C127FDDD2B00873CAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5ED4D4C327FDDD2E00873CAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5ED4D4C627FDDD2E00873CAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EE034DC281EE7B400754267 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		5EF3BDF528102CA300525E74 /* CourseApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseApp.swift; sourceTree = "<group>"; };
-		5EF3BDF628102CA300525E74 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
-		5EF3BDF728102CA300525E74 /* ActialPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActialPerson.swift; sourceTree = "<group>"; };
-		5EF3BDF828102CA300525E74 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
-		5EF3BDFF28102CB000525E74 /* LogInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
-		5EF3BE0228102CB000525E74 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
-		5EF3BE0328102CB000525E74 /* ClassicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicButton.swift; sourceTree = "<group>"; };
-		5EF3BE0428102CB000525E74 /* SecretTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretTextField.swift; sourceTree = "<group>"; };
-		5EF3BE0528102CB000525E74 /* PasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
-		5EF3BE0628102CB000525E74 /* MailConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailConfirmationView.swift; sourceTree = "<group>"; };
-		5EF3BE0728102CB000525E74 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		5EF3BE0828102CB000525E74 /* ClassicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicTextField.swift; sourceTree = "<group>"; };
-		5EF3BE1128102D5100525E74 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5EE034E0281F12CD00754267 /* LogInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		5EE034E2281F12CD00754267 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5EE034E4281F12CD00754267 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		5EE034E5281F12CD00754267 /* ClassicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicButton.swift; sourceTree = "<group>"; };
+		5EE034E6281F12CD00754267 /* SecretTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretTextField.swift; sourceTree = "<group>"; };
+		5EE034E7281F12CD00754267 /* PasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		5EE034E8281F12CD00754267 /* MailConfirmationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailConfirmationView.swift; sourceTree = "<group>"; };
+		5EE034E9281F12CD00754267 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5EE034EA281F12CD00754267 /* ClassicTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassicTextField.swift; sourceTree = "<group>"; };
+		5EE034EB281F12CD00754267 /* LogInBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInBuilder.swift; sourceTree = "<group>"; };
+		5EE034F7281F12E900754267 /* CourseApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseApp.swift; sourceTree = "<group>"; };
+		5EE034F8281F12E900754267 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		5EE034F9281F12E900754267 /* ActialPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActialPerson.swift; sourceTree = "<group>"; };
+		5EE034FA281F12E900754267 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		5EE034FB281F12E900754267 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,10 +127,10 @@
 		5ED4D4B327FDDD2B00873CAA = {
 			isa = PBXGroup;
 			children = (
+				5EE034DE281F12CD00754267 /* Log in */,
 				5E5970A6281C88C900BF3240 /* Events Page */,
 				5E59707A28196B3600BF3240 /* API Service */,
-				5EF3BDFD28102CB000525E74 /* Log in */,
-				5EF3BDF428102CA300525E74 /* Common */,
+				5EE034F6281F12E900754267 /* Common */,
 				5ED4D4BE27FDDD2B00873CAA /* Coursework */,
 				5ED4D4BD27FDDD2B00873CAA /* Products */,
 			);
@@ -162,60 +162,58 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		5EF3BDF428102CA300525E74 /* Common */ = {
+		5EE034DE281F12CD00754267 /* Log in */ = {
 			isa = PBXGroup;
 			children = (
-				5EF3BDF528102CA300525E74 /* CourseApp.swift */,
-				5EF3BDF628102CA300525E74 /* TabBar.swift */,
-				5EF3BDF728102CA300525E74 /* ActialPerson.swift */,
-				5EF3BDF828102CA300525E74 /* ColorPalette.swift */,
-				5E5970AC281C8EF600BF3240 /* SearchBar.swift */,
+				5EE034DF281F12CD00754267 /* View Models */,
+				5EE034E1281F12CD00754267 /* Model */,
+				5EE034E3281F12CD00754267 /* View Controller */,
+				5EE034EB281F12CD00754267 /* LogInBuilder.swift */,
 			);
-			name = Common;
-			path = Coursework/Common;
+			path = "Log in";
 			sourceTree = "<group>";
 		};
-		5EF3BDFD28102CB000525E74 /* Log in */ = {
+		5EE034DF281F12CD00754267 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				5EF3BDFE28102CB000525E74 /* View Models */,
-				5EF3BE0028102CB000525E74 /* Model */,
-				5EF3BE0128102CB000525E74 /* View Controller */,
-				5E5970812819772400BF3240 /* LogInBuilder.swift */,
-			);
-			name = "Log in";
-			path = "Coursework/Log in";
-			sourceTree = "<group>";
-		};
-		5EF3BDFE28102CB000525E74 /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				5EF3BDFF28102CB000525E74 /* LogInViewModel.swift */,
+				5EE034E0281F12CD00754267 /* LogInViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
 		};
-		5EF3BE0028102CB000525E74 /* Model */ = {
+		5EE034E1281F12CD00754267 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5EF3BE1128102D5100525E74 /* UserInfo.swift */,
+				5EE034E2281F12CD00754267 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5EF3BE0128102CB000525E74 /* View Controller */ = {
+		5EE034E3281F12CD00754267 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5EF3BE0228102CB000525E74 /* RegistrationView.swift */,
-				5EF3BE0328102CB000525E74 /* ClassicButton.swift */,
-				5EF3BE0428102CB000525E74 /* SecretTextField.swift */,
-				5EF3BE0528102CB000525E74 /* PasswordView.swift */,
-				5EF3BE0628102CB000525E74 /* MailConfirmationView.swift */,
-				5EF3BE0728102CB000525E74 /* MainView.swift */,
-				5EF3BE0828102CB000525E74 /* ClassicTextField.swift */,
+				5EE034E4281F12CD00754267 /* RegistrationView.swift */,
+				5EE034E5281F12CD00754267 /* ClassicButton.swift */,
+				5EE034E6281F12CD00754267 /* SecretTextField.swift */,
+				5EE034E7281F12CD00754267 /* PasswordView.swift */,
+				5EE034E8281F12CD00754267 /* MailConfirmationView.swift */,
+				5EE034E9281F12CD00754267 /* MainView.swift */,
+				5EE034EA281F12CD00754267 /* ClassicTextField.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
+		};
+		5EE034F6281F12E900754267 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5EE034F7281F12E900754267 /* CourseApp.swift */,
+				5EE034F8281F12E900754267 /* TabBar.swift */,
+				5EE034F9281F12E900754267 /* ActialPerson.swift */,
+				5EE034FA281F12E900754267 /* SearchBar.swift */,
+				5EE034FB281F12E900754267 /* ColorPalette.swift */,
+			);
+			path = Common;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -287,28 +285,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EF3BE0E28102CB000525E74 /* MailConfirmationView.swift in Sources */,
-				5EF3BE1028102CB000525E74 /* ClassicTextField.swift in Sources */,
 				5E59707C28196B6D00BF3240 /* Service.swift in Sources */,
-				5EF3BE0F28102CB000525E74 /* MainView.swift in Sources */,
-				5EF3BDFC28102CA300525E74 /* ColorPalette.swift in Sources */,
-				5EF3BDFA28102CA300525E74 /* TabBar.swift in Sources */,
-				5EF3BE0C28102CB000525E74 /* SecretTextField.swift in Sources */,
-				5EF3BDF928102CA300525E74 /* CourseApp.swift in Sources */,
-				5EF3BE0A28102CB000525E74 /* RegistrationView.swift in Sources */,
+				5EE034ED281F12CD00754267 /* UserInfo.swift in Sources */,
+				5EE034FF281F12E900754267 /* SearchBar.swift in Sources */,
+				5EE034FD281F12E900754267 /* TabBar.swift in Sources */,
+				5EE034FE281F12E900754267 /* ActialPerson.swift in Sources */,
+				5EE034EF281F12CD00754267 /* ClassicButton.swift in Sources */,
+				5EE034F4281F12CD00754267 /* ClassicTextField.swift in Sources */,
+				5EE034F0281F12CD00754267 /* SecretTextField.swift in Sources */,
+				5EE034F5281F12CD00754267 /* LogInBuilder.swift in Sources */,
 				5E5970AB281C8C0C00BF3240 /* EventsView.swift in Sources */,
-				5EF3BE0D28102CB000525E74 /* PasswordView.swift in Sources */,
-				5EF3BE0B28102CB000525E74 /* ClassicButton.swift in Sources */,
-				5EF3BDFB28102CA300525E74 /* ActialPerson.swift in Sources */,
+				5EE034FC281F12E900754267 /* CourseApp.swift in Sources */,
+				5EE034F3281F12CD00754267 /* MainView.swift in Sources */,
+				5EE034F1281F12CD00754267 /* PasswordView.swift in Sources */,
+				5EE034EE281F12CD00754267 /* RegistrationView.swift in Sources */,
 				5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */,
-				5E5970AD281C8EF600BF3240 /* SearchBar.swift in Sources */,
-				5E5970822819772400BF3240 /* LogInBuilder.swift in Sources */,
-				5EF3BE0928102CB000525E74 /* LogInViewModel.swift in Sources */,
-				5EF3BE1228102D5100525E74 /* UserInfo.swift in Sources */,
+				5EE034EC281F12CD00754267 /* LogInViewModel.swift in Sources */,
 				5EE034DD281EE7B400754267 /* CustomButton.swift in Sources */,
+				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
 				5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */,
 				5E5970852819F72300BF3240 /* RegistrationUserError.swift in Sources */,
+				5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
