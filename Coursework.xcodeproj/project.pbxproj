@@ -31,6 +31,8 @@
 		5EE034FE281F12E900754267 /* ActialPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034F9281F12E900754267 /* ActialPerson.swift */; };
 		5EE034FF281F12E900754267 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034FA281F12E900754267 /* SearchBar.swift */; };
 		5EE03500281F12E900754267 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034FB281F12E900754267 /* ColorPalette.swift */; };
+		5EE03502281F13FD00754267 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE03501281F13FD00754267 /* EventCell.swift */; };
+		5EE03504281F145700754267 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE03503281F145700754267 /* EventModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		5EE034F9281F12E900754267 /* ActialPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActialPerson.swift; sourceTree = "<group>"; };
 		5EE034FA281F12E900754267 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		5EE034FB281F12E900754267 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		5EE03501281F13FD00754267 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		5EE03503281F145700754267 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 			children = (
 				5E5970AA281C8C0C00BF3240 /* EventsView.swift */,
 				5EE034DC281EE7B400754267 /* CustomButton.swift */,
+				5EE03501281F13FD00754267 /* EventCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 		5E5970A9281C897900BF3240 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5EE03503281F145700754267 /* EventModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,7 +311,9 @@
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
 				5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */,
+				5EE03502281F13FD00754267 /* EventCell.swift in Sources */,
 				5E5970852819F72300BF3240 /* RegistrationUserError.swift in Sources */,
+				5EE03504281F145700754267 /* EventModel.swift in Sources */,
 				5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

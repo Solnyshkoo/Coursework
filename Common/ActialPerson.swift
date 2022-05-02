@@ -2,6 +2,6 @@ import Foundation
 import SwiftUI
 
 enum ActialPerson {
-    static var favorities = [EventsModel]()
-    static var subscribes = [EventsModel]()
+    static var favorities = [EventModel]()
+    static var subscribes = [EventModel]()
 }
