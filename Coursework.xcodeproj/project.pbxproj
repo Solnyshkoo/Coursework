@@ -33,6 +33,9 @@
 		5EE03500281F12E900754267 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE034FB281F12E900754267 /* ColorPalette.swift */; };
 		5EE03502281F13FD00754267 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE03501281F13FD00754267 /* EventCell.swift */; };
 		5EE03504281F145700754267 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE03503281F145700754267 /* EventModel.swift */; };
+		5EE0350C281FEA5B00754267 /* PersonalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0350B281FEA5B00754267 /* PersonalView.swift */; };
+		5EE0350E281FED1100754267 /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0350D281FED1100754267 /* PersonalViewModel.swift */; };
+		5EE035102820B17200754267 /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE0350F2820B16F00754267 /* SegmentedPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,9 @@
 		5EE034FB281F12E900754267 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		5EE03501281F13FD00754267 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		5EE03503281F145700754267 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		5EE0350B281FEA5B00754267 /* PersonalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalView.swift; sourceTree = "<group>"; };
+		5EE0350D281FED1100754267 /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
+		5EE0350F2820B16F00754267 /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,10 +139,11 @@
 		5ED4D4B327FDDD2B00873CAA = {
 			isa = PBXGroup;
 			children = (
-				5EE034DE281F12CD00754267 /* Log in */,
-				5E5970A6281C88C900BF3240 /* Events Page */,
 				5E59707A28196B3600BF3240 /* API Service */,
 				5EE034F6281F12E900754267 /* Common */,
+				5EE034DE281F12CD00754267 /* Log in */,
+				5E5970A6281C88C900BF3240 /* Events Page */,
+				5EE03507281FE9A900754267 /* Personal Page */,
 				5ED4D4BE27FDDD2B00873CAA /* Coursework */,
 				5ED4D4BD27FDDD2B00873CAA /* Products */,
 			);
@@ -221,6 +228,40 @@
 			path = Common;
 			sourceTree = SOURCE_ROOT;
 		};
+		5EE03507281FE9A900754267 /* Personal Page */ = {
+			isa = PBXGroup;
+			children = (
+				5EE0350A281FEA1700754267 /* View Model */,
+				5EE03509281FEA0B00754267 /* Model */,
+				5EE03508281FE9D200754267 /* View Controller */,
+			);
+			path = "Personal Page";
+			sourceTree = "<group>";
+		};
+		5EE03508281FE9D200754267 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5EE0350B281FEA5B00754267 /* PersonalView.swift */,
+				5EE0350F2820B16F00754267 /* SegmentedPicker.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		5EE03509281FEA0B00754267 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5EE0350A281FEA1700754267 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				5EE0350D281FED1100754267 /* PersonalViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +335,7 @@
 				5E59707C28196B6D00BF3240 /* Service.swift in Sources */,
 				5EE034ED281F12CD00754267 /* UserInfo.swift in Sources */,
 				5EE034FF281F12E900754267 /* SearchBar.swift in Sources */,
+				5EE035102820B17200754267 /* SegmentedPicker.swift in Sources */,
 				5EE034FD281F12E900754267 /* TabBar.swift in Sources */,
 				5EE034FE281F12E900754267 /* ActialPerson.swift in Sources */,
 				5EE034EF281F12CD00754267 /* ClassicButton.swift in Sources */,
@@ -301,6 +343,7 @@
 				5EE034F0281F12CD00754267 /* SecretTextField.swift in Sources */,
 				5EE034F5281F12CD00754267 /* LogInBuilder.swift in Sources */,
 				5E5970AB281C8C0C00BF3240 /* EventsView.swift in Sources */,
+				5EE0350E281FED1100754267 /* PersonalViewModel.swift in Sources */,
 				5EE034FC281F12E900754267 /* CourseApp.swift in Sources */,
 				5EE034F3281F12CD00754267 /* MainView.swift in Sources */,
 				5EE034F1281F12CD00754267 /* PasswordView.swift in Sources */,
@@ -308,6 +351,7 @@
 				5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */,
 				5EE034EC281F12CD00754267 /* LogInViewModel.swift in Sources */,
 				5EE034DD281EE7B400754267 /* CustomButton.swift in Sources */,
+				5EE0350C281FEA5B00754267 /* PersonalView.swift in Sources */,
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
 				5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */,

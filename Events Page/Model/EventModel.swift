@@ -7,7 +7,9 @@
 
 import Foundation
 import SwiftUI
-struct EventModel {
+struct EventModel: Identifiable {
+    var id: Int
+    
     let name: String
     let logo: Image
     let mainPhoto: Image

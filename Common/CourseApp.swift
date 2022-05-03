@@ -13,7 +13,7 @@ struct CourseApp: App {
         
         WindowGroup {
            // MainView(output: presenter)
-        TabBar(people: $man)
+           TabBar(people: $man, token: "lol", service: service)
         }
     }
 }

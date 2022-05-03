@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 final class LogInViewModel: ObservableObject {
     
-   var view: MainViewProtocolInput?
+    var view: MainViewProtocolInput?
     
     let service: Service
   
@@ -57,6 +57,14 @@ extension LogInViewModel: MainViewProtocolOutput {
     func setView(viewL: MainViewProtocolInput) {
         self.view = viewL
     }
+    
+    func getService() -> Service {
+        return service
+    }
+    
+    func getToken() -> String {
+        return token
+    }
 
 }
 extension LogInViewModel: MailConfirmationViewProtocolOutput {
@@ -93,4 +101,13 @@ extension LogInViewModel: PasswordViewProtocolOutput {
         return warningText
     }
     
+    func getServicApi() -> Service {
+        return service
+    }
+    
+    func getTokenUser() -> String {
+        return token
+    }
+    
 }
+

@@ -12,7 +12,7 @@ struct SearchBar: View {
                     .padding(.leading, 32)
                     .foregroundColor(ColorPalette.lightGray)
                     
-            }.padding(13)
+            }.padding(8)
                 .background(ColorPalette.secondBackground)
                 .cornerRadius(15)
                 .padding(.horizontal)
@@ -24,7 +24,7 @@ struct SearchBar: View {
             if isSearching {
                 Button(action: {
                     isSearching = false
-                    searchText = ""
+                    searchText = "Find your event ..."
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }) {
                     Image(systemName: "xmark.circle.fill").foregroundColor(ColorPalette.text)

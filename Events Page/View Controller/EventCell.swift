@@ -28,7 +28,8 @@ struct EventCell: View {
                    }.foregroundColor(info.like ? Color.red : ColorPalette.text)
                }.padding(.bottom, 5)
             
-                    info.mainPhoto.resizable().rectangleCropped().frame(height: 500)
+                    info.mainPhoto.resizable().smallRectangleCropped()
+                    .frame(height: 500)
                    
                 
                 // TODO: - поменять от вас
@@ -69,7 +70,7 @@ struct EventCell: View {
 
 
 struct EventCellPreviewContainer_2: View {
-    @State var lol: EventModel = EventModel(name: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
+    @State var lol: EventModel = EventModel(id: 1, name: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
 
     var body: some View {
         EventCell(info: lol)
@@ -99,10 +100,23 @@ extension Image {
         }
     }
     
-    func rectangleCropped() -> some View {
+    func smallRectangleCropped() -> some View {
  
         GeometryReader { geo in
             let height = geo.size.height > 500 ? CGFloat(500) : geo.size.height
+            self
+                .resizable()
+                .scaledToFill()
+                .frame(height: height)
+                .aspectRatio(geo.size, contentMode: .fill)
+                .clipped()
+        }
+    }
+    
+    func bigRectangleCropped() -> some View {
+ 
+        GeometryReader { geo in
+            let height = geo.size.height > 600 ? CGFloat(600) : geo.size.height
             self
                 .resizable()
                 .scaledToFill()

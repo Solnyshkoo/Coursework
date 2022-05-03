@@ -4,6 +4,8 @@ import SwiftUI
 protocol PasswordViewProtocolOutput {
     func validateUser(respond: UserInfo) -> Bool
     func getWarning() -> String
+    func getServicApi() -> Service
+    func getTokenUser() -> String
 }
 struct PasswordView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
@@ -63,7 +65,7 @@ struct PasswordView: View {
                         .padding(.top, 45)
                         .onTapGesture(perform: {})
                         .fullScreenCover(isPresented: $showingHomeView) {
-                            TabBar(people: $man)
+                            TabBar(people: $man, token: passwordViewModel.getTokenUser(), service: passwordViewModel.getServicApi())
                         }
                 }.padding(.bottom, 250)
                     .navigationBarBackButtonHidden(true)

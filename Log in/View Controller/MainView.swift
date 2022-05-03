@@ -10,6 +10,8 @@ protocol MainViewProtocolOutput {
     func getText() -> String
     func showWarning() -> Bool
     func setView(viewL: MainViewProtocolInput)
+    func getService() -> Service
+    func getToken() -> String
 }
 
 struct MainView: View {
@@ -60,7 +62,7 @@ struct MainView: View {
                     .clipShape(Capsule())
                     .padding(.top, 45)
                     .fullScreenCover(isPresented: $showingHoneView) {
-                        TabBar(people: $man)
+                        TabBar(people: $man, token: mainViewModel.getToken(), service: mainViewModel.getService())
                     }.onTapGesture {
                         if true {
                             self.mode.wrappedValue.dismiss()
