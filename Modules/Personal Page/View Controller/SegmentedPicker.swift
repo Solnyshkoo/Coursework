@@ -1,9 +1,6 @@
 import SwiftUI
 
-public struct SegmentedPicker<Element, Content, Selection>: View
-where
-Content: View,
-Selection: View {
+public struct SegmentedPicker<Element, Content, Selection>: View where Content: View, Selection: View {
     
     public typealias Data = [Element]
     
@@ -35,7 +32,7 @@ Selection: View {
             if let selectedIndex = selectedIndex {
                 selection()
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(.black)
+                    .foregroundColor(ColorPalette.mainBackground)
                     .shadow(color: .gray.opacity(0.08),
                             radius: 10,
                             x: 0,
@@ -53,7 +50,7 @@ Selection: View {
                            label: {
                         HStack {
                             Spacer()
-                            content(data[index], selectedIndex == index).foregroundColor(Color.white)
+                            content(data[index], selectedIndex == index).foregroundColor(ColorPalette.text)
                             Spacer()
                         }
                         .padding(.vertical, 12.0)
@@ -73,7 +70,7 @@ Selection: View {
             }
         }
                                     .frame(height: height)
-                                    .background(Color.red)
+                                    .background(ColorPalette.secondBackground)
                                     .cornerRadius(8)
                                     .animation(.easeInOut(duration: 0.3))
     }
@@ -93,44 +90,9 @@ public extension SegmentedPicker where Selection == EmptyView {
     }
 }
 
-extension HorizontalAlignment {
-    private enum CenterAlignmentID: AlignmentID {
-        static func defaultValue(in dimension: ViewDimensions) -> CGFloat {
-            return dimension[HorizontalAlignment.center]
-        }
-    }
-    
-    static var horizontalCenterAlignment: HorizontalAlignment {
-        HorizontalAlignment(CenterAlignmentID.self)
-    }
-}
 
-extension View {
-    @ViewBuilder
-    @inlinable func alignmentGuide(_ alignment: HorizontalAlignment,
-                                   isActive: Bool,
-                                   computeValue: @escaping (ViewDimensions) -> CGFloat) -> some View {
-        if isActive {
-            alignmentGuide(alignment, computeValue: computeValue)
-        }
-        else {
-            self
-        }
-    }
 
-    @ViewBuilder
-    @inlinable func alignmentGuide(_ alignment: VerticalAlignment,
-                                   isActive: Bool,
-                                   computeValue: @escaping (ViewDimensions) -> CGFloat) -> some View {
 
-        if isActive {
-            alignmentGuide(alignment, computeValue: computeValue)
-        }
-        else {
-            self
-        }
-    }
-}
 
 struct SegmentedPicker_Previews: PreviewProvider {
     

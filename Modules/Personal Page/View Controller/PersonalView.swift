@@ -15,7 +15,7 @@ protocol PersonalViewProtocolOutput {
 
 struct PersonalView: View {
     var personalViewModel: PersonalViewProtocolOutput
-    @State private var selectedIndex = 1
+    @State private var selectedIndex: Int? = 0
     @State private var nameAndSurname = ""
     @State private var nickname = ""
     @State var canEdit = false
@@ -72,7 +72,7 @@ struct PersonalView: View {
                                             Button(action: {
                                                 self.canEdit.toggle()
                             
-                                               // TODO: - новые данные
+                                                // TODO: - новые данные
                                             }) {
                                                 Text("Save")
                                             }
@@ -95,19 +95,29 @@ struct PersonalView: View {
                                     Menu {
                                         Section {
                                             Button(action: {
+                                                // TODO: - подробнее
+                                            }) {
+                                                Label("Settings", systemImage: "gearshape")
+                                            }
+                                        }
+                                        Section {
+                                            Button(action: {
+                                                // TODO: - подробнее
+                                            }) {
+                                                Label("Favorite", systemImage: "heart")
+                                            }
+                                        }
+                                        
+                                        Section {
+                                            Button(action: {
                                                 self.canEdit.toggle()
                             
                                                 // TODO: - подробнее
                                             }) {
                                                 Text("Edit")
-//                                    Image(canEdit ? "done" : "more.info")
-//                                        .resizable()
-//                                        .renderingMode(.template)
-//                                        .frame(width: 50, height: 50)
-//                                        .foregroundColor(ColorPalette.text)
-                                                // .padding(.top, 445)
                                             }
                                         }
+                                        
                                     } label: {
                                         Image("more.info")
                                             .resizable()
@@ -118,24 +128,23 @@ struct PersonalView: View {
                                 }
                             }.padding(.top, 445)
                         }
-
-                    Picker("my screen", selection: $selectedIndex) {
-                        Text("History").tag(0)
-                        Text("My events").tag(1).frame(height: 100).clipped()
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.top, -45)
-           
+                    setPicker(titles: ["History", "My events"])
+                        .padding(.top, -55)
+                        .padding(.bottom, 5)
                     Spacer()
-//                    if selectedIndex == 0 {
-//                        ForEach(personalViewModel.getHistory()) { item in
-//                            EventCell(info: item)
-//                        }
-//                    } else {
-//                        ForEach(personalViewModel.getMyEvents()) { item in
-//                            EventCell(info: item)
-//                        }
-//                    }
+                    if selectedIndex == 0 {
+                        Circle().background(ColorPalette.mainBackground).frame(width: 100, height: 100)
+
+                        ForEach(personalViewModel.getHistory()) { item in
+                            EventCell(info: item)
+                        }
+                       
+                    } else {
+                        Circle().background(.red).frame(width: 100, height: 100)
+                        ForEach(personalViewModel.getMyEvents()) { item in
+                            EventCell(info: item)
+                        }
+                    }
                 }
                 
             }.edgesIgnoringSafeArea(.top)
@@ -143,24 +152,10 @@ struct PersonalView: View {
     }
     
     @ViewBuilder
-    private func getSegment(_ title: String) -> some View {
-        //  DemoPickerSegment(title: title, desc: titles[title] ?? "")
-    }
-    
-    @ViewBuilder
     private func setPicker(titles: [String]) -> some View {
-        SegmentedPicker(
-            titles,
-            selectedIndex: Binding(
-                get: { selectedIndex },
-                set: {
-                    selectedIndex = $0 ?? 0
-                }
-            ),
-            content: { title, _ in
-                getSegment(title)
-            }
-        )
+        SegmentedPicker(["History", "My events"], selectedIndex: $selectedIndex) { tab, _ in
+            Text(tab)
+        }
     }
 }
 
