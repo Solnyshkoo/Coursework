@@ -29,8 +29,9 @@ struct PersonalView: View {
 
     var body: some View {
         VStack {
-            ScrollView {
+         
                 VStack {
+                    ScrollView {
                     personalViewModel.getImage()
                         .bigRectangleCropped()
                         .frame(height: 600)
@@ -132,14 +133,11 @@ struct PersonalView: View {
                         .padding(.bottom, 5)
                     Spacer()
                     if selectedIndex == 0 {
-                        Circle().background(ColorPalette.mainBackground).frame(width: 100, height: 100)
-
                         ForEach(personalViewModel.getHistory()) { item in
                             EventCell(info: item)
                         }
                        
                     } else {
-                        Circle().background(.red).frame(width: 100, height: 100)
                         ForEach(personalViewModel.getMyEvents()) { item in
                             EventCell(info: item)
                         }

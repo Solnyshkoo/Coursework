@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    private let adress = "https://0a37-2a00-1370-8182-3789-5ca6-8306-34d0-cb6f.ngrok.io"
+    private let adress = "https://8455-2a00-1370-8182-3789-f9e2-4426-3aaa-801f.ngrok.io"
     func validateUserData(respond: ValidateUserModel, _ closure: @escaping (Result<String, ValidationError>) -> Void) {
         guard let url = URL(string: "\(adress)/user/auth?username=\(respond.login)&password=\(respond.password)".encodeUrl) else {
             print("что-то не то с твоим запросом...")

@@ -1,14 +1,12 @@
 import Foundation
 import SwiftUI
+
 final class LogInViewModel: ObservableObject {
-    
-    var view: MainViewProtocolInput?
-    
+   // var view: MainViewProtocolInput?
     let service: Service
-  
-    var warningText = " "
-    private var token = ""
     
+    @Published var warningText = " "
+    private var token = ""
     init (service: Service) {
         self.service = service
     }
@@ -16,25 +14,32 @@ final class LogInViewModel: ObservableObject {
 }
 
 extension LogInViewModel: MainViewProtocolOutput {
+    func setView(viewL: MainViewProtocolInput) {
+        
+    }
+    
+    
     func validateUser(respond: ValidateUserModel) -> Bool {
         DispatchQueue.main.async {
             self.service.validateUserData(respond: respond) { [weak self] result in
                 guard let self = self else {return}
                 switch result {
                 case .success(let token):
-                    self.warningText = " "
-                    self.view?.updateWarning(text: " ")
-                   
+                    DispatchQueue.main.async {
+                        self.warningText = " "
+                    }
                     self.token = token
                     break
                 case .failure(let error):
-                    
-                    self.warningText = error.errorDescription!
-                  self.view?.updateWarning(text: error.errorDescription!)
+                   DispatchQueue.main.async {
+                        self.warningText = error.errorDescription!
+                    }
                     break
                 }
            }
     }
+        
+        
         print("_____________5______________")
         print( self.token == "" ? false :  true)
         print("_____________5______________")
@@ -54,9 +59,9 @@ extension LogInViewModel: MainViewProtocolOutput {
         
     }
     
-    func setView(viewL: MainViewProtocolInput) {
-        self.view = viewL
-    }
+//    func setView(viewL: MainViewProtocolInput) {
+//        self.view = viewL
+//    }
     
     func getService() -> Service {
         return service

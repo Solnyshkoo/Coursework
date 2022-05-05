@@ -1,6 +1,8 @@
 import Foundation
-
 import SwiftUI
+
+
+
 struct OrganizerView: View {
     @State private var searchText = "Find your event..."
     @State private var isSearching = false

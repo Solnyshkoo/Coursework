@@ -16,7 +16,7 @@ protocol MainViewProtocolOutput {
 
 struct MainView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    var mainViewModel: MainViewProtocolOutput
+    @ObservedObject var mainViewModel: LogInViewModel
     @State var man = UserInfo()
     @State var enterText: String = ""
     @State var user = ""
@@ -27,10 +27,10 @@ struct MainView: View {
     @State private var showingHoneView = false
     @State private var showingWarning = false
     @State private var warningText = " "
-    
-    init (output: MainViewProtocolOutput) {
+
+    init (output: LogInViewModel) {
         mainViewModel = output
-        output.setView(viewL: self)
+       
     }
     var body: some View {
         VStack {
@@ -50,7 +50,7 @@ struct MainView: View {
                 }.padding(.horizontal, 6)
             }.padding()
             VStack {
-                    Text(warningText).foregroundColor(ColorPalette.warningColor).padding(.top, 5)
+                Text(mainViewModel.getText()).foregroundColor(ColorPalette.warningColor).padding(.top, 5)
                 Button(action: {
                     showingHoneView = mainViewModel.validateUser(respond: ValidateUserModel(login: user, password: pass))
                         warningText = mainViewModel.getText()
@@ -68,6 +68,7 @@ struct MainView: View {
                             self.mode.wrappedValue.dismiss()
                         }
                     }
+                    
                
                 HStack(spacing: 8) {
                  
@@ -89,16 +90,16 @@ struct MainView: View {
     }
        
 }
-
-extension MainView: MainViewProtocolInput {
-    func updateWarning(text: String) {
-        warningText = text
-        showingHoneView = text == " " ? true : false
-        print(text == " " ? true : false)
-        print("dfghj;hugytfrdfxcgvhjbkjlko;ljlhgjfhc")
-        
-    }
-}
+//
+//extension MainView: MainViewProtocolInput {
+//    func updateWarning(text: String) {
+//
+//        warningText = text
+//        showingWarning = text == " " ? false : true
+//        showingHoneView = text == " " ?  true : false
+//
+//    }
+//}
 //
 //struct MainView_Previews: PreviewProvider {
 //    static var previews: some View {

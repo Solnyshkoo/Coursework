@@ -12,7 +12,7 @@ struct CourseApp: App {
         
         
         WindowGroup {
-           // MainView(output: presenter)
+           // MainView(output: LogInViewModel(service: Service()))
            TabBar(people: $man, token: "lol", service: service)
         }
     }
