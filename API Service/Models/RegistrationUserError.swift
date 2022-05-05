@@ -1,10 +1,3 @@
-//
-//  RegistrationUserError.swift
-//  Coursework
-//
-//  Created by Ksenia Petrova on 28.04.2022.
-//
-
 import Foundation
 enum RegistrationUserError: LocalizedError {
     case loginIsBusy

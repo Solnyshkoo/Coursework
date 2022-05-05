@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 struct EventCell: View {
     @State var info: EventModel
+    @State var people: UserInfo = UserInfo()
     var body: some View {
         // TODO: - шрифты
         VStack {
@@ -21,14 +22,19 @@ struct EventCell: View {
                        .lineLimit(1)
                    Spacer()
                    Button(action: {
-                       // TODO: - лайк
+                       if people.favorities.contains(where: { $0.id == info.id }) {
+                           people.favorities.remove(at:
+                               people.favorities.firstIndex(where: { $0.id == info.id })!)
+                       } else {
+                           people.favorities.append(info)
+                       }
                    }) {
-                       Image(systemName: info.like ? "heart.fill" : "heart").font(Font.system(size: 25, design: .default)).padding(.top, 4)
+                       Image(systemName: people.favorities.contains(where: { $0.id == info.id }) ? "heart.fill" : "heart").font(Font.system(size: 25, design: .default)).padding(.top, 4)
                            .padding(.trailing, 10)
-                   }.foregroundColor(info.like ? Color.red : ColorPalette.text)
+                   }.foregroundColor(people.favorities.contains(where: { $0.id == info.id }) ? Color.red : ColorPalette.text)
                }.padding(.bottom, 5)
             
-                    info.mainPhoto.resizable().smallRectangleCropped()
+                info.mainPhoto.resizable().smallRectangleCropped()
                     .frame(height: 500)
                    
                 

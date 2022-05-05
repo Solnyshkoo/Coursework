@@ -1,10 +1,3 @@
-//
-//  EventModel.swift
-//  Coursework
-//
-//  Created by Ksenia Petrova on 01.05.2022.
-//
-
 import Foundation
 import SwiftUI
 struct EventModel: Identifiable {

@@ -18,8 +18,27 @@ extension Image {
             self
                 .resizable()
                 .scaledToFill()
-                .frame(height: height)
-                .aspectRatio(geo.size, contentMode: .fill)
+                
+                .frame(width: geo.size.width, height: height,  alignment: .center)
+                
+                .aspectRatio(contentMode: .fill)
+                
+                .clipped()
+        }
+    }
+    
+    func mediumRectangleCropped() -> some View {
+ 
+        GeometryReader { geo in
+            let height = geo.size.height > 80 ? CGFloat(80) : geo.size.height
+            self
+                .resizable()
+                .scaledToFill()
+                
+                .frame(width: geo.size.width, height: height,  alignment: .center)
+                
+                .aspectRatio(contentMode: .fill)
+                
                 .clipped()
         }
     }

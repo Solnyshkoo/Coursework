@@ -100,13 +100,13 @@ struct PersonalView: View {
                                                 Label("Settings", systemImage: "gearshape")
                                             }
                                         }
-                                        Section {
-                                            Button(action: {
-                                                // TODO: - подробнее
-                                            }) {
-                                                Label("Favorite", systemImage: "heart")
-                                            }
-                                        }
+//                                        Section {
+//                                            Button(action: {
+//                                                // TODO: - подробнее
+//                                            }) {
+//                                                Label("Favorite", systemImage: "heart")
+//                                            }
+//                                        }
                                         
                                         Section {
                                             Button(action: {
