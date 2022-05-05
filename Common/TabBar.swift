@@ -6,28 +6,30 @@ struct TabBar: View {
     @Binding var people: UserInfo
     var token: String
     var service: Service
+    
     var body: some View {
         TabView(selection: $selection){
             OrganizerView()
                 .tabItem {
-                    Image(systemName: "circle")
+                    Image(systemName: "plus.app")
                 }
                 .tag(0)
             EventsView()
                 .tabItem {
-                    Image(systemName: "circle")
+                    Image(systemName: "house")
                 }
                 .tag(1)
             FavoriteView()
                 .tabItem {
-                    Image(systemName: "circle")
+                    Image(systemName: "heart")
                 }
                 .tag(2)
             PersonalView(output: PersonalViewModel(service: service, tok: token))
                 .tabItem {
-                    Image(systemName: "circle")
+                    Image(systemName: "person")
                 }
                 .tag(3)
-        }
+        }.accentColor(ColorPalette.text)
+            
     }
 }

@@ -33,7 +33,6 @@ struct PersonalView: View {
                 VStack {
                     personalViewModel.getImage()
                         .bigRectangleCropped()
-                        .edgesIgnoringSafeArea(.all)
                         .frame(height: 600)
                         .padding(.bottom, 70)
                         .overlay(alignment: .bottom) {
@@ -148,6 +147,8 @@ struct PersonalView: View {
                 }
                 
             }.edgesIgnoringSafeArea(.top)
+               
+            
         }
     }
     
