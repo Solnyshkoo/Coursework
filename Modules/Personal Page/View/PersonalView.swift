@@ -11,6 +11,7 @@ protocol PersonalViewProtocolOutput {
     func getNickname() -> String
     func getMyEvents() -> [EventModel]
     func getHistory() -> [EventModel]
+    func setPicture(image: Image)
 }
 
 struct PersonalView: View {
@@ -18,8 +19,9 @@ struct PersonalView: View {
     @State private var selectedIndex: Int? = 0
     @State private var nameAndSurname = ""
     @State private var nickname = ""
+    @State private var photo: Image?
     @State var canEdit = false
-
+    @State var pickPhoto = false
     init(output: PersonalViewProtocolOutput) {
         personalViewModel = output
         personalViewModel.setView(view: self)
@@ -29,14 +31,34 @@ struct PersonalView: View {
 
     var body: some View {
         VStack {
-                VStack {
-                    ScrollView {
+            VStack {
+                ScrollView {
                     personalViewModel.getImage()
                         .bigRectangleCropped()
                         .frame(height: 600)
                         .padding(.bottom, 70)
+                        .overlay(alignment: .top) {
+                            if canEdit {
+                            ZStack {
+                                Rectangle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 500)
+                                
+                                VStack {
+                                Image(systemName: "camera").resizable().frame(width: 100, height: 80)
+                                    .onTapGesture {
+                                        pickPhoto.toggle()
+                                    }
+                                    .sheet(isPresented: $pickPhoto) {
+                                        ImagePicker(image: $photo, isPresented: $pickPhoto)
+                                }
+                            }.padding(.bottom, 100)
+                                
+                               
+//                                personalViewModel.setPicture(image: photo ?? personalViewModel.getImage())
+                            }
+                            }
+                        }
                         .overlay(alignment: .bottom) {
-                            Rectangle().frame(width: 600, height: 230).foregroundColor(ColorPalette.mainBackground).rotationEffect(Angle(degrees: -20))
+                            Rectangle().frame(width: 600, height: 240).foregroundColor(ColorPalette.mainBackground).rotationEffect(Angle(degrees: -20))
                             Rectangle().frame(width: 560, height: 150).foregroundColor(ColorPalette.mainBackground).opacity(0.6).rotationEffect(Angle(degrees: 21))
                         }
                         .overlay(alignment: .leading) {
@@ -127,8 +149,9 @@ struct PersonalView: View {
                                 }
                             }.padding(.top, 445)
                         }
+                        
                     setPicker(titles: ["History", "My events"])
-                        .padding(.top, -55)
+                        .padding(.top, -50)
                         .padding(.bottom, 5)
                     Spacer()
                     if selectedIndex == 0 {
@@ -144,8 +167,6 @@ struct PersonalView: View {
                 }
                 
             }.edgesIgnoringSafeArea(.top)
-               
-            
         }
     }
     
