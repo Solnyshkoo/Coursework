@@ -29,7 +29,6 @@ struct PersonalView: View {
 
     var body: some View {
         VStack {
-         
                 VStack {
                     ScrollView {
                     personalViewModel.getImage()

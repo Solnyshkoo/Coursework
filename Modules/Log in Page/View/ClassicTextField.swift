@@ -15,3 +15,17 @@ struct ClassicTextField: View {
         }
     }
 }
+struct ClassicTextField2_Previews: View {
+    @State var t: String = ""
+    var body: some View {
+        ClassicTextField(labelText: "lol", fieldText: "heh", user: $t)
+        ClassicTextField(labelText: "lol", fieldText: "heh", user: $t)
+            .preferredColorScheme(.dark)
+    }
+}
+
+struct ClassicTextField_Previews: PreviewProvider {
+    static var previews: some View {
+        ClassicTextField2_Previews()
+    }
+}

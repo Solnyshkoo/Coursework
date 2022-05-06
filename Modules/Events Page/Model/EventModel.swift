@@ -1,15 +1,15 @@
 import Foundation
 import SwiftUI
 struct EventModel: Identifiable {
-    var id: Int
+    var id: Int = -1
     
-    let name: String
-    let logo: Image
-    let mainPhoto: Image
-    let distination: String
-    let price: String
-    let description: String
-    let participant: Int
-    let like: Bool
-    let data: String
+    var name: String = ""
+    var logo: Image = Image(systemName: "circle")
+    var mainPhoto: Image = Image(systemName: "circle")
+    var distination: String = ""
+    var price: String = ""
+    var description: String = ""
+    var participant: Int = -1
+    var like: Bool = false
+    var data: String = ""
 }

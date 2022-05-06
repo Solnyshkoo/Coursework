@@ -14,7 +14,7 @@ struct SearchBar: View {
                     
             }.padding(8)
                 .background(ColorPalette.secondBackground)
-                .cornerRadius(15)
+                .cornerRadius(10)
                 .padding(.horizontal)
                 .onTapGesture(perform: {
                     isSearching = true
