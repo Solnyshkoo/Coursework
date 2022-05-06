@@ -14,6 +14,7 @@ struct NewEventView: View {
                     EventTextField(text: $event.distination, title: "Местоположение", subtitile: "Адрес", width: 35)
                     EventTextField(text: $event.data, title: "Дата", subtitile: "Когда пир?", width: 35)
                     EventTextField(text: $event.price, title: "Стоимость входа в рублях", subtitile: "0, если бесплатно", width: 35)
+                    EventTextField(text: $event.contacts, title: "Контакты", subtitile: "И как к вам записаться?", width: 60)
                     Spacer()
                 }
                
