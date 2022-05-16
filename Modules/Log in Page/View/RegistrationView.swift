@@ -17,8 +17,6 @@ struct RegistrationView: View {
                 VStack {
                     ScrollView {
                     VStack {
-                        Text("Регистрация").fontWeight(.heavy).font(.largeTitle).padding(.top, -30)
-                            .padding(.bottom, 20)
                         HStack(alignment: .center) {
                             Circle()
                                 .frame(width: 150, height: 150)
@@ -104,16 +102,24 @@ struct RegistrationView: View {
                             }
                     }
                 }.padding(.bottom, 100)
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden(true)
                     .toolbar(content: {
                         ToolbarItem(placement: .navigation) {
-                            Image(systemName: "arrow.left")
-                                .foregroundColor(ColorPalette.navigationBarItem)
-                                .onTapGesture {
-                                    self.mode.wrappedValue.dismiss()
-                                }
-                        }
-                    })
+                            HStack(alignment: .center, content: {
+                                Image(systemName: "arrow.left")
+                                    .foregroundColor(ColorPalette.navigationBarItem)
+                                    .onTapGesture {
+                                        self.mode.wrappedValue.dismiss()
+                                    }
+                        
+                                Text("Регистрация").fontWeight(.heavy).font(.largeTitle)
+                                    .padding(.leading, 55)
+                                    .padding(.top, 18)
+                    
+                            }).padding(.bottom, 20)
+                            
+                        }                    })
                 }
             }
             Spacer()

@@ -24,6 +24,7 @@ struct AuthorizationView: View {
         VStack {
             Text("Авторизация").fontWeight(.heavy).font(.largeTitle)
                 .padding([.top, .bottom], 20)
+         
             VStack {
                 VStack(alignment: .leading) {
                     ClassicTextField(labelText: "Nickname", fieldText: "Введите Nickname", user: $user).padding(.bottom, 15)

@@ -10,7 +10,7 @@ struct NewEventView: View {
         VStack {
             NavigationView {
                 ScrollView {
-                    Text("Новое событие").fontWeight(.heavy).font(.largeTitle).padding(.top, -30)
+                    Text("Новое событие").fontWeight(.heavy).font(.largeTitle).padding(.top, -50)
                         .padding(.bottom, 20)
                     HStack(alignment: .center) {
                         Circle()
@@ -66,6 +66,7 @@ struct NewEventView: View {
                           //  .padding(.trailing, 10)
                     }).padding(.top, 12)
                     Spacer()
+                        .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar(content: {
                     ToolbarItem(placement: .navigation) {

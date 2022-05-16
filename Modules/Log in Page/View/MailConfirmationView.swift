@@ -42,6 +42,7 @@ struct MailConfirmationView: View {
                         }
                     }.padding()
                 }.padding(.bottom, 220)
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden(true)
                     .toolbar(content: {
                         ToolbarItem(placement: .navigation) {

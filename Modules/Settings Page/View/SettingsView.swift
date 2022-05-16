@@ -6,7 +6,7 @@ protocol SettingsViewProtocolOutput {
 }
 struct SettingsView: View {
     var settingsViewModel: SettingsViewProtocolOutput
-    
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     init(output: SettingsViewProtocolOutput) {
         settingsViewModel = output
     }
@@ -18,7 +18,7 @@ struct SettingsView: View {
                 
                 Section() {
                     HStack {
-                        Text("Information")
+                        Text("Информация")
                     }.onTapGesture {
                         
                     }
@@ -27,7 +27,7 @@ struct SettingsView: View {
 //                    }
                     
                     HStack {
-                        Text("Confidence")
+                        Text("Конфиденциальность")
                     }.onTapGesture {
                         
                     }
@@ -51,8 +51,24 @@ struct SettingsView: View {
                 
             
             }.padding(.top, 10)
-        
-            .navigationBarTitle(Text("Settings"))
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar(content: {
+                ToolbarItem(placement: .navigation) {
+                    HStack(alignment: .center, content: {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(ColorPalette.navigationBarItem)
+                            .onTapGesture {
+                                self.mode.wrappedValue.dismiss()
+                            }
+                
+                        Text("Настройки").fontWeight(.heavy).font(.largeTitle)
+                            .padding(.leading, 60)
+                            .padding(.top, 18)
+            
+                    }).padding(.bottom, 5)
+                }
+            })
             
 //            .navigationBarItems(
 //                trailing:

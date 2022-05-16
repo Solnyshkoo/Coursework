@@ -59,6 +59,7 @@ struct PasswordView: View {
                             AuthorizationView(output: passwordViewModel)
                         }
                 }.padding(.bottom, 250)
+                    .navigationBarTitleDisplayMode(.inline)
                     .navigationBarBackButtonHidden(true)
                     .toolbar(content: {
                         ToolbarItem(placement: .navigation) {
