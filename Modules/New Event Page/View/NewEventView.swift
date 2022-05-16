@@ -29,17 +29,43 @@ struct NewEventView: View {
                     }
                     .padding(.bottom, 15)
                 VStack(alignment: .leading, spacing: 20) {
-                   
-                    
                     EventTextField(text: $event.name, title: "Название", subtitile: "Название", width: 40)
                     EventTextField(text: $event.description, title: "Описание", subtitile: "Расскажи, что там будет..", width: 100)
                     EventTextField(text: $event.distination, title: "Местоположение", subtitile: "Адрес", width: 40)
                     EventTextField(text: $event.data, title: "Дата", subtitile: "Когда?", width: 40)
                     EventTextField(text: $event.price, title: "Стоимость входа в рублях", subtitile: "0, если бесплатно", width: 40)
                     EventTextField(text: $event.contacts, title: "Контакты", subtitile: "И как к вам записаться?", width: 60)
-                    Spacer()
+                    Divider()
+                    
                 }
-               
+                    HStack(alignment: .center, spacing: 20, content: {
+                        Button(action: {
+                            // TODO: - подробнее
+                        }) {
+                            Text("Отменить").font(Font.system(size: 20, design: .default))
+                                .padding(.trailing, 3)
+                                .frame(width: 160, height: 20)
+                        }.foregroundColor(ColorPalette.buttonText)
+                            .padding()
+                            .background(ColorPalette.secondBackground)
+                            .cornerRadius(10)
+                           // .padding(.top, 10)
+                            //.padding(.trailing, 10)
+                        
+                        Button(action: {
+                            // TODO: - подробнее
+                        }) {
+                            Text("Создать").font(Font.system(size: 20, design: .default))
+                                .padding(.trailing, 3)
+                                .frame(width: 160, height: 20)
+                        }.foregroundColor(ColorPalette.buttonText)
+                            .padding()
+                            .background(ColorPalette.acсentColor)
+                            .cornerRadius(10)
+                           
+                          //  .padding(.trailing, 10)
+                    }).padding(.top, 12)
+                    Spacer()
                 .navigationBarBackButtonHidden(true)
                 .toolbar(content: {
                     ToolbarItem(placement: .navigation) {

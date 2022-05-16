@@ -24,6 +24,8 @@
 		5ECD457828323FA900729E2C /* ParticipantsView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD457728323FA900729E2C /* ParticipantsView .swift */; };
 		5ECD457A28323FC000729E2C /* ParticipantsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD457928323FC000729E2C /* ParticipantsCell.swift */; };
 		5ECD457D2832403C00729E2C /* ParticipantsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD457C2832403C00729E2C /* ParticipantsModel.swift */; };
+		5ECD45812832486A00729E2C /* VerificationView .swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD45802832486A00729E2C /* VerificationView .swift */; };
+		5ECD458428324C1400729E2C /* VerificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD458328324C1400729E2C /* VerificationModel.swift */; };
 		5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED4D4C127FDDD2B00873CAA /* ContentView.swift */; };
 		5ED4D4C427FDDD2E00873CAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ED4D4C327FDDD2E00873CAA /* Assets.xcassets */; };
 		5ED4D4C727FDDD2E00873CAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ED4D4C627FDDD2E00873CAA /* Preview Assets.xcassets */; };
@@ -72,6 +74,8 @@
 		5ECD457728323FA900729E2C /* ParticipantsView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticipantsView .swift"; sourceTree = "<group>"; };
 		5ECD457928323FC000729E2C /* ParticipantsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsCell.swift; sourceTree = "<group>"; };
 		5ECD457C2832403C00729E2C /* ParticipantsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsModel.swift; sourceTree = "<group>"; };
+		5ECD45802832486A00729E2C /* VerificationView .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerificationView .swift"; sourceTree = "<group>"; };
+		5ECD458328324C1400729E2C /* VerificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationModel.swift; sourceTree = "<group>"; };
 		5ED4D4BC27FDDD2B00873CAA /* Coursework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coursework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ED4D4C127FDDD2B00873CAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5ED4D4C327FDDD2E00873CAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,6 +237,31 @@
 			isa = PBXGroup;
 			children = (
 				5ECD457C2832403C00729E2C /* ParticipantsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5ECD457E2832484C00729E2C /* Verification Page */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD458228324BFE00729E2C /* Model */,
+				5ECD457F2832485C00729E2C /* View */,
+			);
+			path = "Verification Page";
+			sourceTree = "<group>";
+		};
+		5ECD457F2832485C00729E2C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD45802832486A00729E2C /* VerificationView .swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5ECD458228324BFE00729E2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5ECD458328324C1400729E2C /* VerificationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -474,11 +503,12 @@
 		5EE035242821961A00754267 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5ECD457E2832484C00729E2C /* Verification Page */,
 				5EE034DE281F12CD00754267 /* Log in Page */,
 				5EE035112821936800754267 /* Organizer Page */,
 				5E5970A6281C88C900BF3240 /* Events Page */,
-				5E896CDE2824908F00D67E92 /* New Event Page */,
 				5ECD457528323F3400729E2C /* Event Participants Page */,
+				5E896CDE2824908F00D67E92 /* New Event Page */,
 				5EE035132821941700754267 /* Favorite Page */,
 				5EE03507281FE9A900754267 /* Personal Page */,
 				5EE03512282193CC00754267 /* Settings Page */,
@@ -596,6 +626,8 @@
 				5E5970852819F72300BF3240 /* RegistrationUserError.swift in Sources */,
 				5EE03504281F145700754267 /* EventModel.swift in Sources */,
 				5E1826BA282EB79800C06315 /* AuthorizationAPIService.swift in Sources */,
+				5ECD458428324C1400729E2C /* VerificationModel.swift in Sources */,
+				5ECD45812832486A00729E2C /* VerificationView .swift in Sources */,
 				5EE035262821A3AA00754267 /* SettingsView.swift in Sources */,
 				5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */,
 				5ECD457A28323FC000729E2C /* ParticipantsCell.swift in Sources */,
