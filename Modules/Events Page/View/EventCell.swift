@@ -55,7 +55,7 @@ struct EventCell: View {
                     .padding(.top, 2)
                     .lineLimit(3)
                 HStack {
-                    Text(String(info.participant) + " уже идут").font(.title3).bold().padding(.leading, 20) .padding(.top, -5)
+                    Text(String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20) .padding(.top, -5)
                          Spacer()
                     Button(action: {
                         // TODO: - подробнее
