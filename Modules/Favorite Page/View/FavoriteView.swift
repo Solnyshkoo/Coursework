@@ -11,7 +11,7 @@ struct FavoriteView: View {
         NavigationView {
             ScrollView {
                 SearchBar(searchText: searchText, isSearching: isSearching)
-                FavoriteCell(event: EventModel(id: 1, name: "moscow.malina", logo: Image("logo"), mainPhoto: Image("logo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта"), people: UserInfo())
+                EventCell(info: EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: ""), people: UserInfo())
 //                ForEach((people.favorities).filter { "\($0.shortTitle)".contains(searchText.lowercased()) || searchText.isEmpty }) { item in
 //
 //                }

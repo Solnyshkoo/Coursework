@@ -12,17 +12,21 @@ protocol PersonalViewProtocolOutput {
     func getMyEvents() -> [EventModel]
     func getHistory() -> [EventModel]
     func setPicture(image: Image)
+    func getData()
 }
 
 struct PersonalView: View {
-    var personalViewModel: PersonalViewProtocolOutput
+    var personalViewModel: PersonalViewModel
     @State private var selectedIndex: Int? = 0
     @State private var nameAndSurname = ""
     @State private var nickname = ""
     @State private var photo: Image?
     @State var canEdit = false
     @State var pickPhoto = false
-    init(output: PersonalViewProtocolOutput) {
+    @State var wrongNameAndSurname = false
+    @State private var warning = ""
+    
+    init(output: PersonalViewModel) {
         personalViewModel = output
         personalViewModel.setView(view: self)
         nameAndSurname = personalViewModel.getFio()
@@ -33,7 +37,7 @@ struct PersonalView: View {
         VStack {
             VStack {
                 ScrollView {
-                    personalViewModel.getImage()
+                    personalViewModel.user.image
                         .bigRectangleCropped()
                         .frame(height: 600)
                         .padding(.bottom, 70)
@@ -92,10 +96,22 @@ struct PersonalView: View {
                                         Section {
                                             Button(action: {
                                                 self.canEdit.toggle()
-                            
-                                                // TODO: - новые данные
+                                                let fio: [String.SubSequence] = nameAndSurname.split(separator: " ")
+                                                if fio.capacity != 2 {
+                                                    wrongNameAndSurname.toggle()
+                                                    warning = "Обязательно напишите фамилию и имя и разделити их пробелами"
+                                                } else if nickname.trimmingCharacters(in: .whitespaces) == "" {
+                                                    wrongNameAndSurname.toggle()
+                                                    warning = "Обязательно напишите никнейм"
+                                                }
+                                                personalViewModel.changePhoto(image: photo ?? personalViewModel.getImage())
+                                                personalViewModel.changeNickname(nick: nickname)
+                                                warning = personalViewModel.nicknameWarningText
+                                                print(warning)
                                             }) {
                                                 Text("Save")
+                                            }.alert(warning, isPresented: $wrongNameAndSurname) {
+                                                Button("OK", role: .cancel) { }
                                             }
                                             Button(action: {
                                                 self.canEdit.toggle()

@@ -1,51 +1,44 @@
 import Foundation
 import SwiftUI
 
-protocol MailConfirmationViewProtocolOutput {
-}
 struct MailConfirmationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
-   // @StateObject private var mainViewMode = LogInViewModel()
-    @State var mailConfirmationViewModel: MailConfirmationViewProtocolOutput
+    @State var mailConfirmationViewModel: LogInViewModel
     @Binding var man: UserInfo
-    @State var enterText: String = ""
     @State var mail = ""
     @State var сoder = ""
-    @State var hidde = true
-    @State private var showingVideoView = false
-    @State private var showTextFieldView = false
+    @State private var showingAlert = false
     var restorePassword: Bool
-  //  (output: LogInViewModel(service: Service()), man: $man, restorePassword: true)
-    
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
                     VStack {
-                        Text("Mail Confirmation").fontWeight(.heavy).font(.largeTitle).padding(.top, 35)
+                        Text("Подтверждение").fontWeight(.heavy).font(.largeTitle).padding(.top, 35)
                         VStack(alignment: .leading) {
-                            ClassicTextField(labelText: "Mail", fieldText: "Write your mail", user: $man.mail).padding(.top, 20)
+                            ClassicTextField(labelText: "Почта", fieldText: "Напишите почту", user: $man.mail).padding(.top, 20)
                         }.padding(.horizontal, 6)
 
                     }.padding()
 
                     VStack {
                         Button(action: {
-                            self.showTextFieldView = true
-
+                            mailConfirmationViewModel.sendCodeToEmail()
+                            showingAlert = !mailConfirmationViewModel.codeSend //TODO: - текст
                         }) {
-                            Text("Send password").foregroundColor(ColorPalette.mainBackground).frame(width: UIScreen.main.bounds.width - 120).padding()
+                            Text("Отправить код").foregroundColor(ColorPalette.buttonText).frame(width: UIScreen.main.bounds.width - 120).padding()
                         }.disabled(man.mail.isEmpty)
                             .background(man.mail.isEmpty ? ColorPalette.disableButtom : ColorPalette.acсentColor)
                             .clipShape(Capsule())
                             .padding(.top, 20).padding(.top, 10)
+                    }.alert(mailConfirmationViewModel.wrongMail, isPresented: $showingAlert) {
+                        Button("OK", role: .cancel) { }
                     }
                     VStack {
-                        if self.showTextFieldView {
-                            checkKey(man: $man, сodef: $сoder, newPassword: restorePassword)
+                        if mailConfirmationViewModel.codeSend {
+                            checkKey(model: mailConfirmationViewModel, man: $man, сodef: $сoder, newPassword: restorePassword)
                         } else {
-                            checkKey(man: $man, сodef: $сoder, newPassword: restorePassword).hidden()
+                            checkKey(model: mailConfirmationViewModel, man: $man, сodef: $сoder, newPassword: restorePassword).hidden()
                         }
                     }.padding()
                 }.padding(.bottom, 220)
@@ -66,25 +59,30 @@ struct MailConfirmationView: View {
 }
 
 struct checkKey: View {
+    @State var model: LogInViewModel
     @Binding var man: UserInfo
     @Binding var сodef: String
     @State var showPasswordView = false
     var newPassword: Bool
+    @State var warning = ""
     var body: some View {
         VStack(alignment: .leading) {
-            ClassicTextField(labelText: "Сode", fieldText: "Write code from mail", user: $сodef).padding(.top, 40)
+            ClassicTextField(labelText: "Код", fieldText: "Введите код", user: $сodef).padding(.top, 40)
         }.padding(.horizontal, 6)
 
         Button(action: {
-            self.showPasswordView = true
+            model.checkEmailCode();
+            showPasswordView = model.wrongCode
 
         }) {
-            Text("Check").foregroundColor(ColorPalette.mainBackground).frame(width: UIScreen.main.bounds.width - 120).padding()
+            Text("Проверить").foregroundColor(ColorPalette.buttonText).frame(width: UIScreen.main.bounds.width - 120).padding()
+        }.alert("Неправильный код", isPresented: $showPasswordView) {
+            Button("OK", role: .cancel) { }
         }
         .background(ColorPalette.acсentColor)
         .clipShape(Capsule())
         .padding(.top, 50).fullScreenCover(isPresented: $showPasswordView) {
-            PasswordView(passwordViewModel: LogInViewModel(service: Service()), title: newPassword ? "Create new password" : "Set info", twoPassword: newPassword, man: man)
+            PasswordView(passwordViewModel: model, title: newPassword ? "Новый пароль" : "Регистрация", twoPassword: newPassword, man: man)
         }
     }
 }

@@ -7,13 +7,19 @@ struct CourseApp: App {
     
     
     var body: some Scene {
-        let service = Service()
+        let service = AuthorizationAPIService()
         let presenter = LogInViewModel(service: service)
         
         
         WindowGroup {
-           // MainView(output: LogInViewModel(service: Service()))
-           TabBar(people: $man, token: "lol", service: service)
+         //  AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
+            //  PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
+           // EventsView()
+          //  PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
+         //   FavoriteView()
+            OrganizerView()
+        //   TabBar(people: $man, token: "lol", service: Service())
+           // PersonalView(output: PersonalViewModel(service: Service(), tok: "8Z1wNyFW6OZJI1Ypp3HzQg"))
         }
     }
 }

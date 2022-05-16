@@ -3,6 +3,8 @@ import SwiftUI
 struct EventCell: View {
     @State var info: EventModel
     @State var people: UserInfo = UserInfo()
+//    @State var сanEdit: Bool = false
+//    @State var сanEdit: String
     var body: some View {
         // TODO: - шрифты
         VStack {
@@ -40,7 +42,7 @@ struct EventCell: View {
                 
                 // TODO: - поменять от вас
                 HStack {
-                    Text(info.distination + " от вас  ·  " + info.price + "₽").font(.title3).bold().padding(.leading, 10)
+                    Text(info.price + "₽").font(.title3).bold().padding(.leading, 10)
                     Spacer()
                     Text(info.data).font(.title3).bold().padding(.trailing, 10)
                 }
@@ -53,19 +55,19 @@ struct EventCell: View {
                     .padding(.top, 2)
                     .lineLimit(3)
                 HStack {
-                    Text(String(info.participant) + " уже идут").font(.title3).bold().padding(.leading, 10) .padding(.top, 10)
+                    Text(String(info.participant) + " уже идут").font(.title3).bold().padding(.leading, 20) .padding(.top, -5)
                          Spacer()
                     Button(action: {
                         // TODO: - подробнее
                     }) {
-                        Text("Подробнее").font(Font.system(size: 18, design: .default)).padding(.top, 4)
-                            .padding(.trailing, 10)
-                            .frame(width: 110, height: 10)
+                        Text("Подробнее").font(Font.system(size: 18, design: .default)).padding(.top, 0)
+                            .padding(.trailing, 3)
+                            .frame(width: 110, height: 8)
                     }.foregroundColor(ColorPalette.buttonText)
                         .padding()
                         .background(ColorPalette.acсentColor)
                         .cornerRadius(10)
-                        .padding(.top, 7)
+                        .padding(.top, 6)
                         .padding(.trailing, 10)
                 }
                 Spacer()

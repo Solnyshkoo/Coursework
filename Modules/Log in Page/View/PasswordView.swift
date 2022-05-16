@@ -2,19 +2,18 @@ import Foundation
 import SwiftUI
 
 protocol PasswordViewProtocolOutput {
-    func validateUser(respond: UserInfo) -> Bool
+    func registrateUser(respond: UserInfo) -> Bool
     func getWarning() -> String
     func getServicApi() -> Service
     func getTokenUser() -> String
 }
 struct PasswordView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    //@StateObject private var mainViewMode = LogInViewModel()
-    @State var passwordViewModel: PasswordViewProtocolOutput
+    @State var passwordViewModel: LogInViewModel
     @State var title: String
     @State var twoPassword: Bool
     @State var man: UserInfo
-    @State private var showingHomeView = false
+    @State private var showingMainView = false
     @State private var alert = false
     @State var firstPassword = ""
     @State private var warningText = " "
@@ -27,28 +26,20 @@ struct PasswordView: View {
                         Text(title).fontWeight(.heavy).font(.largeTitle).padding([.top, .bottom], 40)
                         VStack(alignment: .leading) {
                             if self.twoPassword {
-                                SecretTextField(labelText: "Password", fieldText: "Enter Your Password", pass: $firstPassword).padding(.bottom, 20)
+                                SecretTextField(labelText: "Пароль", fieldText: "Введите пароль", pass: $firstPassword).padding(.bottom, 20)
                             } else {
-                                ClassicTextField(labelText: "Nickname", fieldText: "Write Your nickname", user: $man.nickname).padding(.bottom, 20)
+                                ClassicTextField(labelText: "Nickname", fieldText: "Введите nickname", user: $man.nickname).padding(.bottom, 20)
                             }
-                            SecretTextField(labelText: (twoPassword ? "Repeat" : "") + " Password", fieldText: "Enter Your Password" + (twoPassword ? " again" : ""), pass: $man.password).padding(.bottom, 20)
+                            SecretTextField(labelText: (twoPassword ? "Повторите " : "") + " Пароль", fieldText: "Введите пароль" + (twoPassword ? " ещё раз" : ""), pass: $man.password).padding(.bottom, 20)
                         }.padding(.horizontal, 6)
                     }.padding()
-//                    if alert {
-//                        Text("Passwords are different").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5)
-//                    } else {
-//                        Text("Passwords are different").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5).hidden()
-//                    }
                     Text(warningText).font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5).foregroundColor(ColorPalette.warningColor)
-                   
                     
                     Button(action: {
-                      //  warningText = passwordViewModel.getWarning()
-                        
-                        if !passwordViewModel.validateUser(respond: man) {
-                            warningText = passwordViewModel.getWarning()
+                        if !passwordViewModel.registrateUser(respond: man) {
+                            warningText = passwordViewModel.getText()
                         } else if !twoPassword || firstPassword == man.password {
-                            self.showingHomeView.toggle()
+                            self.showingMainView.toggle()
                         } else {
                             warningText = "Passwords are different"
                             self.alert = true
@@ -56,7 +47,7 @@ struct PasswordView: View {
                         
                     }) {
                         
-                        Text("Continue").foregroundColor(ColorPalette.mainBackground).frame(width: UIScreen.main.bounds.width - 120).padding()
+                        Text("Продолжить").foregroundColor(ColorPalette.mainBackground).frame(width: UIScreen.main.bounds.width - 120).padding()
                    
                     }.disabled(man.password.isEmpty || (firstPassword.isEmpty && man.nickname.isEmpty))
                         .background(man.password.isEmpty || (firstPassword.isEmpty && man.nickname.isEmpty) ?
@@ -64,8 +55,8 @@ struct PasswordView: View {
                         .clipShape(Capsule())
                         .padding(.top, 45)
                         .onTapGesture(perform: {})
-                        .fullScreenCover(isPresented: $showingHomeView) {
-                            TabBar(people: $man, token: passwordViewModel.getTokenUser(), service: passwordViewModel.getServicApi())
+                        .fullScreenCover(isPresented: $showingMainView) { // TODO: если никнейм то вход
+                            AuthorizationView(output: passwordViewModel)
                         }
                 }.padding(.bottom, 250)
                     .navigationBarBackButtonHidden(true)

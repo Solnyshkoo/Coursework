@@ -6,24 +6,46 @@ struct RegistrationView: View {
     @Environment(\.colorScheme) var colorScheme
     //  @StateObject private var mainViewMode = LogInViewModel()
     @State private var showingRegistrationView = false
+    @State private var shoosePhoto = false
     @State private var selectedColorIndex = 0
     @State private var selectedYear = ""
+    @State private var photo: Image?
     var years = Array(16 ... 100)
     var body: some View {
         VStack {
             NavigationView {
                 VStack {
+                    ScrollView {
                     VStack {
-                        Text("Registration").fontWeight(.heavy).font(.largeTitle).padding([.top, .bottom], 35)
+                        Text("Регистрация").fontWeight(.heavy).font(.largeTitle).padding(.top, -30)
+                            .padding(.bottom, 20)
+                        HStack(alignment: .center) {
+                            Circle()
+                                .frame(width: 150, height: 150)
+                                .foregroundColor(ColorPalette.secondBackground)
+                                .overlay {
+                                Image(systemName: "camera").resizable().frame(width: 80, height: 60)
+                                    .onTapGesture {
+                                        shoosePhoto.toggle()
+                                    }
+                                   
+                                    }.foregroundColor(ColorPalette.lightGray2)
+                                .sheet(isPresented: $shoosePhoto) {
+                                    ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                            }
+                        }
+                        .padding(.bottom, 15)
                         VStack(alignment: .leading) {
-                            ClassicTextField(labelText: "Name", fieldText: "Write your name", user: $man.name).padding(.bottom, 15)
+                            
+                            
+                            ClassicTextField(labelText: "Имя", fieldText: "Введите имя", user: $man.name).padding(.bottom, 15)
 
-                            ClassicTextField(labelText: "Surname", fieldText: "Write your Surname", user: $man.surname).padding(.bottom, 15)
+                            ClassicTextField(labelText: "Фамилия", fieldText: "Введите фамилию", user: $man.surname).padding(.bottom, 15)
 
-                            ClassicTextField(labelText: "Patronymic", fieldText: "Write your patronymic (optional)", user: $man.patronymic).padding(.bottom, 15)
+                            ClassicTextField(labelText: "Отчество", fieldText: "Введите отчество(не обязательно)", user: $man.patronymic).padding(.bottom, 15)
 
                             VStack(alignment: .leading) {
-                                Text("Age").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
+                                Text("Возраст").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
                         
                                     Menu {
                                         Picker("0", selection: $man.age) {
@@ -37,7 +59,7 @@ struct RegistrationView: View {
                                         .colorMultiply(.white)
 
                                     } label: {
-                                        Text(man.age == -1 ? "Choose your age" : String(man.age)).foregroundColor(man.age == -1 ? ColorPalette.lightGray2 :ColorPalette.text)
+                                        Text(man.age == -1 ? "Выберите возраст" : String(man.age)).foregroundColor(man.age == -1 ? ColorPalette.lightGray2 :ColorPalette.text)
                                             .padding(.top, 5)
                                             .padding(.bottom, -3)
                                     
@@ -45,19 +67,19 @@ struct RegistrationView: View {
                                 Divider()
                                     .padding(.bottom, 15)
                             }
-                            ClassicTextField(labelText: "Number", fieldText: "Write your number (optional)", user: $man.number).padding(.bottom, 15)
+                            ClassicTextField(labelText: "Телефон", fieldText: "Введите телефон(не обязательно)", user: $man.number).padding(.bottom, 15)
 
                             VStack(alignment: .leading) {
-                                Text("Sex").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
+                                Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
                                 Menu {
-                                Picker("sex", selection: $man.sex) {
+                                Picker("Пол", selection: $man.sex) {
                                     Text("").tag("none")
-                                    Text("female").tag("female")
-                                    Text("male").tag("male")
+                                    Text("Ж").tag("female")
+                                    Text("М").tag("male")
                                 }.padding(.bottom, -3)
                                     .colorMultiply(ColorPalette.lightGray)
                                 } label: {
-                                    Text(man.sex == "" ? "Choose your sex" : man.sex).foregroundColor(man.sex == "" ? ColorPalette.lightGray2 :ColorPalette.text)
+                                    Text(man.sex == "" ? "Выберите пол" : man.sex).foregroundColor(man.sex == "" ? ColorPalette.lightGray2 :ColorPalette.text)
                                         .padding(.top, 5)
                                         .padding(.bottom, -3)
                                 
@@ -71,14 +93,14 @@ struct RegistrationView: View {
                         Button(action: {
                             self.showingRegistrationView.toggle()
                         }) {
-                            Text("Continue").foregroundColor(ColorPalette.text).frame(width: UIScreen.main.bounds.width - 120).padding()
+                            Text("Продолжить").foregroundColor(ColorPalette.text).frame(width: UIScreen.main.bounds.width - 120).padding()
 
                         }.disabled(man.name.isEmpty || man.surname.isEmpty || man.age == -1)
                             .background(man.name.isEmpty || man.surname.isEmpty || man.age == -1 ? ColorPalette.disableButtom : ColorPalette.acсentColor)
                             .clipShape(Capsule())
                             .padding(.top, 15)
                             .foregroundColor(ColorPalette.activeText).fullScreenCover(isPresented: $showingRegistrationView) {
-                                MailConfirmationView(mailConfirmationViewModel: LogInViewModel(service: Service()), man: $man, restorePassword: false)
+                                MailConfirmationView(mailConfirmationViewModel: LogInViewModel(service: AuthorizationAPIService()), man: $man, restorePassword: false)
                             }
                     }
                 }.padding(.bottom, 100)
@@ -92,6 +114,7 @@ struct RegistrationView: View {
                                 }
                         }
                     })
+                }
             }
             Spacer()
         }

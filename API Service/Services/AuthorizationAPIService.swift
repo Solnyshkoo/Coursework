@@ -1,10 +1,9 @@
 import Foundation
 import SwiftUI
 import UIKit
-final class Service {
-    private let adress = "https://8455-2a00-1370-8182-3789-f9e2-4426-3aaa-801f.ngrok.io"
+final class AuthorizationAPIService {
     func validateUserData(respond: ValidateUserModel, _ closure: @escaping (Result<String, ValidationError>) -> Void) {
-        guard let url = URL(string: "\(adress)/user/auth?username=\(respond.login)&password=\(respond.password)".encodeUrl) else {
+        guard let url = URL(string: "\(Service.adress)/user/auth?username=\(respond.login)&password=\(respond.password)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
@@ -38,10 +37,8 @@ final class Service {
         session.resume()
     }
     
-   
-    
     func registrateUser(respond: UserInfo, _ closure: @escaping (Result<String, RegistrationUserError>) -> Void) {
-        guard let url = URL(string: "\(adress)/user/create?first_name=\(respond.name)&last_name=\(respond.patronymic)&username=\(respond.nickname)&email=\(respond.mail)&password=\(respond.password)".encodeUrl) else {
+        guard let url = URL(string: "\(Service.adress)/user/create?first_name=\(respond.name)&last_name=\(respond.patronymic)&username=\(respond.nickname)&email=\(respond.mail)&password=\(respond.password)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
@@ -68,27 +65,5 @@ final class Service {
             closure(result)
         }
         session.resume()
-    }
-}
-
-extension String {
-    var encodeUrl: String {
-        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-    }
-
-    var decodeUrl: String {
-        return self.removingPercentEncoding!
-    }
-}
-struct Details: Codable {
-    let response: Response
-}
-
-// MARK: - Response
-struct Response: Codable {
-    let accessToken: String
-
-    enum CodingKeys: String, CodingKey {
-        case accessToken = "access_token"
     }
 }
