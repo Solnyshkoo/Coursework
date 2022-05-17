@@ -14,7 +14,7 @@ struct TabBar: View {
                     Image(systemName: "plus.app")
                 }
                 .tag(0)
-            EventsView()
+            EventsView(fullAcсess: true)
                 .tabItem {
                     Image(systemName: "house")
                 }

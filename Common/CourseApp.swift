@@ -12,12 +12,21 @@ struct CourseApp: App {
         
         
         WindowGroup {
-         //  AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
-            //  PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
+         //
+            AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
+           //   PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
            // EventsView()
-          //  PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
-         //   FavoriteView()
-            OrganizerView()
+          //  EventDetailView()
+          //  ParticipantsView()
+        //PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
+            //   SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
+           // PersonalSettigs()
+           // СonfidentialSettings()
+          //  NotificationSettings()
+           // FavoriteView()
+            //OrganizerView()
+            //NewEventView()
+          //  VerificationView()
         //   TabBar(people: $man, token: "lol", service: Service())
            // PersonalView(output: PersonalViewModel(service: Service(), tok: "8Z1wNyFW6OZJI1Ypp3HzQg"))
         }

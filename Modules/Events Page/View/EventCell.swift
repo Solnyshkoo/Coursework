@@ -3,8 +3,9 @@ import SwiftUI
 struct EventCell: View {
     @State var info: EventModel
     @State var people: UserInfo = UserInfo()
-//    @State var сanEdit: Bool = false
-//    @State var сanEdit: String
+    @State var fullAcсess: Bool
+    @State var showAlert: Bool = false
+    @State var showAlertLike: Bool = false
     var body: some View {
         // TODO: - шрифты
         VStack {
@@ -24,16 +25,24 @@ struct EventCell: View {
                        .lineLimit(1)
                    Spacer()
                    Button(action: {
-                       if people.favorities.contains(where: { $0.id == info.id }) {
-                           people.favorities.remove(at:
-                               people.favorities.firstIndex(where: { $0.id == info.id })!)
+                       if  fullAcсess {
+                           if people.favorities.contains(where: { $0.id == info.id }) {
+                               people.favorities.remove(at:
+                                   people.favorities.firstIndex(where: { $0.id == info.id })!)
+                           } else {
+                               people.favorities.append(info)
+                           }
                        } else {
-                           people.favorities.append(info)
+                           self.showAlertLike.toggle()
                        }
+                       
                    }) {
                        Image(systemName: people.favorities.contains(where: { $0.id == info.id }) ? "heart.fill" : "heart").font(Font.system(size: 25, design: .default)).padding(.top, 4)
                            .padding(.trailing, 10)
                    }.foregroundColor(people.favorities.contains(where: { $0.id == info.id }) ? Color.red : ColorPalette.text)
+                       .alert("Чтобы использовать эту функцию, вам надо зарегистрироваться.", isPresented: $showAlertLike) {
+                               Button("OK", role: .cancel) { }
+                        }
                }.padding(.bottom, 5)
             
                 info.mainPhoto.resizable().smallRectangleCropped()
@@ -59,6 +68,10 @@ struct EventCell: View {
                          Spacer()
                     Button(action: {
                         // TODO: - подробнее
+                        if  fullAcсess {
+                        } else {
+                            self.showAlert.toggle()
+                        }
                     }) {
                         Text("Подробнее").font(Font.system(size: 18, design: .default)).padding(.top, 0)
                             .padding(.trailing, 3)
@@ -69,6 +82,11 @@ struct EventCell: View {
                         .cornerRadius(10)
                         .padding(.top, 6)
                         .padding(.trailing, 10)
+                        .alert("Чтобы использовать эту функцию, вам надо зарегистрироваться.", isPresented: $showAlert) {
+                                Button("OK", role: .cancel) { }
+                         }
+                            
+                        
                 }
                 Spacer()
             }
@@ -81,7 +99,7 @@ struct EventCellPreviewContainer_2: View {
     @State var lol: EventModel = EventModel(id: 1, name: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
 
     var body: some View {
-        EventCell(info: lol)
+        EventCell(info: lol, fullAcсess: true)
     }
 }
 

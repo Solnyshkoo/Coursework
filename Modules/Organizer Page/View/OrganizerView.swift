@@ -4,7 +4,7 @@ import SwiftUI
 
 
 struct OrganizerView: View {
-    @State private var searchText = "Find your event..."
+    @State private var searchText = "Найди мероприятие..."
     @State private var isSearching = false
     @State private var showingAlert = false
     var body: some View {
@@ -16,7 +16,7 @@ struct OrganizerView: View {
                     
                 }
             }
-            .navigationBarTitle(Text("My events"))
+            .navigationBarTitle(Text("Мои мероприятия"))
             
             .navigationBarItems(
                 trailing:

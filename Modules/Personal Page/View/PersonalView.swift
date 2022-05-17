@@ -109,7 +109,7 @@ struct PersonalView: View {
                                                 warning = personalViewModel.nicknameWarningText
                                                 print(warning)
                                             }) {
-                                                Text("Save")
+                                                Text("Сохранить")
                                             }.alert(warning, isPresented: $wrongNameAndSurname) {
                                                 Button("OK", role: .cancel) { }
                                             }
@@ -118,7 +118,7 @@ struct PersonalView: View {
                             
                                                 // TODO: - старые данные
                                             }) {
-                                                Text("Cancel")
+                                                Text("Отмена")
                                             }
                                         }
                                     } label: {
@@ -134,7 +134,7 @@ struct PersonalView: View {
                                             Button(action: {
                                                 // TODO: - подробнее
                                             }) {
-                                                Label("Settings", systemImage: "gearshape")
+                                                Label("Настройки", systemImage: "gearshape")
                                             }
                                         }
 //                                        Section {
@@ -151,7 +151,7 @@ struct PersonalView: View {
                             
                                                 // TODO: - подробнее
                                             }) {
-                                                Text("Edit")
+                                                Text("Редактировать")
                                             }
                                         }
                                         
@@ -166,18 +166,18 @@ struct PersonalView: View {
                             }.padding(.top, 445)
                         }
                         
-                    setPicker(titles: ["History", "My events"])
+                    setPicker(titles: ["История", "Мои мероприятия"])
                         .padding(.top, -50)
                         .padding(.bottom, 5)
                     Spacer()
                     if selectedIndex == 0 {
                         ForEach(personalViewModel.getHistory()) { item in
-                            EventCell(info: item)
+                            EventCell(info: item, fullAcсess: true)
                         }
                        
                     } else {
                         ForEach(personalViewModel.getMyEvents()) { item in
-                            EventCell(info: item)
+                            EventCell(info: item, fullAcсess: true)
                         }
                     }
                 }
@@ -188,7 +188,7 @@ struct PersonalView: View {
     
     @ViewBuilder
     private func setPicker(titles: [String]) -> some View {
-        SegmentedPicker(["History", "My events"], selectedIndex: $selectedIndex) { tab, _ in
+        SegmentedPicker(["История", "Мои мероприятия"], selectedIndex: $selectedIndex) { tab, _ in
             Text(tab)
         }
     }
