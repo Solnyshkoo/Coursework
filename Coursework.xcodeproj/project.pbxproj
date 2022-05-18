@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5E0069A128351C3100B7EF9A /* InformationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A028351C3100B7EF9A /* InformationSettingsView.swift */; };
 		5E0069A328351E3100B7EF9A /* SecuriteSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */; };
+		5E0069A52835652F00B7EF9A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A42835652F00B7EF9A /* AlertView.swift */; };
+		5E0069A72835658400B7EF9A /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */; };
 		5E1826BA282EB79800C06315 /* AuthorizationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */; };
 		5E59707C28196B6D00BF3240 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707B28196B6D00BF3240 /* Service.swift */; };
 		5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707D28196F1800BF3240 /* ValidateUserModel.swift */; };
@@ -65,6 +67,8 @@
 /* Begin PBXFileReference section */
 		5E0069A028351C3100B7EF9A /* InformationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSettingsView.swift; sourceTree = "<group>"; };
 		5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuriteSettingsView.swift; sourceTree = "<group>"; };
+		5E0069A42835652F00B7EF9A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAPIService.swift; sourceTree = "<group>"; };
 		5E59707B28196B6D00BF3240 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5E59707D28196F1800BF3240 /* ValidateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserModel.swift; sourceTree = "<group>"; };
@@ -488,6 +492,7 @@
 				5E647B9A28328AF30060CB71 /* NotificationSettings.swift */,
 				5E0069A028351C3100B7EF9A /* InformationSettingsView.swift */,
 				5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */,
+				5E0069A42835652F00B7EF9A /* AlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,6 +534,7 @@
 				5EE0351E2821955C00754267 /* ImageExtension.swift */,
 				5EE035202821959F00754267 /* ViewExtension.swift */,
 				5EE03522282195DB00754267 /* HorizontalAlignmentExtension.swift */,
+				5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 				5E59707C28196B6D00BF3240 /* Service.swift in Sources */,
 				5EE034ED281F12CD00754267 /* UserInfo.swift in Sources */,
 				5E896CDB28241C6A00D67E92 /* FavoriteCell.swift in Sources */,
+				5E0069A72835658400B7EF9A /* UIAlertControllerExtension.swift in Sources */,
 				5EE034FF281F12E900754267 /* SearchBar.swift in Sources */,
 				5EE0351F2821955C00754267 /* ImageExtension.swift in Sources */,
 				5EE035102820B17200754267 /* SegmentedPicker.swift in Sources */,
@@ -641,6 +648,7 @@
 				5ECD457D2832403C00729E2C /* ParticipantsModel.swift in Sources */,
 				5EE034FC281F12E900754267 /* CourseApp.swift in Sources */,
 				5EE035282821A45100754267 /* SettingsViewModel.swift in Sources */,
+				5E0069A52835652F00B7EF9A /* AlertView.swift in Sources */,
 				5E896CE32824919600D67E92 /* NewEventView.swift in Sources */,
 				5EE034F3281F12CD00754267 /* AuthorizationView.swift in Sources */,
 				5EE034F1281F12CD00754267 /* PasswordView.swift in Sources */,

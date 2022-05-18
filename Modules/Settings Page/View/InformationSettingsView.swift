@@ -9,25 +9,27 @@ struct InformationSettingsView: View {
         NavigationView {
             Form {
                 Section {
-                    HStack {
-                        Text("Личные данные")
-                    }.onTapGesture {
+                    Button(action: {
                         self.showPersonalSettings.toggle()
+                    }) {
+                     Text("Личные данные").foregroundColor(ColorPalette.buttonText)
                     }
+                    .fullScreenCover(isPresented: $showPersonalSettings) {
+                        PersonalSettigs()
                 }
-                .fullScreenCover(isPresented: $showPersonalSettings) {
-                    PersonalSettigs()
+                
                 }
                 Section {
-                    HStack {
-                        Text("Безопасность")
-                    }.onTapGesture {
+                    Button(action: {
                         self.showSecuriteSettings.toggle()
+                    }) {
+                        Text("Безопасность").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showSecuriteSettings) {
-                    //    SecuriteSettingsView()
+                       SecuriteSettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
                     }
                 }
+                
             }.padding(.top, 10)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
@@ -40,7 +42,7 @@ struct InformationSettingsView: View {
                                     self.mode.wrappedValue.dismiss()
                                 }
                 
-                            Text("Информация").fontWeight(.heavy).font(.title)
+                            Text("Профиль").fontWeight(.heavy).font(.title)
                                 .padding(.leading, 60)
                                 .padding(.top, 18)
             

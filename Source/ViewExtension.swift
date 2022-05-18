@@ -25,4 +25,8 @@ extension View {
             self
         }
     }
+    
+    func alert(isPresented: Binding<Bool>, _ alert: TextAlert) -> some View {
+        AlertWrapper(isPresented: isPresented, alert: alert, content: self)
+    }
 }

@@ -14,12 +14,12 @@ struct CourseApp: App {
         WindowGroup {
          //
        //     SecuriteSettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
-           AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
+        //   AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
            //   PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
            // EventsView()
           //  EventDetailView()
           //  ParticipantsView()
-        //PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
+        PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
             //   SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
            // PersonalSettigs()
            // СonfidentialSettings()

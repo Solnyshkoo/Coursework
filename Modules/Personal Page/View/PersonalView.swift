@@ -137,9 +137,7 @@ struct PersonalView: View {
                                             }) {
                                                 Label("Настройки", systemImage: "gearshape")
                                             }
-                                            .fullScreenCover(isPresented: $showSettings, content: {
-                                                SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
-                                            })
+                                            
                                         }
                                         
                                         Section {
@@ -161,6 +159,9 @@ struct PersonalView: View {
                                     }
                                 }
                             }.padding(.top, 445)
+                                .fullScreenCover(isPresented: $showSettings, content: {
+                                    SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
+                                })
                         }
                         
                     setPicker(titles: ["История", "Мои мероприятия"])

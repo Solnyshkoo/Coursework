@@ -17,19 +17,19 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section {
-                    HStack {
-                        Text("Информация")
-                    }.onTapGesture {
+                    Button(action: {
                         self.showInformationSettings.toggle()
+                    }) {
+                        Text("Профиль").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showInformationSettings) {
                         InformationSettingsView()
                     }
                     
-                    HStack {
-                        Text("Конфиденциальность")
-                    }.onTapGesture {
+                    Button(action: {
                         self.showСonfidentialSettings.toggle()
+                    }) {
+                        Text("Конфиденциальность").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showСonfidentialSettings) {
                         СonfidentialSettings()
@@ -37,16 +37,24 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    HStack {
-                        Text("Уведомления")
-                    }.onTapGesture {
+                    Button(action: {
                         self.showNotificationSettings.toggle()
+                    }) {
+                        Text("Уведомления").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showNotificationSettings) {
                         NotificationSettings()
                     }
                 }
                 
+                Section {
+                    Button(action: {
+                    }) {
+                        Label("Выйти из профиля", systemImage: "rectangle.portrait.and.arrow.right").foregroundColor(ColorPalette.buttonText)
+                      
+                    }
+                    
+                }
             }.padding(.top, 10)
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
@@ -59,7 +67,7 @@ struct SettingsView: View {
                                     self.mode.wrappedValue.dismiss()
                                 }
                 
-                            Text("Настройки").fontWeight(.heavy).font(.largeTitle)
+                            Text("Настройки").fontWeight(.heavy).font(.title)
                                 .padding(.leading, 60)
                                 .padding(.top, 18)
             
