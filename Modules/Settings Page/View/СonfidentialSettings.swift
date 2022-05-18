@@ -9,9 +9,8 @@ struct СonfidentialSettings: View {
     @State var fourth: Bool = true
     var body: some View {
         NavigationView {
-            
             Form {
-                Section() {
+                Section {
                     HStack {
                         Text("Разрешить просматривать аккаун").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
@@ -26,9 +25,6 @@ struct СonfidentialSettings: View {
                     }.onTapGesture {
                         self.first.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
                     
                     HStack {
                         Text("Разрешить показывать, мероприятия на которые я иду")
@@ -45,13 +41,9 @@ struct СonfidentialSettings: View {
                     }.onTapGesture {
                         self.second.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
-                    
                 }
                 
-                Section() {
+                Section {
                     HStack {
                         Text("Разрешить показывать, мероприятия, которые организую я").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
@@ -66,9 +58,6 @@ struct СonfidentialSettings: View {
                     }.onTapGesture {
                         self.third.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
                     HStack {
                         Text("Разрешить показывать свой аккаунт в списках, записавшихся на мероприятие").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
@@ -83,15 +72,9 @@ struct СonfidentialSettings: View {
                     }.onTapGesture {
                         self.fourth.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
-                    
-
-
                 }
                 
-                Section() {
+                Section {
                     HStack {
                         Text("Удалить аккаунт")
                         Spacer()
@@ -100,9 +83,7 @@ struct СonfidentialSettings: View {
                             .renderingMode(.template)
                             .frame(width: 20, height: 24)
                             .foregroundColor(.red)
-                    }.onTapGesture {
-                        
-                    }
+                    }.onTapGesture {}
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -120,11 +101,12 @@ struct СonfidentialSettings: View {
                             .padding(.top, 18)
             
                     }).padding(.bottom, 20)
-                    
-                }                    })
+                }
+            })
         }
     }
 }
+
 struct СonfidentialSettings_Previews: PreviewProvider {
     static var previews: some View {
         СonfidentialSettings()

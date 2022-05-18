@@ -4,6 +4,8 @@ struct EventDetailView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var info: EventModel = .init(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "Красная площадь", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "Пишите kepetrova@edu.hse.ru")
     @State var people: UserInfo = .init()
+    @State var showParticipants: Bool = false
+    @State var showPersonalView: Bool = false
     var body: some View {
         VStack {
             NavigationView {
@@ -38,7 +40,13 @@ struct EventDetailView: View {
                         .bold()
                         .padding(.leading, 15)
                     HStack {
-                        Text(String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                        Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                            .onTapGesture {
+                                self.showParticipants.toggle()
+                            }
+                            .fullScreenCover(isPresented: $showParticipants) {
+                               ParticipantsView()
+                            }
                         Spacer()
                         Button(action: {
                             // TODO: - подробнее

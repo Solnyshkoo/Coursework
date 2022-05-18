@@ -24,6 +24,7 @@ struct PersonalView: View {
     @State var canEdit = false
     @State var pickPhoto = false
     @State var wrongNameAndSurname = false
+    @State var showSettings = false
     @State private var warning = ""
     
     init(output: PersonalViewModel) {
@@ -132,18 +133,14 @@ struct PersonalView: View {
                                     Menu {
                                         Section {
                                             Button(action: {
-                                                // TODO: - подробнее
+                                                self.showSettings.toggle()
                                             }) {
                                                 Label("Настройки", systemImage: "gearshape")
                                             }
+                                            .fullScreenCover(isPresented: $showSettings, content: {
+                                                SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
+                                            })
                                         }
-//                                        Section {
-//                                            Button(action: {
-//                                                // TODO: - подробнее
-//                                            }) {
-//                                                Label("Favorite", systemImage: "heart")
-//                                            }
-//                                        }
                                         
                                         Section {
                                             Button(action: {

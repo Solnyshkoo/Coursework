@@ -3,7 +3,7 @@ import SwiftUI
 
 struct MailConfirmationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var mailConfirmationViewModel: LogInViewModel
+    @ObservedObject var mailConfirmationViewModel: LogInViewModel
     @Binding var man: UserInfo
     @State var mail = ""
     @State var сoder = ""

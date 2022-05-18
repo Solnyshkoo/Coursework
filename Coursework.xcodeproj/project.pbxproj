@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E0069A128351C3100B7EF9A /* InformationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A028351C3100B7EF9A /* InformationSettingsView.swift */; };
+		5E0069A328351E3100B7EF9A /* SecuriteSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */; };
 		5E1826BA282EB79800C06315 /* AuthorizationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */; };
 		5E59707C28196B6D00BF3240 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707B28196B6D00BF3240 /* Service.swift */; };
 		5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707D28196F1800BF3240 /* ValidateUserModel.swift */; };
@@ -61,6 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E0069A028351C3100B7EF9A /* InformationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSettingsView.swift; sourceTree = "<group>"; };
+		5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuriteSettingsView.swift; sourceTree = "<group>"; };
 		5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAPIService.swift; sourceTree = "<group>"; };
 		5E59707B28196B6D00BF3240 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5E59707D28196F1800BF3240 /* ValidateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserModel.swift; sourceTree = "<group>"; };
@@ -482,6 +486,8 @@
 				5EE035252821A3AA00754267 /* SettingsView.swift */,
 				5E647B962832821F0060CB71 /* PersonalSettings.swift */,
 				5E647B9A28328AF30060CB71 /* NotificationSettings.swift */,
+				5E0069A028351C3100B7EF9A /* InformationSettingsView.swift */,
+				5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -530,13 +536,13 @@
 		5EE035242821961A00754267 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				5ECD45872832526E00729E2C /* Event detail Page */,
 				5EE034DE281F12CD00754267 /* Log in Page */,
 				5EE035112821936800754267 /* Organizer Page */,
-				5E5970A6281C88C900BF3240 /* Events Page */,
 				5ECD457E2832484C00729E2C /* Verification Page */,
-				5ECD457528323F3400729E2C /* Event Participants Page */,
 				5E896CDE2824908F00D67E92 /* New Event Page */,
+				5E5970A6281C88C900BF3240 /* Events Page */,
+				5ECD45872832526E00729E2C /* Event detail Page */,
+				5ECD457528323F3400729E2C /* Event Participants Page */,
 				5EE035132821941700754267 /* Favorite Page */,
 				5EE03507281FE9A900754267 /* Personal Page */,
 				5EE03512282193CC00754267 /* Settings Page */,
@@ -628,6 +634,7 @@
 				5EE034F4281F12CD00754267 /* ClassicTextField.swift in Sources */,
 				5EE034F0281F12CD00754267 /* SecretTextField.swift in Sources */,
 				5EA591782829CA53007D4BAC /* UserDataResponseModel.swift in Sources */,
+				5E0069A328351E3100B7EF9A /* SecuriteSettingsView.swift in Sources */,
 				5E5970AB281C8C0C00BF3240 /* EventsView.swift in Sources */,
 				5ECD457828323FA900729E2C /* ParticipantsView .swift in Sources */,
 				5EE0350E281FED1100754267 /* PersonalViewModel.swift in Sources */,
@@ -645,6 +652,7 @@
 				5EE034DD281EE7B400754267 /* CustomButton.swift in Sources */,
 				5EE0350C281FEA5B00754267 /* PersonalView.swift in Sources */,
 				5E647B9B28328AF30060CB71 /* NotificationSettings.swift in Sources */,
+				5E0069A128351C3100B7EF9A /* InformationSettingsView.swift in Sources */,
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
 				5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */,

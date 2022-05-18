@@ -13,7 +13,8 @@ struct CourseApp: App {
         
         WindowGroup {
          //
-            AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
+       //     SecuriteSettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
+           AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
            //   PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
            // EventsView()
           //  EventDetailView()

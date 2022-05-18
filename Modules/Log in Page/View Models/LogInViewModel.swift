@@ -14,7 +14,24 @@ final class LogInViewModel: ObservableObject {
         self.service = service
     }
     
+
     func validateUser(respond: ValidateUserModel) {
+//        let k = Service()
+//        DispatchQueue.main.async {
+//            k.uploadUserPhoto(photo: Image(systemName: "photo"), token: "8Z1wNyFW6OZJI1Ypp3HzQg") { [weak self] result in
+//                guard let self = self else { return }
+//                switch result {
+//                case .success(let token):
+//                    break;
+//                case .failure(let error):
+//                    break;
+//                }
+//            }
+//        }
+//
+//
+        
+        
         signInFailed = " "
         DispatchQueue.main.async {
             self.service.validateUserData(respond: respond) { [weak self] result in

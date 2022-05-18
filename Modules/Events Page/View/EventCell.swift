@@ -6,6 +6,9 @@ struct EventCell: View {
     @State var fullAcсess: Bool
     @State var showAlert: Bool = false
     @State var showAlertLike: Bool = false
+    @State var showParticipants: Bool = false
+    @State var showDetailView: Bool = false
+    @State var showPersonalView: Bool = false
     var body: some View {
         // TODO: - шрифты
         VStack {
@@ -23,6 +26,13 @@ struct EventCell: View {
                        .bold()
                        .padding(.trailing, 10)
                        .lineLimit(1)
+                       .onTapGesture {
+                           self.showPersonalView.toggle()
+                       }
+                       .fullScreenCover(isPresented: $showPersonalView) {
+                           PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
+                       }
+                       
                    Spacer()
                    Button(action: {
                        if  fullAcсess {
@@ -64,11 +74,18 @@ struct EventCell: View {
                     .padding(.top, 2)
                     .lineLimit(3)
                 HStack {
-                    Text(String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20) .padding(.top, -5)
+                    Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20) .padding(.top, -5)
+                        .onTapGesture {
+                            self.showParticipants.toggle()
+                        }
+                        .fullScreenCover(isPresented: $showParticipants) {
+                           ParticipantsView()
+                        }
                          Spacer()
                     Button(action: {
                         // TODO: - подробнее
                         if  fullAcсess {
+                            self.showDetailView.toggle()
                         } else {
                             self.showAlert.toggle()
                         }
@@ -85,6 +102,9 @@ struct EventCell: View {
                         .alert("Чтобы использовать эту функцию, вам надо зарегистрироваться.", isPresented: $showAlert) {
                                 Button("OK", role: .cancel) { }
                          }
+                        .fullScreenCover(isPresented: $showDetailView) {
+                            EventDetailView()
+                        }
                             
                         
                 }

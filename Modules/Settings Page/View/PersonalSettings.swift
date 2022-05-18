@@ -1,10 +1,3 @@
-//
-//  PersonalSettings.swift
-//  Coursework
-//
-//  Created by Ksenia Petrova on 16.05.2022.
-//
-
 import Foundation
 import SwiftUI
 struct PersonalSettigs: View {
@@ -134,7 +127,7 @@ struct PersonalSettigs: View {
                             self.mode.wrappedValue.dismiss()
                         }
             
-                    Text("Информация").fontWeight(.heavy).font(.title)
+                    Text("Личные данные").fontWeight(.heavy).font(.title)
                         .padding(.leading, 65)
                         .padding(.top, 18)
         

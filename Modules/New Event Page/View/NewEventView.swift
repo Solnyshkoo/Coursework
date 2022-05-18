@@ -40,7 +40,8 @@ struct NewEventView: View {
                 }
                     HStack(alignment: .center, spacing: 20, content: {
                         Button(action: {
-                            // TODO: - подробнее
+                            event = EventModel()
+                            self.mode.wrappedValue.dismiss()
                         }) {
                             Text("Отменить").font(Font.system(size: 20, design: .default))
                                 .padding(.trailing, 3)
@@ -54,6 +55,7 @@ struct NewEventView: View {
                         
                         Button(action: {
                             // TODO: - подробнее
+                            self.mode.wrappedValue.dismiss()
                         }) {
                             Text("Создать").font(Font.system(size: 20, design: .default))
                                 .padding(.trailing, 3)
@@ -62,6 +64,7 @@ struct NewEventView: View {
                             .padding()
                             .background(ColorPalette.acсentColor)
                             .cornerRadius(10)
+                            
                            
                           //  .padding(.trailing, 10)
                     }).padding(.top, 12)

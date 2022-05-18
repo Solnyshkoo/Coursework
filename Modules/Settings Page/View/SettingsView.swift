@@ -1,89 +1,75 @@
 import Foundation
 import SwiftUI
 
-protocol SettingsViewProtocolOutput {
-    
-}
+protocol SettingsViewProtocolOutput {}
+
 struct SettingsView: View {
-    var settingsViewModel: SettingsViewProtocolOutput
+    var settingsViewModel: SettingsViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    init(output: SettingsViewProtocolOutput) {
+    @State var showInformationSettings: Bool = false
+    @State var showСonfidentialSettings: Bool = false
+    @State var showNotificationSettings: Bool = false
+    init(output: SettingsViewModel) {
         settingsViewModel = output
     }
     
     var body: some View {
-        
         NavigationView {
             Form {
-                
-                Section() {
+                Section {
                     HStack {
                         Text("Информация")
                     }.onTapGesture {
-                        
+                        self.showInformationSettings.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
+                    .fullScreenCover(isPresented: $showInformationSettings) {
+                        InformationSettingsView()
+                    }
                     
                     HStack {
                         Text("Конфиденциальность")
                     }.onTapGesture {
-                        
+                        self.showСonfidentialSettings.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
+                    .fullScreenCover(isPresented: $showСonfidentialSettings) {
+                        СonfidentialSettings()
+                    }
                 }
                 
-                Section() {
+                Section {
                     HStack {
                         Text("Уведомления")
                     }.onTapGesture {
-                        
+                        self.showNotificationSettings.toggle()
                     }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
-                    
-
+                    .fullScreenCover(isPresented: $showNotificationSettings) {
+                        NotificationSettings()
+                    }
                 }
                 
-            
             }.padding(.top, 10)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: {
-                ToolbarItem(placement: .navigation) {
-                    HStack(alignment: .center, content: {
-                        Image(systemName: "arrow.left")
-                            .foregroundColor(ColorPalette.navigationBarItem)
-                            .onTapGesture {
-                                self.mode.wrappedValue.dismiss()
-                            }
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigation) {
+                        HStack(alignment: .center, content: {
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(ColorPalette.navigationBarItem)
+                                .onTapGesture {
+                                    self.mode.wrappedValue.dismiss()
+                                }
                 
-                        Text("Настройки").fontWeight(.heavy).font(.largeTitle)
-                            .padding(.leading, 60)
-                            .padding(.top, 18)
+                            Text("Настройки").fontWeight(.heavy).font(.largeTitle)
+                                .padding(.leading, 60)
+                                .padding(.top, 18)
             
-                    }).padding(.bottom, 5)
-                }
-            })
-            
-//            .navigationBarItems(
-//                trailing:
-//                Button(
-//                    action: {
-//                        self.presentationMode.wrappedValue.dismiss()
-//                    },
-//                    label: {
-//                        Text("Done")
-//                    }
-//                )
-//            )
+                        }).padding(.bottom, 5)
+                    }
+                })
         }.padding(.top, -70)
     }
 }
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

@@ -3,6 +3,7 @@ import SwiftUI
 struct VerificationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State private var data: VerificationModel = .init()
+    @State var showNewEventPage: Bool = true
     var body: some View {
         NavigationView {
             VStack {
@@ -25,7 +26,7 @@ struct VerificationView: View {
            
                 HStack(alignment: .center, spacing: 20) {
                     Button(action: {
-                        // TODO: - подробнее
+                        self.mode.wrappedValue.dismiss()
                     }) {
                         Text("Отменить").font(Font.system(size: 20, design: .default))
                             .padding(.trailing, 3)
@@ -47,6 +48,9 @@ struct VerificationView: View {
                         .padding()
                         .background(ColorPalette.acсentColor)
                         .cornerRadius(10)
+                        .fullScreenCover(isPresented: $showNewEventPage) {
+                            NewEventView()
+                        }
                 }.padding(.top, 50)
                 Spacer()
             }
