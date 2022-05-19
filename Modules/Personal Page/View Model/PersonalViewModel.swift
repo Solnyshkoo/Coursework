@@ -8,7 +8,8 @@ final class PersonalViewModel: ObservableObject {
     }
 
     let service: Service
-    var warningText = "";
+    @Published var warningText = "";
+    @Published var warning = false;
     var nicknameWarningText = "";
   //  @State var сanEdit: Bool = false
     @State var token: String
@@ -59,10 +60,15 @@ extension PersonalViewModel: PersonalViewProtocolOutput {
             switch result {
             case .success(_):
                 self.user.nickname = nick
+                self.view?.save()
                 break
               
             case .failure(_):
-                self.warningText = "Nickname is busy"
+                DispatchQueue.main.async {
+                    self.warningText = "Nickname is busy"
+                    self.warning = true
+                }
+              
                 break
             }
         }
@@ -74,7 +80,7 @@ extension PersonalViewModel: PersonalViewProtocolOutput {
     }
   
     func getNickname() -> String {
-        return "@" + user.nickname
+        return user.nickname
     }
     
     func getMyEvents() -> [EventModel] {

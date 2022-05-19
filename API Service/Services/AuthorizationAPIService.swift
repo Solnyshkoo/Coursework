@@ -28,9 +28,6 @@ final class AuthorizationAPIService {
                 closure(result)
                 return
             }
-            print("_____________2______________")
-            print(post.response.accessToken)
-            print("_____________2______________")
             result = .success(post.response.accessToken)
             closure(result)
         }

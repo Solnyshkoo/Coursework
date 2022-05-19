@@ -43,7 +43,7 @@ struct InformationSettingsView: View {
                                 }
                 
                             Text("Профиль").fontWeight(.heavy).font(.title)
-                                .padding(.leading, 60)
+                                .padding(.leading, 90)
                                 .padding(.top, 18)
             
                         }).padding(.bottom, 5)

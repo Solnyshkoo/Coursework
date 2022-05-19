@@ -13,7 +13,6 @@ final class Service {
             guard
                 let data = data,
                 let post = try? JSONDecoder().decode(UserData.self, from: data)
-        
             else {
                 result = .failure(error!) //TODO мб nill
                 closure(result)
@@ -25,18 +24,25 @@ final class Service {
         session.resume()
     }
     
-    func changeUserNickname(token: String, nick: String, _ closure: @escaping (Result<Bool, Error>) -> Void) {
+    func changeUserNickname(token: String, nick: String, _ closure: @escaping (Result<Bool, ChangeUserDataError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/change/username?username=\(nick)&access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
         let session = URLSession.shared.dataTask(with: url) { data, response, error in
-            var result: Result<Bool, Error>
+            var result: Result<Bool, ChangeUserDataError>
             guard
                 let data = data,
                 let _ = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any]
             else {
-                result = .failure(error!)
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response.statusCode)
+                if response.statusCode == 233 {
+                    result = .failure(ChangeUserDataError.busy)
+                } else {
+                    result = .failure(ChangeUserDataError.fatalEror)
+                }
+                print(response.statusCode)
                 closure(result)
                 return
             }
@@ -78,8 +84,6 @@ final class Service {
        // data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
         data.append(image.pngData()!)
        // data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-        print(String(decoding: data, as: UTF8.self))
-        
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             if error == nil {
                 let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)

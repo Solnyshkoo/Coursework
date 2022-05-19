@@ -23,7 +23,7 @@ struct AuthorizationView: View {
                     ClassicTextField(labelText: "Nickname", fieldText: "Введите Nickname", user: $user).padding(.bottom, 15)
                     SecretTextField(labelText: "Пароль", fieldText: "Введите пароль", pass: $pass)
                     Button(action: { showingRestoringView.toggle() }) {
-                        Text("Востановить пароль?").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5)
+                        Text("Восстановить пароль?").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5)
                     }.foregroundColor(ColorPalette.activeText).fullScreenCover(isPresented: $showingRestoringView) {
                         MailConfirmationView(mailConfirmationViewModel: mainViewModel, man: $man, restorePassword: true)
                     }

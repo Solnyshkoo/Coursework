@@ -6,6 +6,9 @@ struct EventDetailView: View {
     @State var people: UserInfo = .init()
     @State var showParticipants: Bool = false
     @State var showPersonalView: Bool = false
+    @State var alreadyGo: Bool = true
+    @State var passed: Bool = true
+    @State var showReview: Bool = false
     var body: some View {
         VStack {
             NavigationView {
@@ -40,29 +43,80 @@ struct EventDetailView: View {
                         .bold()
                         .padding(.leading, 15)
                     HStack {
-                        Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
-                            .onTapGesture {
-                                self.showParticipants.toggle()
+                      
+                        
+                        if passed {
+                            Text(info.participant == 0 ? "" : String(info.participant) + " было").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                                .onTapGesture {
+                                    self.showParticipants.toggle()
+                                }
+                                .fullScreenCover(isPresented: $showParticipants) {
+                                   ParticipantsView()
+                                }
+                            Spacer()
+                            if alreadyGo {
+                                Button(action: {
+                                    self.showReview.toggle()
+                                }) {
+                                    Text("Написать отзыв").font(Font.system(size: 18, design: .default)).padding(.top, 0)
+                                        .padding(.trailing, 3)
+                                        .lineLimit(3)
+                                        .frame(width: 140, height: 8)
+                                }.foregroundColor(ColorPalette.buttonText)
+                                    .padding()
+                                    .background(ColorPalette.acсentColor)
+                                    .cornerRadius(10)
+                                    .padding(.top, 6)
+                                    .padding(.trailing, 20)
+                                    .sheet(isPresented: $showReview) {
+                                        ReviewView()
+                                    }
+                            } else {
+                                Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                                    .onTapGesture {
+                                        self.showParticipants.toggle()
+                                    }
+                                    .fullScreenCover(isPresented: $showParticipants) {
+                                       ParticipantsView()
+                                    }
+                                Spacer()
+                                Button(action: {
+                                    // TODO: - подробнее
+                                }) {
+                                    Text("Прошло").font(Font.system(size: 18, design: .default)).padding(.top, 0)
+                                        .padding(.trailing, 3)
+                                        .frame(width: 110, height: 8)
+                                }.foregroundColor(ColorPalette.buttonText)
+                                    .padding()
+                                    .background(ColorPalette.disableButtom)
+                                    .cornerRadius(10)
+                                    .padding(.top, 6)
+                                    .padding(.trailing, 20)
                             }
-                            .fullScreenCover(isPresented: $showParticipants) {
-                               ParticipantsView()
-                            }
-                        Spacer()
-                        Button(action: {
-                            // TODO: - подробнее
-                        }) {
-                            Text("Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)
-                                .padding(.trailing, 3)
-                                .frame(width: 110, height: 8)
-                        }.foregroundColor(ColorPalette.buttonText)
-                            .padding()
-                            .background(ColorPalette.acсentColor)
-                            .cornerRadius(10)
-                            .padding(.top, 6)
-                            .padding(.trailing, 20)
+                        } else {
+                            Button(action: {
+                                // TODO: - подробнее
+                            }) {
+                                Text(alreadyGo ? "Иду" : "Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)
+                                    .padding(.trailing, 3)
+                                    .frame(width: 110, height: 8)
+                            }.foregroundColor(ColorPalette.buttonText)
+                                .padding()
+                                .background(ColorPalette.acсentColor)
+                                .cornerRadius(10)
+                                .padding(.top, 6)
+                                .padding(.trailing, 20)
+                        }
+                      
                       
                     }
-                    Spacer()
+                   
+                    Text("")
+             
+                    Divider()
+                    // TODO: отзывы цикл
+                    ReviewCell(info: ReviewModel(userName: "Петрова Ксения ", logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
+                    //Spacer()
                 })
                 .navigationBarBackButtonHidden(true)
                 .navigationBarTitleDisplayMode(.inline)

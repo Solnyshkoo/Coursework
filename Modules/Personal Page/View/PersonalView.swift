@@ -2,7 +2,9 @@ import Foundation
 import SwiftUI
 import UIKit
 
-protocol PersonalViewProtocolInput {}
+protocol PersonalViewProtocolInput {
+    func save()
+}
 
 protocol PersonalViewProtocolOutput {
     func setView(view: PersonalViewProtocolInput)
@@ -16,7 +18,7 @@ protocol PersonalViewProtocolOutput {
 }
 
 struct PersonalView: View {
-    var personalViewModel: PersonalViewModel
+    @ObservedObject  var personalViewModel: PersonalViewModel
     @State private var selectedIndex: Int? = 0
     @State private var nameAndSurname = ""
     @State private var nickname = ""
@@ -44,22 +46,19 @@ struct PersonalView: View {
                         .padding(.bottom, 70)
                         .overlay(alignment: .top) {
                             if canEdit {
-                            ZStack {
-                                Rectangle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 500)
+                                ZStack {
+                                    Rectangle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 500)
                                 
-                                VStack {
-                                Image(systemName: "camera").resizable().frame(width: 100, height: 80)
-                                    .onTapGesture {
-                                        pickPhoto.toggle()
-                                    }
-                                    .sheet(isPresented: $pickPhoto) {
-                                        ImagePicker(image: $photo, isPresented: $pickPhoto)
+                                    VStack {
+                                        Image(systemName: "camera").resizable().frame(width: 100, height: 80)
+                                            .onTapGesture {
+                                                pickPhoto.toggle()
+                                            }
+                                            .sheet(isPresented: $pickPhoto) {
+                                                ImagePicker(image: $photo, isPresented: $pickPhoto)
+                                            }
+                                    }.padding(.bottom, 100)
                                 }
-                            }.padding(.bottom, 100)
-                                
-                               
-//                                personalViewModel.setPicture(image: photo ?? personalViewModel.getImage())
-                            }
                             }
                         }
                         .overlay(alignment: .bottom) {
@@ -74,19 +73,21 @@ struct PersonalView: View {
                                             .foregroundColor(Color.white)
                                             .font(Font.system(size: 32, design: .default))
                                    
-                                            .padding(.leading, 10)
-                                
-                                        TextField(personalViewModel.getNickname(), text: $nickname)
-                                  
-                                            .font(Font.system(size: 24, design: .default))
-                                            .padding(.leading, 16)
+                                            .padding(.leading, 12)
+                                        HStack {
+                                            Text("@") .font(Font.system(size: 24, design: .default))
+                                            TextField(personalViewModel.getNickname(), text: $nickname)
+                                                .font(Font.system(size: 24, design: .default))
+                                            Spacer()
+                                        }
+                                        .padding(.leading, 16)
                                     } else {
                                         Text(personalViewModel.getFio())
                                             .font(Font.system(size: 32, design: .default))
                                             .bold()
                                             .padding(.leading, 13)
                                 
-                                        Text(personalViewModel.getNickname())
+                                        Text("@ " + personalViewModel.getNickname())
                                             .font(Font.system(size: 24, design: .default))
                                             .padding(.leading, 16)
                                     }
@@ -96,23 +97,29 @@ struct PersonalView: View {
                                     Menu {
                                         Section {
                                             Button(action: {
-                                                self.canEdit.toggle()
                                                 let fio: [String.SubSequence] = nameAndSurname.split(separator: " ")
                                                 if fio.capacity != 2 {
-                                                    wrongNameAndSurname.toggle()
+                                                    wrongNameAndSurname =  true
                                                     warning = "Обязательно напишите фамилию и имя и разделити их пробелами"
-                                                } else if nickname.trimmingCharacters(in: .whitespaces) == "" {
-                                                    wrongNameAndSurname.toggle()
+                                                }
+                                                if nickname.trimmingCharacters(in: .whitespaces) == "" {
+                                                    wrongNameAndSurname =  true
                                                     warning = "Обязательно напишите никнейм"
                                                 }
-                                                personalViewModel.changePhoto(image: photo ?? personalViewModel.getImage())
-                                                personalViewModel.changeNickname(nick: nickname)
+                                                if !wrongNameAndSurname {
+                                                    wrongNameAndSurname =  false
+                                                    warning = ""
+                                                    personalViewModel.changePhoto(image: photo ?? personalViewModel.getImage())
+                                                    personalViewModel.changeNickname(nick: nickname)
+                                                   // self.canEdit.toggle()
+                                                }
+
+//
                                                 warning = personalViewModel.nicknameWarningText
                                                 print(warning)
+                                               
                                             }) {
                                                 Text("Сохранить")
-                                            }.alert(warning, isPresented: $wrongNameAndSurname) {
-                                                Button("OK", role: .cancel) { }
                                             }
                                             Button(action: {
                                                 self.canEdit.toggle()
@@ -132,12 +139,11 @@ struct PersonalView: View {
                                 } else {
                                     Menu {
                                         Section {
-                                            Button(action: {
+                                             Button(action: {
                                                 self.showSettings.toggle()
                                             }) {
                                                 Label("Настройки", systemImage: "gearshape")
                                             }
-                                            
                                         }
                                         
                                         Section {
@@ -162,6 +168,13 @@ struct PersonalView: View {
                                 .fullScreenCover(isPresented: $showSettings, content: {
                                     SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
                                 })
+                                .alert(personalViewModel.warningText, isPresented: $personalViewModel.warning) {
+                                    Button("OK", role: .cancel) {}
+                                }
+                                .alert(warning, isPresented: $wrongNameAndSurname) {
+                                    Button("OK", role: .cancel) {}
+                                }
+                                
                         }
                         
                     setPicker(titles: ["История", "Мои мероприятия"])
@@ -170,12 +183,12 @@ struct PersonalView: View {
                     Spacer()
                     if selectedIndex == 0 {
                         ForEach(personalViewModel.getHistory()) { item in
-                            EventCell(info: item, fullAcсess: true)
+                            EventCell(info: item, fullAcсess: true, canEdit: false)
                         }
                        
                     } else {
                         ForEach(personalViewModel.getMyEvents()) { item in
-                            EventCell(info: item, fullAcсess: true)
+                            EventCell(info: item, fullAcсess: true, canEdit: false)
                         }
                     }
                 }
@@ -190,9 +203,15 @@ struct PersonalView: View {
             Text(tab)
         }
     }
+    
+   
 }
 
-extension PersonalView: PersonalViewProtocolInput {}
+extension PersonalView: PersonalViewProtocolInput {
+    func save() {
+        self.canEdit = true
+    }
+}
 
 struct PersonalView_Previews: PreviewProvider {
     static var previews: some View {

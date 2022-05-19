@@ -11,6 +11,7 @@
 		5E0069A328351E3100B7EF9A /* SecuriteSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */; };
 		5E0069A52835652F00B7EF9A /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A42835652F00B7EF9A /* AlertView.swift */; };
 		5E0069A72835658400B7EF9A /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */; };
+		5E0069A92835782500B7EF9A /* ChangeUserDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */; };
 		5E1826BA282EB79800C06315 /* AuthorizationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */; };
 		5E59707C28196B6D00BF3240 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707B28196B6D00BF3240 /* Service.swift */; };
 		5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707D28196F1800BF3240 /* ValidateUserModel.swift */; };
@@ -62,6 +63,9 @@
 		5EE03523282195DB00754267 /* HorizontalAlignmentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE03522282195DB00754267 /* HorizontalAlignmentExtension.swift */; };
 		5EE035262821A3AA00754267 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE035252821A3AA00754267 /* SettingsView.swift */; };
 		5EE035282821A45100754267 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE035272821A45100754267 /* SettingsViewModel.swift */; };
+		5EF8135E28367AB900DB0B28 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8135D28367AB900DB0B28 /* ReviewCell.swift */; };
+		5EF8136128367ADD00DB0B28 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136028367ADD00DB0B28 /* ReviewModel.swift */; };
+		5EF813632836867700DB0B28 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813622836867700DB0B28 /* ReviewView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +73,7 @@
 		5E0069A228351E3100B7EF9A /* SecuriteSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuriteSettingsView.swift; sourceTree = "<group>"; };
 		5E0069A42835652F00B7EF9A /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDataError.swift; sourceTree = "<group>"; };
 		5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAPIService.swift; sourceTree = "<group>"; };
 		5E59707B28196B6D00BF3240 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5E59707D28196F1800BF3240 /* ValidateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserModel.swift; sourceTree = "<group>"; };
@@ -121,6 +126,9 @@
 		5EE03522282195DB00754267 /* HorizontalAlignmentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalAlignmentExtension.swift; sourceTree = "<group>"; };
 		5EE035252821A3AA00754267 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5EE035272821A45100754267 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		5EF8135D28367AB900DB0B28 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		5EF8136028367ADD00DB0B28 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
+		5EF813622836867700DB0B28 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,7 @@
 				5E59707F2819723E00BF3240 /* ValidateUserError.swift */,
 				5E5970842819F72300BF3240 /* RegistrationUserError.swift */,
 				5EA591772829CA53007D4BAC /* UserDataResponseModel.swift */,
+				5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,6 +294,7 @@
 		5ECD45872832526E00729E2C /* Event detail Page */ = {
 			isa = PBXGroup;
 			children = (
+				5EF8135F28367ACA00DB0B28 /* Model */,
 				5ECD45882832527D00729E2C /* View */,
 			);
 			path = "Event detail Page";
@@ -294,6 +304,8 @@
 			isa = PBXGroup;
 			children = (
 				5ECD45892832534D00729E2C /* EventDetailView .swift */,
+				5EF8135D28367AB900DB0B28 /* ReviewCell.swift */,
+				5EF813622836867700DB0B28 /* ReviewView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -545,8 +557,8 @@
 				5EE034DE281F12CD00754267 /* Log in Page */,
 				5EE035112821936800754267 /* Organizer Page */,
 				5ECD457E2832484C00729E2C /* Verification Page */,
-				5E896CDE2824908F00D67E92 /* New Event Page */,
 				5E5970A6281C88C900BF3240 /* Events Page */,
+				5E896CDE2824908F00D67E92 /* New Event Page */,
 				5ECD45872832526E00729E2C /* Event detail Page */,
 				5ECD457528323F3400729E2C /* Event Participants Page */,
 				5EE035132821941700754267 /* Favorite Page */,
@@ -554,6 +566,14 @@
 				5EE03512282193CC00754267 /* Settings Page */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		5EF8135F28367ACA00DB0B28 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5EF8136028367ADD00DB0B28 /* ReviewModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -645,7 +665,9 @@
 				5E5970AB281C8C0C00BF3240 /* EventsView.swift in Sources */,
 				5ECD457828323FA900729E2C /* ParticipantsView .swift in Sources */,
 				5EE0350E281FED1100754267 /* PersonalViewModel.swift in Sources */,
+				5E0069A92835782500B7EF9A /* ChangeUserDataError.swift in Sources */,
 				5ECD457D2832403C00729E2C /* ParticipantsModel.swift in Sources */,
+				5EF8135E28367AB900DB0B28 /* ReviewCell.swift in Sources */,
 				5EE034FC281F12E900754267 /* CourseApp.swift in Sources */,
 				5EE035282821A45100754267 /* SettingsViewModel.swift in Sources */,
 				5E0069A52835652F00B7EF9A /* AlertView.swift in Sources */,
@@ -664,6 +686,7 @@
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
 				5ED4D4C227FDDD2B00873CAA /* ContentView.swift in Sources */,
+				5EF813632836867700DB0B28 /* ReviewView.swift in Sources */,
 				5E896CE52824969F00D67E92 /* EventTextField.swift in Sources */,
 				5E896CDD28246D1B00D67E92 /* OrganizerViewModel.swift in Sources */,
 				5E647B972832821F0060CB71 /* PersonalSettings.swift in Sources */,
@@ -679,6 +702,7 @@
 				5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */,
 				5ECD458A2832534D00729E2C /* EventDetailView .swift in Sources */,
 				5ECD457A28323FC000729E2C /* ParticipantsCell.swift in Sources */,
+				5EF8136128367ADD00DB0B28 /* ReviewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

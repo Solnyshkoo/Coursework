@@ -22,7 +22,7 @@ struct EventsView: View {
                     }.padding(.leading, 20)
                         .padding(.bottom, 8)
                     ScrollView {
-                        EventCell(info: lol, fullAcсess: fullAcсess)
+                        EventCell(info: lol, fullAcсess: fullAcсess, canEdit: false)
                     }
                 }
                 Spacer()

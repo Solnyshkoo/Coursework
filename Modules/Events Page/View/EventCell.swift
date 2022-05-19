@@ -4,6 +4,7 @@ struct EventCell: View {
     @State var info: EventModel
     @State var people: UserInfo = UserInfo()
     @State var fullAcсess: Bool
+    @State var canEdit: Bool
     @State var showAlert: Bool = false
     @State var showAlertLike: Bool = false
     @State var showParticipants: Bool = false
@@ -34,6 +35,16 @@ struct EventCell: View {
                        }
                        
                    Spacer()
+                   if canEdit {
+                       Button(action: {
+                       
+                           
+                       }) {
+                           Image(systemName:  "pencil" ).font(Font.system(size: 25, design: .default)).padding(.top, 4)
+                               .padding(.trailing, 10)
+                       }.foregroundColor(ColorPalette.text)
+                        
+                   } else {
                    Button(action: {
                        if  fullAcсess {
                            if people.favorities.contains(where: { $0.id == info.id }) {
@@ -52,7 +63,9 @@ struct EventCell: View {
                    }.foregroundColor(people.favorities.contains(where: { $0.id == info.id }) ? Color.red : ColorPalette.text)
                        .alert("Чтобы использовать эту функцию, вам надо зарегистрироваться.", isPresented: $showAlertLike) {
                                Button("OK", role: .cancel) { }
-                        }
+                       }
+                   }
+                       
                }.padding(.bottom, 5)
             
                 info.mainPhoto.resizable().smallRectangleCropped()
@@ -119,7 +132,7 @@ struct EventCellPreviewContainer_2: View {
     @State var lol: EventModel = EventModel(id: 1, name: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
 
     var body: some View {
-        EventCell(info: lol, fullAcсess: true)
+        EventCell(info: lol, fullAcсess: true, canEdit: true)
     }
 }
 
