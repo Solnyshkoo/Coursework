@@ -100,10 +100,8 @@ struct PersonalView: View {
                                                     warning = ""
                                                     personalViewModel.changePhoto(image: photo ?? personalViewModel.getImage())
                                                     personalViewModel.changeNickname(nick: nickname)
-                                                   // self.canEdit.toggle()
+                                                 
                                                 }
-
-//
                                                 warning = personalViewModel.nicknameWarningText
                                                 print(warning)
                                                

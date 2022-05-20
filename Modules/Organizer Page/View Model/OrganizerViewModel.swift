@@ -16,9 +16,7 @@ final class OrganizerViewModel: ObservableObject {
             self.user = UserInfo()
             getUserData()
         }
-        
     }
-    
     
     func getUserData() {
         DispatchQueue.main.async {
@@ -26,15 +24,38 @@ final class OrganizerViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch result {
                 case .success(let data):
-            
-                    self.user = UserInfo(name: data.response.firstName ?? "Ksenia", surname: data.response.lastName ?? "Petrova", patronymic: "", age: 19, nickname: data.response.username ?? "ksu", password: "", number: data.response.phone ?? "", mail: data.response.email ?? "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
+                    DispatchQueue.main.async {
+                        self.user = self.createUser(data: data)
+                    }
+                    
                 case .failure:
-                    self.warningText = "Ошибка"
-                    self.showWarning = true
-                    break
-                    //self.nicknameWarningText = "Bad internet connection"
+                    DispatchQueue.main.async {
+                        self.warningText = "Ошибка"
+                        self.showWarning = true
+                    }
+                    // self.nicknameWarningText = "Bad internet connection"
                 }
             }
         }
+    }
+    
+    private func createUser(data: UserData) -> UserInfo {
+        var array = data.response.favorites
+        var fav: [EventModel] = []
+        for i in 0..<array.capacity {
+            fav.append(EventModel(id: array[i]))
+        }
+        array = data.response.partiesCreated
+        var org:[EventModel] = []
+        for i in 0..<array.capacity {
+            org.append(EventModel(id: array[i]))
+        }
+        array = data.response.goingTo
+        var sub:[EventModel] = []
+        for i in 0..<array.capacity {
+            sub.append(EventModel(id: array[i]))
+        }
+    
+        return UserInfo(name:  data.response.user.firstName , surname: data.response.user.lastName , patronymic: "", age: -1, nickname: data.response.user.username , password: "", number: "", mail: data.response.user.email , sex: "", image: nil, validate: false, favorities: fav, subscribes: sub, organiesed: org)
     }
 }

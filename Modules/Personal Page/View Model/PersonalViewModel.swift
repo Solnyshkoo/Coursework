@@ -42,7 +42,7 @@ final class PersonalViewModel: ObservableObject {
                     guard let self = self else { return }
                     switch result {
                     case .success(let data): //TODO: исправить
-                        self.user = UserInfo(name: data.response.firstName ?? "Ksenia", surname: data.response.lastName ?? "Petrova", patronymic: "", age: 19, nickname: data.response.username ?? "ksu", password: "", number: data.response.phone ?? "", mail: data.response.email ?? "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
+                        self.user = self.createUser(data: data)
               
                     case .failure:
                         self.nicknameWarningText = "Bad internet connection"
@@ -50,7 +50,6 @@ final class PersonalViewModel: ObservableObject {
                 }
             }
         }
-        user = UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "", age: 19, nickname: "ksu", password: "", number: "", mail: "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
     }
     
     func changePhoto(image: Image) {
@@ -75,7 +74,7 @@ final class PersonalViewModel: ObservableObject {
     }
     
     func getImage() -> Image {
-        return user.image ?? Image("noImage")
+        return user.image ?? Image("noImage").resizable()
     }
   
     func getNickname() -> String {
@@ -94,4 +93,23 @@ final class PersonalViewModel: ObservableObject {
         user.image = image
     }
   
+    private func createUser(data: UserData) -> UserInfo {
+        var array = data.response.favorites
+        var fav: [EventModel] = []
+        for i in 0..<array.capacity {
+            fav.append(EventModel(id: array[i]))
+        }
+        array = data.response.partiesCreated
+        var org:[EventModel] = []
+        for i in 0..<array.capacity {
+            org.append(EventModel(id: array[i]))
+        }
+        array = data.response.goingTo
+        var sub:[EventModel] = []
+        for i in 0..<array.capacity {
+            sub.append(EventModel(id: array[i]))
+        }
+    
+        return UserInfo(name:  data.response.user.firstName , surname: data.response.user.lastName , patronymic: "", age: -1, nickname: data.response.user.username , password: "", number: "", mail: data.response.user.email , sex: "", image: nil, validate: false, favorities: fav, subscribes: sub, organiesed: org)
+    }
 }
