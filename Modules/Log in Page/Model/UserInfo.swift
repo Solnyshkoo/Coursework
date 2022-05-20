@@ -10,7 +10,7 @@ struct UserInfo {
     var number: String = ""
     var mail: String = ""
     var sex: String = ""
-    var image: Image = Image("photo")
+    var image: Image?
     var validate: Bool = false
     var favorities: [EventModel] = []
     var subscribes: [EventModel] = []

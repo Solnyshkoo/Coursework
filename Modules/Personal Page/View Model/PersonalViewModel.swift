@@ -75,7 +75,7 @@ final class PersonalViewModel: ObservableObject {
     }
     
     func getImage() -> Image {
-        return user.image
+        return user.image ?? Image("noImage")
     }
   
     func getNickname() -> String {

@@ -35,7 +35,7 @@ final class NewEventViewModel: ObservableObject {
             textWarning = "Фотография не добавлена"
         } else {
             var respond = data
-            respond.logo = user.image
+            respond.logo = user.image ?? Image("noImage")
             
             DispatchQueue.main.async {
                 self.service.createEvent(respond: respond, token: self.token) { [weak self] result in

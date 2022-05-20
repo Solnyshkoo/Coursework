@@ -29,7 +29,7 @@ struct PersonalView: View {
         VStack {
             VStack {
                 ScrollView {
-                    personalViewModel.user.image
+                    personalViewModel.getImage()
                         .bigRectangleCropped()
                         .frame(height: 600)
                         .padding(.bottom, 70)

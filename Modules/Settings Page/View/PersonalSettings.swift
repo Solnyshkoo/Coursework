@@ -13,7 +13,7 @@ struct PersonalSettigs: View {
         ScrollView {
         VStack {
             HStack(alignment: .center) {
-                man.image.centerSquareCropped()
+                man.image?.centerSquareCropped()
                     .clipShape(Circle())
                     .frame(width: 160, height: 160)
                     .scaledToFit()

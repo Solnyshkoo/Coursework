@@ -28,7 +28,7 @@ struct RegistrationView: View {
                                    
                                     }.foregroundColor(ColorPalette.lightGray2)
                                 .sheet(isPresented: $shoosePhoto) {
-                                    ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                    ImagePicker(image: $man.image, isPresented: $shoosePhoto)
                             }
                         }
                         .padding(.bottom, 15)
@@ -70,9 +70,9 @@ struct RegistrationView: View {
                                 Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
                                 Menu {
                                 Picker("Пол", selection: $man.sex) {
-                                    Text("").tag("none")
-                                    Text("Ж").tag("female")
-                                    Text("М").tag("male")
+                                    Text("").tag("Нет")
+                                    Text("Ж").tag("Ж")
+                                    Text("М").tag("М")
                                 }.padding(.bottom, -3)
                                     .colorMultiply(ColorPalette.lightGray)
                                 } label: {
