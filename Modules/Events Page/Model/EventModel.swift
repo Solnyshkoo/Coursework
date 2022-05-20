@@ -2,10 +2,9 @@ import Foundation
 import SwiftUI
 struct EventModel: Identifiable {
     var id: Int = -1
-    
     var name: String = ""
     var logo: Image = Image(systemName: "circle")
-    var mainPhoto: Image = Image(systemName: "circle")
+    var mainPhoto: Image?
     var distination: String = ""
     var price: String = ""
     var description: String = ""

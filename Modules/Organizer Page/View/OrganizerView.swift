@@ -46,7 +46,7 @@ struct OrganizerView: View {
                 ).padding(.trailing, 10)
                     .padding(.top, 40)
                     .fullScreenCover(isPresented: $showingNewEventPage, content: {
-                        NewEventView()
+                        NewEventView(output: NewEventViewModel(service: organizerViewModel.service, user: organizerViewModel.user))
                     })
                     .sheet(isPresented: $showingVerification, content: {
                         VerificationView(output: VerificationViewModel(service: organizerViewModel.service, user: organizerViewModel.user))

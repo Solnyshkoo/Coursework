@@ -14,7 +14,7 @@ struct EventDetailView: View {
             NavigationView {
                 ScrollView {
                 VStack(alignment: .leading, spacing: 8, content:  {
-                    info.mainPhoto.resizable().smallRectangleCropped()
+                    info.mainPhoto?.resizable().smallRectangleCropped()
                         .frame(height: 500)
                     // TODO: - кнопка ещё
                     Text(info.description)
@@ -155,7 +155,8 @@ struct EventDetailView: View {
                                     people.favorities.append(info)
                                 }
                             }) {
-                                Image(systemName: people.favorities.contains(where: { $0.id == info.id }) ? "heart.fill" : "heart").font(Font.system(size: 22, design: .default))
+                                Image(systemName:
+                                        people.favorities.contains(where: { $0.id == info.id }) ? "heart.fill" : "heart").font(Font.system(size: 22, design: .default))
                             }.foregroundColor(people.favorities.contains(where: { $0.id == info.id }) ? Color.red : ColorPalette.text)
                         }).padding(.top, -2)
                     }

@@ -68,7 +68,7 @@ struct EventCell: View {
                        
                }.padding(.bottom, 5)
             
-                info.mainPhoto.resizable().smallRectangleCropped()
+                info.mainPhoto?.resizable().smallRectangleCropped()
                     .frame(height: 500)
                    
                 

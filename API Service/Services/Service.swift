@@ -114,11 +114,70 @@ final class Service {
     }
     
     
-    func verificationPassport(respond: VerificationModel) {
-        
+    
+    func createEvent(respond: EventModel, token: String, _ closure: @escaping (Result<Int, InternetError>) -> Void)  {
+        guard let url = URL(string: "\(Service.adress)/party/create?access_token=\(token)&name=\(respond.name)&description=\(respond.description)&address=\(respond.distination)&price=\(respond.price)&starting_at=\(respond.data)&ending_at=\(respond.contacts)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+            var result: Result<Int, InternetError>
+            guard
+                let data = data,
+                let post = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
+                let id = post["example_party_id"] as? Int
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response.statusCode)
+                if response.statusCode == 233 {
+                    result = .failure(InternetError.fromServerError)
+                } else {
+                    result = .failure(InternetError.internetError)
+                }
+                print(response.statusCode)
+                closure(result)
+                return
+            }
+            print(post)
+            result = .success(id)
+            closure(result)
+        }
+        session.resume()
     }
     
+   
+    // TODO: исправить видимо
+    func getEventInfo(eventId: Int, token: String, _ closure: @escaping (Result<PartyData, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/get_info?access_token=\(token)&party_id=\(eventId)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+            var result: Result<PartyData, InternetError>
+            guard
+                let data = data,
+                let post = try? JSONDecoder().decode(PartyData.self, from: data)
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response.statusCode)
+                if response.statusCode == 233 {
+                    result = .failure(InternetError.fromServerError)
+                } else {
+                    result = .failure(InternetError.internetError)
+                }
+                print(response.statusCode)
+                closure(result)
+                return
+            }
+            print(post)
+            result = .success(post)
+            closure(result)
+        }
+        session.resume()
+    }
     
+    func verificationPassport(respond: VerificationModel) {
+    }
     
 }
 

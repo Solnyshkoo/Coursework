@@ -50,7 +50,7 @@ struct VerificationView: View {
                         .background(ColorPalette.acсentColor)
                         .cornerRadius(10)
                         .fullScreenCover(isPresented: $verificationViewModel.dataIsCorrect) {
-                            NewEventView()
+                            NewEventView(output: NewEventViewModel(service: verificationViewModel.service, user: verificationViewModel.user))
                         }
                         .alert(verificationViewModel.textWarning, isPresented: $verificationViewModel.showWarning) {
                             Button("OK", role: .cancel) { }
