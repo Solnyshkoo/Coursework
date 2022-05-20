@@ -17,7 +17,7 @@ struct CourseApp: App {
           AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
            //   PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
            // EventsView()
-          //  EventDetailView()
+          // EventDetailView()
           //  ParticipantsView()
       //  PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
             //   SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
@@ -28,7 +28,7 @@ struct CourseApp: App {
             //OrganizerView()
             //NewEventView()
           //  VerificationView()
-        //   TabBar(people: $man, token: "lol", service: Service())
+         // TabBar(people: $man, token: "lol", service: Service())
            // PersonalView(output: PersonalViewModel(service: Service(), tok: "8Z1wNyFW6OZJI1Ypp3HzQg"))
         }
     }

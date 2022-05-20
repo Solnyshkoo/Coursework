@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    static let adress = "https://f170-2a00-1370-8182-3789-f896-9860-1916-8cee.ngrok.io"
+    static let adress = "https://7ec0-109-252-174-120.ngrok.io"
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, Error>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
@@ -52,21 +52,44 @@ final class Service {
         session.resume()
     }
     
+    
+    func changeUserPhoto(token: String, nick: String, _ closure: @escaping (Result<UIImage, ChangeUserDataError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/get_photo?access_token=\(token)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+            var result: Result<UIImage, ChangeUserDataError>
+            guard
+                let data = data
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response.statusCode)
+                if response.statusCode == 233 {
+                    result = .failure(ChangeUserDataError.busy)
+                } else {
+                    result = .failure(ChangeUserDataError.fatalEror)
+                }
+                print(response.statusCode)
+                closure(result)
+                return
+            }
+            var t = UIImage(data: data)
+           
+            result = .success(t!)
+            closure(result)
+        }
+        session.resume()
+    }
+    
     func uploadUserPhoto(photo: Image , token: String,  _ closure: @escaping (Result<Bool, Error>) -> Void) {
         let image : UIImage = photo.asUIImage()
-//        let imageData: Data = uiimage.pngData() ?? Data()
-//        let str: String = imageData.base64EncodedString()
-////        let json: [String: NSData] = ["media":photo]
-////        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         guard let url = URL(string: "\(Service.adress)/user/upload_photo?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
         let boundary = UUID().uuidString
-
         let session = URLSession.shared
-
-        // Set the URLRequest to POST and to the specified URL
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
 
@@ -74,26 +97,22 @@ final class Service {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-       // urlRequest.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-
         var data = Data()
-        
-        
-       // data.append("\r\n--\(boundary)\r\n".data(using: .utf8)!)
-       // data.append("Content-Disposition: form-data;".data(using: .utf8)!)
-       // data.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
         data.append(image.pngData()!)
-       // data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             if error == nil {
                 let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)
-                if let json = jsonData as? [String: Any] {
-                    print(json)
-                }
+          
+                    print(jsonData)
+                
             } else {
                 print(error)
                 print(responseData)
+                print(response)
             }
+            print(error)
+            print(responseData)
+            print(response)
         }).resume()
         
         // insert json data to the request
@@ -156,6 +175,11 @@ final class Service {
             } 
         }).resume()
     }
+    
+    
+    
+    
+    
 }
 
 extension String {

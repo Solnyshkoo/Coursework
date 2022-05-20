@@ -28,6 +28,15 @@ struct InformationSettingsView: View {
                     .fullScreenCover(isPresented: $showSecuriteSettings) {
                        SecuriteSettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
                     }
+                    
+                    Button(action: {
+                        
+                    }) {
+                        Text("Пройти верификацию").foregroundColor(ColorPalette.buttonText)
+                    }
+                    .fullScreenCover(isPresented: $showSecuriteSettings) {
+                     
+                    }
                 }
                 
             }.padding(.top, 10)

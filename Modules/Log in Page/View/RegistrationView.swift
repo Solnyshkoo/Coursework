@@ -4,7 +4,6 @@ struct RegistrationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State private var man = UserInfo()
     @Environment(\.colorScheme) var colorScheme
-    //  @StateObject private var mainViewMode = LogInViewModel()
     @State private var showingRegistrationView = false
     @State private var shoosePhoto = false
     @State private var selectedColorIndex = 0
@@ -110,6 +109,7 @@ struct RegistrationView: View {
                                 Image(systemName: "arrow.left")
                                     .foregroundColor(ColorPalette.navigationBarItem)
                                     .onTapGesture {
+                                        man = UserInfo()
                                         self.mode.wrappedValue.dismiss()
                                     }
                         

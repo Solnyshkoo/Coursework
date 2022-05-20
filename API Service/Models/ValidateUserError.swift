@@ -7,11 +7,11 @@ enum ValidationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noUser:
-            return "No such user"
+            return "Нет такого пользователя"
         case .wrongPassword:
-            return "The password is wrong"
+            return "Неверный пароль"
         case .fatalEror:
-            return "Please, try later"
+            return "Пожалуйста, попробуйте позже"
         }
     }
 }

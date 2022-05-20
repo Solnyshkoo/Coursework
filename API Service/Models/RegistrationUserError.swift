@@ -7,11 +7,11 @@ enum RegistrationUserError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .loginIsBusy:
-            return "The login is busy"
+            return "Логин занят"
         case .alreadyExists:
-            return "User with this email is already exists"
+            return "Почта уже зарегистрированна"
         case .fatalEror:
-            return "Please, try later"
+            return "Пожалуйста, попробуйте позже"
         }
     }
 }

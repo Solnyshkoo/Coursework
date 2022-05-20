@@ -4,10 +4,18 @@ import SwiftUI
 final class LogInViewModel: ObservableObject {
     let service: AuthorizationAPIService
     @Published var signInFailed = " "
+    @Published var signUpFailed = " "
+    @Published var showSignUpAlert: Bool = false
+    @Published var showHome = false
     @Published var codeSend: Bool = false
+    @Published var showAllert: Bool = false
     @Published var wrongCode: Bool = false
-    @Published var showHomeView = false;
+    @Published var showHomeView = false
+    @Published var showPasswordView: Bool = false
+    @Published var successRestore = false
+    @Published var showRestoreAlert = false
     var wrongMail = " "
+    var failRestoreText = " "
     private var token = ""
     
     init(service: AuthorizationAPIService) {
@@ -28,7 +36,27 @@ final class LogInViewModel: ObservableObject {
 //                }
 //            }
 //        }
-//
+        
+//        let k = Service()
+//        DispatchQueue.main.async {
+//            k.changeUser(token: "8Z1wNyFW6OZJI1Ypp3HzQg", nick: "") { [weak self] result in
+//                guard let self = self else { return }
+//                switch result {
+//                case .success(let token):
+//                    DispatchQueue.main.async {
+//                    self.show = token
+//                    }
+//                    break;
+//                case .failure(let error):
+//                    break;
+//                }
+//            }
+//        }
+        
+        
+        
+        
+
 //
         
         
@@ -38,6 +66,7 @@ final class LogInViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch result {
                 case .success(let token):
+                    UserDefaults.standard.set(token, forKey: "token")
                     DispatchQueue.main.async {
                         self.signInFailed = " "
                         self.showHomeView = true
@@ -52,35 +81,55 @@ final class LogInViewModel: ObservableObject {
         }
     }
     
-    func registrateUser(respond: UserInfo) -> Bool {
-        signInFailed = " "
+    func registrateUser(respond: UserInfo) {
+        signUpFailed = " "
         DispatchQueue.main.async {
             self.service.registrateUser(respond: respond) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let token):
-                    self.signInFailed = " "
+                    self.signUpFailed = " "
                     self.token = token
+                    self.showHome = true
+                    self.showSignUpAlert = false
+                    UserDefaults.standard.set(token, forKey: "token")
                     print(token)
                 case .failure(let error):
-                    self.signInFailed = error.errorDescription!
+                    self.showHome = false
+                    self.signUpFailed = error.errorDescription!
+                    self.showSignUpAlert = true
                     print(error.errorDescription!)
                 }
             }
         }
-        return token == "" ? false : true
     }
-    // TODO: - cделать метод
-    func sendCodeToEmail() { //email: String
+    
+    
+    func verifyEmail(email: String, nickname: String) {
+        
+    }
+    
+    func restorePassword(pass: String) {
+        //TODO: вызов метода restoreUserPassword, если удачно то токен сохраняем
+        successRestore = true
+        showRestoreAlert = false
+        failRestoreText = ""
+        self.showHome = true
+    }
+    
+    func sendCodeToEmail(email: String) {
+        //TODO: вызов метода sendUserCodeToEmail
         codeSend = true;
+        showAllert = false
         wrongMail = "не то"
     }
     
-    func checkEmailCode() { //сode: String
+    func checkEmailCode(сode: String) {
+        //TODO: вызов метода checkEmailCode
         wrongMail = ""
         wrongCode = false
+        showPasswordView = true
         wrongMail = "не то опять"
-        // TODO: - cделать метод
     }
 
     

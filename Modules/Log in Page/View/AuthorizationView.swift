@@ -9,7 +9,7 @@ struct AuthorizationView: View {
     @State private var showingRegistrationView = false
     @State private var showingRestoringView = false
     @State private var showPreview = false
-
+    @State private var showAlertRestore = false
     init(output: LogInViewModel) {
         mainViewModel = output
     }
@@ -22,11 +22,21 @@ struct AuthorizationView: View {
                 VStack(alignment: .leading) {
                     ClassicTextField(labelText: "Nickname", fieldText: "Введите Nickname", user: $user).padding(.bottom, 15)
                     SecretTextField(labelText: "Пароль", fieldText: "Введите пароль", pass: $pass)
-                    Button(action: { showingRestoringView.toggle() }) {
+                    Button(action: {
+                        if user.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                            self.showAlertRestore.toggle()
+                        } else {
+                            showingRestoringView.toggle()
+                        }
+                    }){
                         Text("Восстановить пароль?").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5)
-                    }.foregroundColor(ColorPalette.activeText).fullScreenCover(isPresented: $showingRestoringView) {
+                    }.foregroundColor(ColorPalette.activeText)
+                        .fullScreenCover(isPresented: $showingRestoringView) {
                         MailConfirmationView(mailConfirmationViewModel: mainViewModel, man: $man, restorePassword: true)
                     }
+                        .alert("Чтобы востановить пароль обязательно введите никней", isPresented: $showAlertRestore) {
+                            Button("OK", role: .cancel) { }
+                        }
                 }.padding(.horizontal, 6)
             }.padding()
             VStack {

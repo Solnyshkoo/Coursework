@@ -92,7 +92,7 @@ struct SecuriteSettingsView: View {
                                self.mode.wrappedValue.dismiss()
                             }
 
-                        Text("Информация").fontWeight(.heavy).font(.title)
+                        Text("Безопасность").fontWeight(.heavy).font(.title)
                             .padding(.leading, 60)
                             .padding(.top, 18)
 

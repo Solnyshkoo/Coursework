@@ -2,7 +2,7 @@ import Foundation
 
 import SwiftUI
 struct TabBar: View {
-    @State private var selection = 1
+    @State private var selection = 2
     @Binding var people: UserInfo
     var token: String
     var service: Service

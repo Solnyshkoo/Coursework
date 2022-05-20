@@ -9,13 +9,10 @@ final class AuthorizationAPIService {
         }
         let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<String, ValidationError>
-           
             guard
                 let data = data,
                 let post = try? JSONDecoder().decode(Details.self, from: data)
-        
             else {
-               
                 guard let response = response as? HTTPURLResponse else { return }
                 
                 if response.statusCode == 233 {
@@ -62,5 +59,19 @@ final class AuthorizationAPIService {
             closure(result)
         }
         session.resume()
+    }
+    
+    
+    
+    func restoreUserPassword() {
+        
+    }
+    
+    func sendUserCodeToEmail() {
+        
+    }
+    
+    func checkEmailCode() {
+        
     }
 }

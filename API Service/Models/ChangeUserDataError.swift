@@ -6,9 +6,9 @@ enum ChangeUserDataError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .busy:
-            return "Busy"
+            return "Логин занят"
         case .fatalEror:
-            return "Please, try later"
+            return "Пожалуйста, попробуйте позже"
         }
     }
 }
