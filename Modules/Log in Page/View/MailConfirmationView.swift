@@ -4,7 +4,7 @@ import SwiftUI
 struct MailConfirmationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var mailConfirmationViewModel: LogInViewModel
-    @Binding var man: UserInfo
+    @State var man: UserInfo
     @State var mail = ""
     @State var сoder = ""
     var restorePassword: Bool
@@ -78,9 +78,6 @@ struct checkKey: View {
             ClassicTextField(labelText: "Код", fieldText: "Введите код", user: $сodef).padding(.top, 40)
         }.padding(.horizontal, 6)
         Button(action: {
-            print("_______1_____")
-            print(сodef)
-            print("_______2_____")
             model.checkEmailCode(сode: сodef)
         }) {
             Text("Проверить").foregroundColor(ColorPalette.buttonText).frame(width: UIScreen.main.bounds.width - 120).padding()

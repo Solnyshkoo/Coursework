@@ -69,8 +69,7 @@ final class AuthorizationAPIService {
             var result: Result<String, InternetError>
             guard
                 let data = data,
-                let post = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
-                let email = post["email"] as? String
+                let post =  try? JSONDecoder().decode(EmailResponse.self, from: data)
             else {
                 guard let response = response as? HTTPURLResponse else { return }
                 print(response)
@@ -83,7 +82,7 @@ final class AuthorizationAPIService {
                 return
             }
             print(post)
-            result = .success(email)
+            result = .success(post.response.email)
             closure(result)
         }
         session.resume()

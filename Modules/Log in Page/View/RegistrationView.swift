@@ -97,7 +97,7 @@ struct RegistrationView: View {
                             .clipShape(Capsule())
                             .padding(.top, 15)
                             .foregroundColor(ColorPalette.activeText).fullScreenCover(isPresented: $showingRegistrationView) {
-                                MailConfirmationView(mailConfirmationViewModel: LogInViewModel(service: AuthorizationAPIService()), man: $man, restorePassword: false)
+                                MailConfirmationView(mailConfirmationViewModel: LogInViewModel(service: AuthorizationAPIService()), man: man, restorePassword: false)
                             }
                     }
                 }.padding(.bottom, 100)

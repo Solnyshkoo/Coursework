@@ -32,7 +32,7 @@ struct AuthorizationView: View {
                         Text("Восстановить пароль?").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5)
                     }.foregroundColor(ColorPalette.activeText)
                         .fullScreenCover(isPresented: $showingRestoringView) {
-                        MailConfirmationView(mailConfirmationViewModel: mainViewModel, man: $man, restorePassword: true)
+                        MailConfirmationView(mailConfirmationViewModel: mainViewModel, man: man, restorePassword: true)
                     }
                         .alert("Чтобы востановить пароль обязательно введите никней", isPresented: $showAlertRestore) {
                             Button("OK", role: .cancel) { }

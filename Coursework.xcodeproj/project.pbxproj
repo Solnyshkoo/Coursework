@@ -71,6 +71,7 @@
 		5EF8136A2837C1D300DB0B28 /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813692837C1D300DB0B28 /* NewEventViewModel.swift */; };
 		5EF8136C2837D61400DB0B28 /* PartyDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */; };
 		5EF8136E2837FC7400DB0B28 /* SendCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */; };
+		5EF8137028380E4D00DB0B28 /* EmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,7 @@
 		5EF813692837C1D300DB0B28 /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
 		5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDataResponseModel.swift; sourceTree = "<group>"; };
 		5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCodeError.swift; sourceTree = "<group>"; };
+		5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				5EF813642837ACEC00DB0B28 /* InternetError.swift */,
 				5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */,
 				5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */,
+				5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				5EF8136C2837D61400DB0B28 /* PartyDataResponseModel.swift in Sources */,
 				5EE0350C281FEA5B00754267 /* PersonalView.swift in Sources */,
 				5E647B9B28328AF30060CB71 /* NotificationSettings.swift in Sources */,
+				5EF8137028380E4D00DB0B28 /* EmailResponse.swift in Sources */,
 				5E0069A128351C3100B7EF9A /* InformationSettingsView.swift in Sources */,
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
