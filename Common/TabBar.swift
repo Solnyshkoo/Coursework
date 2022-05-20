@@ -3,13 +3,14 @@ import Foundation
 import SwiftUI
 struct TabBar: View {
     @State private var selection = 2
+    @State var newUser: Bool
     @Binding var people: UserInfo
     var token: String
     var service: Service
     
     var body: some View {
         TabView(selection: $selection){
-            OrganizerView()
+            OrganizerView(output: OrganizerViewModel(service: service, user: people, newUser: newUser))
                 .tabItem {
                     Image(systemName: "plus.app")
                 }

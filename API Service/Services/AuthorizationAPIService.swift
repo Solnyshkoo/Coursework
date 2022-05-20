@@ -25,7 +25,7 @@ final class AuthorizationAPIService {
                 closure(result)
                 return
             }
-            result = .success(post.response.accessToken)
+            result = .success(post.response.accessToken) // TODO: что происходит?
             closure(result)
         }
         session.resume()
@@ -61,7 +61,35 @@ final class AuthorizationAPIService {
         session.resume()
     }
     
-    
+    func getUserInfoByNickname(nickname: String, _ closure: @escaping (Result<String, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/get_info?user_id=\(nickname)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
+            var result: Result<String, InternetError>
+            guard
+                let data = data,
+                let post = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
+                let res = post["user"] as? [String: Any],
+                let email = res["email"] as? String
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response)
+                if response.statusCode == 404 {
+                    result = .failure(InternetError.internetError)
+                } else {
+                    result = .failure(InternetError.fromServerError)
+                }
+                closure(result)
+                return
+            }
+            print(post)
+            result = .success(email)
+            closure(result)
+        }
+        session.resume()
+    }
     
     func restoreUserPassword() {
         

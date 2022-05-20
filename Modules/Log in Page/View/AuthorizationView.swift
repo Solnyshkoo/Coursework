@@ -51,7 +51,7 @@ struct AuthorizationView: View {
                     .clipShape(Capsule())
                     .padding(.top, 45)
                     .fullScreenCover(isPresented: $mainViewModel.showHomeView) {
-                        TabBar(people: $man, token: mainViewModel.getToken(), service: Service())
+                        TabBar(newUser: false, people: $man, token: mainViewModel.getToken(), service: Service())
                     }.onTapGesture {
                         if true {
                             self.mode.wrappedValue.dismiss()

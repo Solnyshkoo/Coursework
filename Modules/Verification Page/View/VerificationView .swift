@@ -2,8 +2,11 @@ import Foundation
 import SwiftUI
 struct VerificationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @ObservedObject var verificationViewModel: VerificationViewModel
     @State private var data: VerificationModel = .init()
-    @State var showNewEventPage: Bool = true
+    init(output: VerificationViewModel) {
+        verificationViewModel = output
+    }
     var body: some View {
         NavigationView {
             VStack {
@@ -26,6 +29,7 @@ struct VerificationView: View {
            
                 HStack(alignment: .center, spacing: 20) {
                     Button(action: {
+                        data = VerificationModel()
                         self.mode.wrappedValue.dismiss()
                     }) {
                         Text("Отменить").font(Font.system(size: 20, design: .default))
@@ -35,9 +39,6 @@ struct VerificationView: View {
                         .padding()
                         .background(ColorPalette.secondBackground)
                         .cornerRadius(10)
-                    // .padding(.top, 10)
-                    // .padding(.trailing, 10)
-                    
                     Button(action: {
                         // TODO: - подробнее
                     }) {
@@ -48,8 +49,11 @@ struct VerificationView: View {
                         .padding()
                         .background(ColorPalette.acсentColor)
                         .cornerRadius(10)
-                        .fullScreenCover(isPresented: $showNewEventPage) {
+                        .fullScreenCover(isPresented: $verificationViewModel.dataIsCorrect) {
                             NewEventView()
+                        }
+                        .alert(verificationViewModel.textWarning, isPresented: $verificationViewModel.showWarning) {
+                            Button("OK", role: .cancel) { }
                         }
                 }.padding(.top, 50)
                 Spacer()
@@ -69,12 +73,12 @@ struct VerificationView: View {
     }
 }
 
-struct VerificationView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            VerificationView()
-            VerificationView()
-                .preferredColorScheme(.dark)
-        }
-    }
-}
+//struct VerificationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            VerificationView()
+//            VerificationView()
+//                .preferredColorScheme(.dark)
+//        }
+//    }
+//}

@@ -22,7 +22,10 @@ struct MailConfirmationView: View {
 
                     VStack {
                         Button(action: {
-                            mailConfirmationViewModel.sendCodeToEmail(email: man.mail)
+                            mailConfirmationViewModel.verifyEmail(email: man.mail, nickname: man.nickname)
+                            if  !mailConfirmationViewModel.emailUser {
+                                mailConfirmationViewModel.sendCodeToEmail(email: man.mail)
+                            }
                         }) {
                             Text("Отправить код").foregroundColor(ColorPalette.buttonText).frame(width: UIScreen.main.bounds.width - 120).padding()
                         }.disabled(man.mail.isEmpty)

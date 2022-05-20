@@ -14,6 +14,9 @@ final class LogInViewModel: ObservableObject {
     @Published var showPasswordView: Bool = false
     @Published var successRestore = false
     @Published var showRestoreAlert = false
+    @Published var emailUser = true
+    @Published var showCodeView = false
+    var mails: [String: String] = [:]
     var wrongMail = " "
     var failRestoreText = " "
     private var token = ""
@@ -22,7 +25,6 @@ final class LogInViewModel: ObservableObject {
         self.service = service
     }
     
-
     func validateUser(respond: ValidateUserModel) {
 //        let k = Service()
 //        DispatchQueue.main.async {
@@ -53,12 +55,7 @@ final class LogInViewModel: ObservableObject {
 //            }
 //        }
         
-        
-        
-        
-
 //
-        
         
         signInFailed = " "
         DispatchQueue.main.async {
@@ -104,42 +101,65 @@ final class LogInViewModel: ObservableObject {
         }
     }
     
-    
     func verifyEmail(email: String, nickname: String) {
-        
+        if let m = mails[nickname] {
+            if m.trimmingCharacters(in: .whitespacesAndNewlines) == email {
+                self.emailUser = false
+                self.showCodeView = true
+            } else {
+                self.emailUser = true
+                self.showCodeView = false
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.service.getUserInfoByNickname(nickname: nickname) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let token):
+                        if token.trimmingCharacters(in: .whitespacesAndNewlines) == email {
+                            self.mails[nickname] = token
+                            self.emailUser = false
+                            self.codeSend = true
+                        } else {
+                            self.emailUser = true
+                            self.codeSend = false
+                        }
+                    case .failure(let error):
+                        print(error.errorDescription!)
+                    }
+                }
+            }
+        }
     }
     
     func restorePassword(pass: String) {
-        //TODO: вызов метода restoreUserPassword, если удачно то токен сохраняем
+        // TODO: вызов метода restoreUserPassword, если удачно то токен сохраняем
         successRestore = true
         showRestoreAlert = false
         failRestoreText = ""
-        self.showHome = true
+        showHome = true
     }
     
     func sendCodeToEmail(email: String) {
-        //TODO: вызов метода sendUserCodeToEmail
-        codeSend = true;
+        // TODO: вызов метода sendUserCodeToEmail
+   //     codeSend = true
         showAllert = false
         wrongMail = "не то"
     }
     
     func checkEmailCode(сode: String) {
-        //TODO: вызов метода checkEmailCode
+        // TODO: вызов метода checkEmailCode
         wrongMail = ""
         wrongCode = false
         showPasswordView = true
         wrongMail = "не то опять"
     }
 
-    
     func getText() -> String {
         return signInFailed
     }
     
-    
     func getToken() -> String {
         return token
     }
-
 }

@@ -8,10 +8,10 @@ final class PersonalViewModel: ObservableObject {
     }
 
     let service: Service
-    @Published var warningText = "";
-    @Published var warning = false;
-    var nicknameWarningText = "";
-  //  @State var сanEdit: Bool = false
+    @Published var warningText = ""
+    @Published var warning = false
+    var nicknameWarningText = ""
+    //  @State var сanEdit: Bool = false
     @State var token: String
     @Published var user: UserInfo = .init()
     
@@ -31,23 +31,22 @@ extension PersonalViewModel: PersonalViewProtocolOutput {
     }
     
     func getData() {
-        if  token != "" {
-        service.getUsersData(token: token) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
+        if token != "" {
+            DispatchQueue.main.async {
+                self.service.getUsersData(token: self.token) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let data):
                 
-                self.user = UserInfo(name: data.response.firstName ?? "Ksenia", surname: data.response.lastName ?? "Petrova", patronymic: "", age: 19, nickname: data.response.username ?? "ksu", password: "", number: data.response.phone ?? "", mail: data.response.email ?? "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
-                break
+                        self.user = UserInfo(name: data.response.firstName ?? "Ksenia", surname: data.response.lastName ?? "Petrova", patronymic: "", age: 19, nickname: data.response.username ?? "ksu", password: "", number: data.response.phone ?? "", mail: data.response.email ?? "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
               
-            case .failure(_):
-                self.nicknameWarningText = "Bad internet connection"
-                break
+                    case .failure:
+                        self.nicknameWarningText = "Bad internet connection"
+                    }
+                }
             }
         }
-        }
-        self.user = UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "", age: 19, nickname: "ksu", password: "", number: "", mail: "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
-        
+        user = UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "", age: 19, nickname: "ksu", password: "", number: "", mail: "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
     }
     
     func changePhoto(image: Image) {
@@ -55,24 +54,20 @@ extension PersonalViewModel: PersonalViewProtocolOutput {
     }
     
     func changeNickname(nick: String) {
-        service.changeUserNickname(token: token, nick: nick) {[weak self] result in
+        service.changeUserNickname(token: token, nick: nick) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(_):
+            case .success:
                 self.user.nickname = nick
                 self.view?.save()
-                break
               
-            case .failure(_):
+            case .failure:
                 DispatchQueue.main.async {
                     self.warningText = "Nickname is busy"
                     self.warning = true
                 }
-              
-                break
             }
         }
-        
     }
     
     func getImage() -> Image {

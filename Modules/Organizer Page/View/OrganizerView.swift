@@ -5,19 +5,28 @@ import SwiftUI
 
 struct OrganizerView: View {
     @State private var searchText = "Найди мероприятие..."
+    @ObservedObject var organizerViewModel: OrganizerViewModel
     @State private var isSearching = false
     @State private var showingAlert = false
     @State private var showingVerification = false
     @State private var showingNewEventPage = false
     @State private var verification = true
+    init(output: OrganizerViewModel) {
+        organizerViewModel = output
+    }
     var body: some View {
         
         NavigationView {
             VStack {
                 ScrollView {
                     SearchBar(searchText: searchText, isSearching: isSearching)
-                    
+                    ForEach(organizerViewModel.user.organiesed) { item in
+                        EventCell(info: item, fullAcсess: true, canEdit: true)
+                    }
                 }
+            }
+            .alert(organizerViewModel.warningText, isPresented: $organizerViewModel.showWarning) {
+                Button("OK", role: .cancel) { }
             }
             .navigationBarTitle(Text("Мои мероприятия"))
             
@@ -25,7 +34,7 @@ struct OrganizerView: View {
                 trailing:
                 Button(
                     action: {
-                        if verification {
+                        if organizerViewModel.user.validate {
                             self.showingNewEventPage.toggle()
                         } else {
                             self.showingVerification.toggle()
@@ -40,7 +49,7 @@ struct OrganizerView: View {
                         NewEventView()
                     })
                     .sheet(isPresented: $showingVerification, content: {
-                        VerificationView()
+                        VerificationView(output: VerificationViewModel(service: organizerViewModel.service, user: organizerViewModel.user))
                     })
             )
             .padding(.top, 10)
@@ -52,8 +61,8 @@ struct OrganizerView: View {
 struct OrganizerView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            OrganizerView()
-            OrganizerView()
+            OrganizerView(output: OrganizerViewModel(service: Service(), user: UserInfo(), newUser: false))
+            OrganizerView(output: OrganizerViewModel(service: Service(), user: UserInfo(), newUser: false))
                 .preferredColorScheme(.dark)
         }
     }

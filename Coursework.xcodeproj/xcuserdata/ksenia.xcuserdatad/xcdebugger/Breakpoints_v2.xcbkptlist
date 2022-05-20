@@ -318,8 +318,8 @@
             filePath = "Modules/Log in Page/View/MailConfirmationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -366,8 +366,8 @@
             filePath = "Modules/Log in Page/View/MailConfirmationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -398,8 +398,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "validateUser(respond:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -423,70 +423,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F40298B2-DF89-44D4-8DD9-7AB23C7E9FA2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C7929136-E0FE-4B3F-9AF5-EDAFDAE38254"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B204DB48-3F6B-4DE2-9E5E-36190A799EB0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AFC76807-1F6E-4573-88B8-0431AC7E44DC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "40EFBAE0-5ECB-41B3-A470-699F38113547"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -494,8 +430,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -510,8 +446,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +462,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,8 +590,8 @@
             filePath = "Modules/Personal Page/View Model/PersonalViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "changeNickname(nick:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -759,70 +695,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D0BD25F7-7C5D-4C9D-B3BC-C4380AE8A80E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "uploadImage(paramName:fileName:image:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "37673F61-54B8-434F-80E7-DF437BAA9CF8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "uploadImage(paramName:fileName:image:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "695B892A-F118-4791-A273-B3304EA5144B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "uploadImage(paramName:fileName:image:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "83FF67BF-EB7C-4C55-BEBB-34C8E33459DF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "API Service/Services/Service.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "uploadImage(paramName:fileName:image:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1FD4FFA5-9725-48A3-A8B1-F84DA5CA4456"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -830,8 +702,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +718,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +734,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -878,8 +750,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>

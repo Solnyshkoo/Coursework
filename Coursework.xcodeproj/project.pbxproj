@@ -66,6 +66,8 @@
 		5EF8135E28367AB900DB0B28 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8135D28367AB900DB0B28 /* ReviewCell.swift */; };
 		5EF8136128367ADD00DB0B28 /* ReviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136028367ADD00DB0B28 /* ReviewModel.swift */; };
 		5EF813632836867700DB0B28 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813622836867700DB0B28 /* ReviewView.swift */; };
+		5EF813652837ACEC00DB0B28 /* InternetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813642837ACEC00DB0B28 /* InternetError.swift */; };
+		5EF813682837BDF600DB0B28 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813672837BDF500DB0B28 /* VerificationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +131,8 @@
 		5EF8135D28367AB900DB0B28 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		5EF8136028367ADD00DB0B28 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		5EF813622836867700DB0B28 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		5EF813642837ACEC00DB0B28 /* InternetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetError.swift; sourceTree = "<group>"; };
+		5EF813672837BDF500DB0B28 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 				5E5970842819F72300BF3240 /* RegistrationUserError.swift */,
 				5EA591772829CA53007D4BAC /* UserDataResponseModel.swift */,
 				5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */,
+				5EF813642837ACEC00DB0B28 /* InternetError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 		5ECD457E2832484C00729E2C /* Verification Page */ = {
 			isa = PBXGroup;
 			children = (
+				5EF813662837BDE100DB0B28 /* ViewModel */,
 				5ECD458228324BFE00729E2C /* Model */,
 				5ECD457F2832485C00729E2C /* View */,
 			);
@@ -557,8 +563,8 @@
 				5EE034DE281F12CD00754267 /* Log in Page */,
 				5EE035112821936800754267 /* Organizer Page */,
 				5ECD457E2832484C00729E2C /* Verification Page */,
-				5E5970A6281C88C900BF3240 /* Events Page */,
 				5E896CDE2824908F00D67E92 /* New Event Page */,
+				5E5970A6281C88C900BF3240 /* Events Page */,
 				5ECD45872832526E00729E2C /* Event detail Page */,
 				5ECD457528323F3400729E2C /* Event Participants Page */,
 				5EE035132821941700754267 /* Favorite Page */,
@@ -574,6 +580,14 @@
 				5EF8136028367ADD00DB0B28 /* ReviewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5EF813662837BDE100DB0B28 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5EF813672837BDF500DB0B28 /* VerificationViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -677,6 +691,7 @@
 				5E896CD928241A3400D67E92 /* FavoriteView.swift in Sources */,
 				5EE034EE281F12CD00754267 /* RegistrationView.swift in Sources */,
 				5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */,
+				5EF813652837ACEC00DB0B28 /* InternetError.swift in Sources */,
 				5EE034EC281F12CD00754267 /* LogInViewModel.swift in Sources */,
 				5EE035212821959F00754267 /* ViewExtension.swift in Sources */,
 				5EE034DD281EE7B400754267 /* CustomButton.swift in Sources */,
@@ -691,6 +706,7 @@
 				5E896CDD28246D1B00D67E92 /* OrganizerViewModel.swift in Sources */,
 				5E647B972832821F0060CB71 /* PersonalSettings.swift in Sources */,
 				5E647B99283286110060CB71 /* СonfidentialSettings.swift in Sources */,
+				5EF813682837BDF600DB0B28 /* VerificationViewModel.swift in Sources */,
 				5E896CD72824073300D67E92 /* OrganizerView.swift in Sources */,
 				5EE03502281F13FD00754267 /* EventCell.swift in Sources */,
 				5E5970852819F72300BF3240 /* RegistrationUserError.swift in Sources */,
