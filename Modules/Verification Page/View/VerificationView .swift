@@ -4,6 +4,7 @@ struct VerificationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var verificationViewModel: VerificationViewModel
     @State private var data: VerificationModel = .init()
+    @State var showInfo: Bool = false
     init(output: VerificationViewModel) {
         verificationViewModel = output
     }
@@ -40,7 +41,7 @@ struct VerificationView: View {
                         .background(ColorPalette.secondBackground)
                         .cornerRadius(10)
                     Button(action: {
-                        // TODO: - подробнее
+                        self.showInfo.toggle()
                     }) {
                         Text("Проверить").font(Font.system(size: 20, design: .default))
                             .padding(.trailing, 3)
@@ -53,6 +54,9 @@ struct VerificationView: View {
                             NewEventView(output: NewEventViewModel(service: verificationViewModel.service, user: verificationViewModel.user))
                         }
                         .alert(verificationViewModel.textWarning, isPresented: $verificationViewModel.showWarning) {
+                            Button("OK", role: .cancel) { }
+                        }
+                        .alert("Данные отправлены. Длительность проверки до недели", isPresented: $showInfo) {
                             Button("OK", role: .cancel) { }
                         }
                 }.padding(.top, 50)
