@@ -3,6 +3,7 @@ import SwiftUI
 import UIKit
 final class Service {
     static let adress = "https://7ec0-109-252-174-120.ngrok.io"
+    
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, Error>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")

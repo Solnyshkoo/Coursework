@@ -22,10 +22,15 @@ struct MailConfirmationView: View {
 
                     VStack {
                         Button(action: {
-                            mailConfirmationViewModel.verifyEmail(email: man.mail, nickname: man.nickname)
-                            if  !mailConfirmationViewModel.emailUser {
+                            if restorePassword {
+                                mailConfirmationViewModel.verifyEmail(email: man.mail, nickname: man.nickname)
+                                if  !mailConfirmationViewModel.emailUser {
+                                    mailConfirmationViewModel.sendCodeToEmail(email: man.mail)
+                                }
+                            } else {
                                 mailConfirmationViewModel.sendCodeToEmail(email: man.mail)
                             }
+                            
                         }) {
                             Text("Отправить код").foregroundColor(ColorPalette.buttonText).frame(width: UIScreen.main.bounds.width - 120).padding()
                         }.disabled(man.mail.isEmpty)
@@ -37,9 +42,9 @@ struct MailConfirmationView: View {
                     }
                     VStack {
                         if mailConfirmationViewModel.codeSend {
-                            checkKey(model: mailConfirmationViewModel, man: $man, сodef: $сoder, newPassword: restorePassword)
+                            checkKey(model: mailConfirmationViewModel, man: $man, сodef: сoder, newPassword: restorePassword)
                         } else {
-                            checkKey(model: mailConfirmationViewModel, man: $man, сodef: $сoder, newPassword: restorePassword).hidden()
+                            checkKey(model: mailConfirmationViewModel, man: $man, сodef: сoder, newPassword: restorePassword).hidden()
                         }
                     }.padding()
                    
@@ -65,7 +70,7 @@ struct MailConfirmationView: View {
 struct checkKey: View {
     @ObservedObject var model: LogInViewModel
     @Binding var man: UserInfo
-    @Binding var сodef: String
+    @State var сodef: String
     var newPassword: Bool
     @State var warning = ""
     var body: some View {
@@ -73,6 +78,9 @@ struct checkKey: View {
             ClassicTextField(labelText: "Код", fieldText: "Введите код", user: $сodef).padding(.top, 40)
         }.padding(.horizontal, 6)
         Button(action: {
+            print("_______1_____")
+            print(сodef)
+            print("_______2_____")
             model.checkEmailCode(сode: сodef)
         }) {
             Text("Проверить").foregroundColor(ColorPalette.buttonText).frame(width: UIScreen.main.bounds.width - 120).padding()

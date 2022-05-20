@@ -25,7 +25,7 @@ struct ReviewCell: View {
                            self.showPersonalView.toggle()
                        }
                        .fullScreenCover(isPresented: $showPersonalView) {
-                           PersonalView(output: PersonalViewModel(service: Service(), tok: ""))
+//                           PersonalView(output: PersonalViewModel(service: Service(), user: people, newUser: false))
                        }
                    Spacer()
                }

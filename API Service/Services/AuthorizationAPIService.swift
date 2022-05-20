@@ -40,8 +40,7 @@ final class AuthorizationAPIService {
             var result: Result<String, RegistrationUserError>
             guard
                 let data = data,
-                let post = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
-                let token = post["access_token"] as? String
+                let post = try? JSONDecoder().decode(Details.self, from: data)
             else {
                 guard let response = response as? HTTPURLResponse else { return }
                 
@@ -55,14 +54,14 @@ final class AuthorizationAPIService {
                 closure(result)
                 return
             }
-            result = .success(token)
+            result = .success(post.response.accessToken)
             closure(result)
         }
         session.resume()
     }
     
-    func getUserInfoByNickname(nickname: String, _ closure: @escaping (Result<String, InternetError>) -> Void) {
-        guard let url = URL(string: "\(Service.adress)/user/get_info?user_id=\(nickname)".encodeUrl) else {
+    func getUserEmailByNickname(nickname: String, _ closure: @escaping (Result<String, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/get_mail?username=\(nickname)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
@@ -71,8 +70,7 @@ final class AuthorizationAPIService {
             guard
                 let data = data,
                 let post = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
-                let res = post["user"] as? [String: Any],
-                let email = res["email"] as? String
+                let email = post["email"] as? String
             else {
                 guard let response = response as? HTTPURLResponse else { return }
                 print(response)
@@ -91,15 +89,42 @@ final class AuthorizationAPIService {
         session.resume()
     }
     
-    func restoreUserPassword() {
-        
-    }
+    func restoreUserPassword() {}
     
-    func sendUserCodeToEmail() {
-        
-    }
+    func sendUserCodeToEmail(email: String, _ closure: @escaping (Result<String, SendCodeError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/send_mail?mail=\(email)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, _, _ in
+            var result: Result<String, SendCodeError>
+            guard
+                let data = data,
+                let post = try? JSONDecoder().decode(CodeData.self, from: data)
+            else {
+                result = .failure(SendCodeError.internetError)
+                closure(result)
+                return
+            }
+            if post.response.code == -1 {
+                result = .failure(SendCodeError.wrongMail)
+            } else {
+                result = .success(String(post.response.code))
+            }
+            closure(result)
+        }
     
-    func checkEmailCode() {
-        
+        session.resume()
     }
+
+    func checkEmailCode() {}
+}
+
+struct CodeData: Codable {
+    let response: ResponseCodeData
+}
+
+// MARK: - Response
+struct ResponseCodeData: Codable {
+    let code: Int
 }

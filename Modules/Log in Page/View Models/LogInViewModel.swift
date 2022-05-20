@@ -16,6 +16,7 @@ final class LogInViewModel: ObservableObject {
     @Published var showRestoreAlert = false
     @Published var emailUser = true
     @Published var showCodeView = false
+    var codeRight: String = ""
     var mails: [String: String] = [:]
     var wrongMail = " "
     var failRestoreText = " "
@@ -85,17 +86,22 @@ final class LogInViewModel: ObservableObject {
                 guard let self = self else { return }
                 switch result {
                 case .success(let token):
-                    self.signUpFailed = " "
-                    self.token = token
-                    self.showHome = true
-                    self.showSignUpAlert = false
-                    UserDefaults.standard.set(token, forKey: "token")
-                    print(token)
+                    DispatchQueue.main.async {
+                        self.signUpFailed = " "
+                        self.token = token
+                        self.showHome = true
+                        self.showSignUpAlert = false
+                        UserDefaults.standard.set(token, forKey: "token")
+
+                    }
+                   
                 case .failure(let error):
+                    DispatchQueue.main.async {
                     self.showHome = false
                     self.signUpFailed = error.errorDescription!
                     self.showSignUpAlert = true
                     print(error.errorDescription!)
+                    }
                 }
             }
         }
@@ -112,7 +118,7 @@ final class LogInViewModel: ObservableObject {
             }
         } else {
             DispatchQueue.main.async {
-                self.service.getUserInfoByNickname(nickname: nickname) { [weak self] result in
+                self.service.getUserEmailByNickname(nickname: nickname) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
                     case .success(let token):
@@ -141,18 +147,44 @@ final class LogInViewModel: ObservableObject {
     }
     
     func sendCodeToEmail(email: String) {
-        // TODO: вызов метода sendUserCodeToEmail
-   //     codeSend = true
         showAllert = false
         wrongMail = "не то"
+        DispatchQueue.main.async {
+            self.service.sendUserCodeToEmail(email: email) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let token):
+                    DispatchQueue.main.async {
+                    self.codeSend = true
+                    self.codeRight = token
+                    self.showAllert = false
+                    self.wrongMail = ""
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                    self.codeSend = false
+                    self.codeRight = ""
+                    self.showAllert = true
+                    self.wrongMail = error.errorDescription ?? "Ошибка"
+                    }
+                }
+            }
+        }
     }
     
     func checkEmailCode(сode: String) {
-        // TODO: вызов метода checkEmailCode
-        wrongMail = ""
-        wrongCode = false
-        showPasswordView = true
-        wrongMail = "не то опять"
+        print("_______3_____")
+        print(codeRight)
+        print("_______3_____")
+        if self.codeRight == сode {
+            wrongMail = ""
+            wrongCode = false
+            showPasswordView = true
+        } else {
+            wrongMail = "Неправильный код"
+            wrongCode = true
+            showPasswordView = false
+        }
     }
 
     func getText() -> String {

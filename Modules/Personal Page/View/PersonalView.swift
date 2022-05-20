@@ -6,17 +6,6 @@ protocol PersonalViewProtocolInput {
     func save()
 }
 
-protocol PersonalViewProtocolOutput {
-    func setView(view: PersonalViewProtocolInput)
-    func getFio() -> String
-    func getImage() -> Image
-    func getNickname() -> String
-    func getMyEvents() -> [EventModel]
-    func getHistory() -> [EventModel]
-    func setPicture(image: Image)
-    func getData()
-}
-
 struct PersonalView: View {
     @ObservedObject  var personalViewModel: PersonalViewModel
     @State private var selectedIndex: Int? = 0
@@ -213,12 +202,12 @@ extension PersonalView: PersonalViewProtocolInput {
     }
 }
 
-struct PersonalView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            PersonalView(output: PersonalViewModel(service: Service(), tok: "lol"))
-            PersonalView(output: PersonalViewModel(service: Service(), tok: "lol"))
-                .preferredColorScheme(.dark)
-        }
-    }
-}
+//struct PersonalView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            PersonalView(output: PersonalViewModel(service: Service(), tok: "lol"))
+//            PersonalView(output: PersonalViewModel(service: Service(), tok: "lol"))
+//                .preferredColorScheme(.dark)
+//        }
+//    }
+//}

@@ -25,7 +25,7 @@ struct TabBar: View {
                     Image(systemName: "heart")
                 }
                 .tag(2)
-            PersonalView(output: PersonalViewModel(service: service, tok: token))
+            PersonalView(output: PersonalViewModel(service: service, user: people, newUser: newUser))
                 .tabItem {
                     Image(systemName: "person")
                 }

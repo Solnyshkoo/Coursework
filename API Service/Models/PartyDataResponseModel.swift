@@ -12,6 +12,7 @@ struct ResponsePartyData: Codable {
     let creatorName, responseDescription, endingAt, name: String
     let partyID, price: Int
     let startingAt: String
+    let visitors: [Int]
 
     enum CodingKeys: String, CodingKey {
         case address
@@ -23,5 +24,6 @@ struct ResponsePartyData: Codable {
         case partyID = "party_id"
         case price
         case startingAt = "starting_at"
+        case visitors
     }
 }

@@ -70,6 +70,7 @@
 		5EF813682837BDF600DB0B28 /* VerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813672837BDF500DB0B28 /* VerificationViewModel.swift */; };
 		5EF8136A2837C1D300DB0B28 /* NewEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813692837C1D300DB0B28 /* NewEventViewModel.swift */; };
 		5EF8136C2837D61400DB0B28 /* PartyDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */; };
+		5EF8136E2837FC7400DB0B28 /* SendCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,7 @@
 		5EF813672837BDF500DB0B28 /* VerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewModel.swift; sourceTree = "<group>"; };
 		5EF813692837C1D300DB0B28 /* NewEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewModel.swift; sourceTree = "<group>"; };
 		5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDataResponseModel.swift; sourceTree = "<group>"; };
+		5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCodeError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */,
 				5EF813642837ACEC00DB0B28 /* InternetError.swift */,
 				5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */,
+				5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -689,6 +692,7 @@
 				5ECD457D2832403C00729E2C /* ParticipantsModel.swift in Sources */,
 				5EF8135E28367AB900DB0B28 /* ReviewCell.swift in Sources */,
 				5EE034FC281F12E900754267 /* CourseApp.swift in Sources */,
+				5EF8136E2837FC7400DB0B28 /* SendCodeError.swift in Sources */,
 				5EE035282821A45100754267 /* SettingsViewModel.swift in Sources */,
 				5E0069A52835652F00B7EF9A /* AlertView.swift in Sources */,
 				5E896CE32824919600D67E92 /* NewEventView.swift in Sources */,

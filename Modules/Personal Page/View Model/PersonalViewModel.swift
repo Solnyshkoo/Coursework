@@ -7,21 +7,26 @@ final class PersonalViewModel: ObservableObject {
         }
     }
 
-    let service: Service
+    
     @Published var warningText = ""
     @Published var warning = false
     var nicknameWarningText = ""
-    //  @State var сanEdit: Bool = false
-    @State var token: String
-    @Published var user: UserInfo = .init()
+   
+    @Published var user: UserInfo
+    var token: String
+    let service: Service
     
-    init(service: Service, tok: String) {
+    init(service: Service, user: UserInfo, newUser: Bool) {
         self.service = service
-        token = tok
+        self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
+        if newUser {
+            self.user = user
+        } else {
+            self.user = UserInfo()
+            getData()
+        }
     }
-}
-
-extension PersonalViewModel: PersonalViewProtocolOutput {
+    
     func setView(view: PersonalViewProtocolInput) {
         self.view = view
     }
@@ -36,8 +41,7 @@ extension PersonalViewModel: PersonalViewProtocolOutput {
                 self.service.getUsersData(token: self.token) { [weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case .success(let data):
-                
+                    case .success(let data): //TODO: исправить
                         self.user = UserInfo(name: data.response.firstName ?? "Ksenia", surname: data.response.lastName ?? "Petrova", patronymic: "", age: 19, nickname: data.response.username ?? "ksu", password: "", number: data.response.phone ?? "", mail: data.response.email ?? "", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
               
                     case .failure:
@@ -89,4 +93,5 @@ extension PersonalViewModel: PersonalViewProtocolOutput {
     func setPicture(image: Image) {
         user.image = image
     }
+  
 }
