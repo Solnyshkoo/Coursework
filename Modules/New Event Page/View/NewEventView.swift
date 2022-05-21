@@ -27,7 +27,7 @@ struct NewEventView: View {
                                
                             }.foregroundColor(ColorPalette.lightGray2)
                             .sheet(isPresented: $shoosePhoto) {
-                                ImagePicker(image: $event.mainPhoto, isPresented: $shoosePhoto)
+                                ImagePicker(image: $photo, isPresented: $shoosePhoto)
                             }
                     }
                     .padding(.bottom, 15)
@@ -53,6 +53,7 @@ struct NewEventView: View {
                             .background(ColorPalette.secondBackground)
                             .cornerRadius(10)
                         Button(action: {
+                            event.mainPhoto = photo ?? Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
                             newEventViewModel.createEvent(data: event)
                             if newEventViewModel.canCreateEvent {
                                 self.mode.wrappedValue.dismiss()

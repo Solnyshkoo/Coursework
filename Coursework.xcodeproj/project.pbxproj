@@ -72,6 +72,7 @@
 		5EF8136C2837D61400DB0B28 /* PartyDataResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */; };
 		5EF8136E2837FC7400DB0B28 /* SendCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */; };
 		5EF8137028380E4D00DB0B28 /* EmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */; };
+		5EF813722839481F00DB0B28 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813712839481E00DB0B28 /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +142,7 @@
 		5EF8136B2837D61400DB0B28 /* PartyDataResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyDataResponseModel.swift; sourceTree = "<group>"; };
 		5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCodeError.swift; sourceTree = "<group>"; };
 		5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailResponse.swift; sourceTree = "<group>"; };
+		5EF813712839481E00DB0B28 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,6 +556,7 @@
 		5EE0351C2821951200754267 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				5EF813712839481E00DB0B28 /* FavoriteViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */,
 				5ECD458A2832534D00729E2C /* EventDetailView .swift in Sources */,
 				5ECD457A28323FC000729E2C /* ParticipantsCell.swift in Sources */,
+				5EF813722839481F00DB0B28 /* FavoriteViewModel.swift in Sources */,
 				5EF8136128367ADD00DB0B28 /* ReviewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

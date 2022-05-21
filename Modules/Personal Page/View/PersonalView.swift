@@ -128,6 +128,10 @@ struct PersonalView: View {
                                         Section {
                                              Button(action: {
                                                 self.showSettings.toggle()
+                                                 
+                                                     print(personalViewModel.events)
+                                                     print("___ll___")
+                                                 
                                             }) {
                                                 Label("Настройки", systemImage: "gearshape")
                                             }
@@ -169,14 +173,14 @@ struct PersonalView: View {
                         .padding(.bottom, 5)
                     Spacer()
                     if selectedIndex == 0 {
-                        ForEach(personalViewModel.getHistory()) { item in
-                            EventCell(info: item, fullAcсess: true, canEdit: false)
+                        ForEach($personalViewModel.user.subscribes) { item in
+                            EventCell(info: item, people: $personalViewModel.user, fullAcсess: true, canEdit: false)
                         }
-                       
                     } else {
-                        ForEach(personalViewModel.getMyEvents()) { item in
-                            EventCell(info: item, fullAcсess: true, canEdit: false)
+                        ForEach($personalViewModel.user.organiesed) { item in
+                            EventCell(info: item, people: $personalViewModel.user, fullAcсess: true, canEdit: false)
                         }
+                        
                     }
                 }
                 

@@ -3,8 +3,10 @@ import SwiftUI
 struct EventModel: Identifiable {
     var id: Int = -1
     var name: String = ""
-    var logo: Image = Image(systemName: "circle")
-    var mainPhoto: Image?
+    var creatorName: String = ""
+    var logo: Image = Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
+    
+    var mainPhoto: Image = Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
     var distination: String = ""
     var price: String = ""
     var description: String = ""
@@ -12,4 +14,5 @@ struct EventModel: Identifiable {
     var like: Bool = false
     var data: String = ""
     var contacts: String = ""
+    var visitors: [Int] = []
 }

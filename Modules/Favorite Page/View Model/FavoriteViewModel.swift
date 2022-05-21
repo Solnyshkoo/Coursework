@@ -1,19 +1,7 @@
 import Foundation
 import SwiftUI
-final class PersonalViewModel: ObservableObject {
-    var view: PersonalViewProtocolInput? {
-        didSet {
-            getData()
-        }
-    }
-
-    @Published var warningText = ""
-    @Published var warning = false
-    var nicknameWarningText = ""
-   
+final class FavoriteViewModel: ObservableObject {
     @Published var user: UserInfo
-    @Published var userpresent: Bool = false
-    @Published var events: [Int: EventModel] = [:]
     var token: String
     let service: Service
     
@@ -23,18 +11,13 @@ final class PersonalViewModel: ObservableObject {
         if newUser {
             self.user = user
         } else {
-            self.user = UserInfo()
-            getData()
+            self.user = user
         }
+        print("___________67__________")
+        print(user)
+        print("___________67__________")
     }
     
-    func setView(view: PersonalViewProtocolInput) {
-        self.view = view
-    }
-    
-    func getFio() -> String {
-        return user.name + " " + user.surname
-    }
     
     func getData() {
         if token != "" {
@@ -45,72 +28,29 @@ final class PersonalViewModel: ObservableObject {
                 case .success(let data): // TODO: исправить
                     DispatchQueue.main.async {
                         self.user = self.createUser(data: data)
-                        for i in 0..<self.user.subscribes.count {
-                            self.getEventInfo(index: self.user.subscribes[i].id, i: i, array: 1)
-                        }
-                        for i in 0..<self.user.organiesed.count {
-                            self.getEventInfo(index: self.user.organiesed[i].id, i: i,  array: 2)
+                        for i in 0..<self.user.favorities.count {
+                            self.getEventInfo(index: self.user.favorities[i].id, i: i)
                         }
                     }
                        
                 case .failure:
-                    self.nicknameWarningText = "Bad internet connection"
+                    break;
                 }
             }
              }
         }
     }
     
-    func changePhoto(image: Image) {
-        user.image = image
-    }
-    
-    func changeNickname(nick: String) {
-        service.changeUserNickname(token: token, nick: nick) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.user.nickname = nick
-                    self.view?.save()
-                }
-            case .failure:
-                DispatchQueue.main.async {
-                    self.warningText = "Nickname is busy"
-                    self.warning = true
-                }
-            }
-        }
-    }
-    
-    func getImage() -> Image {
-        return user.image ?? Image("noImage").resizable()
-    }
-  
-    func getNickname() -> String {
-        return user.nickname
-    }
-    
-    func getMyEvents() -> [EventModel] {
-        return user.organiesed
-    }
-    
-    func getHistory() -> [EventModel] {
-        return user.subscribes
-    }
-    
-    func getEventInfo(index: Int, i: Int, array: Int) {
+    func getEventInfo(index: Int, i: Int) {
         DispatchQueue.main.async {
             self.service.getEventInfo(eventId: index, token: self.token) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        if array == 1 {
-                            self.user.subscribes[i] = self.createEvent(data: data)
-                        } else {
-                            self.user.organiesed[i] = self.createEvent(data: data)
-                        }
+                  
+                            self.user.favorities[i] = self.createEvent(data: data)
+                        
                     }
                 case .failure:
                     break
@@ -121,19 +61,15 @@ final class PersonalViewModel: ObservableObject {
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        if array == 1 {
-                            self.user.subscribes[i].mainPhoto = Image(uiImage: data)
-                        } else {
-                            self.user.organiesed[i].mainPhoto = Image(uiImage: data)
-                        }
+                        
+                            self.user.favorities[i].mainPhoto = Image(uiImage: data)
+                        
                     }
                 case .failure:
                     DispatchQueue.main.async {
-                        if array == 1 {
-                            self.user.subscribes[i].mainPhoto = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
-                        } else {
-                            self.user.organiesed[i].mainPhoto = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
-                        }
+               
+                            self.user.favorities[i].mainPhoto = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
+                        
                     }
                 }
             }
@@ -142,29 +78,22 @@ final class PersonalViewModel: ObservableObject {
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        if array == 1 {
-                            self.user.subscribes[i].logo = Image(uiImage: data)
-                        } else {
-                            self.user.organiesed[i].logo = Image(uiImage: data)
-                        }
+                       
+                            self.user.favorities[i].logo = Image(uiImage: data)
+                        
                     }
                 case .failure:
                     DispatchQueue.main.async {
-                        if array == 1 {
-                            self.user.subscribes[i].logo = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
-                        } else {
-                            self.user.organiesed[i].logo = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
-                        }
+                     
+                            self.user.favorities[i].logo = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
+                       
                     }
                 }
             }
         }
     }
 
-    func setPicture(image: Image) {
-        user.image = image
-    }
-  
+    
     private func createUser(data: UserData) -> UserInfo {
         var array = data.response.favorites
         var fav: [EventModel] = []

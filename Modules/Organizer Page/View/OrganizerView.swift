@@ -20,9 +20,9 @@ struct OrganizerView: View {
             VStack {
                 ScrollView {
                     SearchBar(searchText: searchText, isSearching: isSearching)
-                    ForEach(organizerViewModel.user.organiesed) { item in
-                        EventCell(info: item, fullAcсess: true, canEdit: true)
-                    }
+//                    ForEach(organizerViewModel.user.organiesed) { item in
+//                        EventCell(info: item, fullAcсess: true, canEdit: true)
+                  //  }
                 }
             }
             .alert(organizerViewModel.warningText, isPresented: $organizerViewModel.showWarning) {

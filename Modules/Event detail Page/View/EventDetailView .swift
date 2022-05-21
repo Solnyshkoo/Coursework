@@ -14,7 +14,7 @@ struct EventDetailView: View {
             NavigationView {
                 ScrollView {
                 VStack(alignment: .leading, spacing: 8, content:  {
-                    info.mainPhoto?.resizable().smallRectangleCropped()
+                    info.mainPhoto.resizable().smallRectangleCropped()
                         .frame(height: 500)
                     // TODO: - кнопка ещё
                     Text(info.description)

@@ -1,8 +1,8 @@
 import Foundation
 import SwiftUI
 struct EventCell: View {
-    @State var info: EventModel
-    @State var people: UserInfo = UserInfo()
+    @Binding var info: EventModel
+    @Binding var people: UserInfo
     @State var fullAcсess: Bool
     @State var canEdit: Bool
     @State var showAlert: Bool = false
@@ -23,7 +23,7 @@ struct EventCell: View {
                        .scaledToFit()
                        .padding(.leading, 20)
                        .padding(.trailing, 15)
-                   Text(info.name).foregroundColor(ColorPalette.text).font(.title3)
+                   Text(info.creatorName).foregroundColor(ColorPalette.text).font(.title3)
                        .bold()
                        .padding(.trailing, 10)
                        .lineLimit(1)
@@ -43,7 +43,6 @@ struct EventCell: View {
                            Image(systemName:  "pencil" ).font(Font.system(size: 25, design: .default)).padding(.top, 4)
                                .padding(.trailing, 10)
                        }.foregroundColor(ColorPalette.text)
-                        
                    } else {
                    Button(action: {
                        if  fullAcсess {
@@ -68,24 +67,35 @@ struct EventCell: View {
                        
                }.padding(.bottom, 5)
             
-                info.mainPhoto?.resizable().smallRectangleCropped()
+                info.mainPhoto.resizable().smallRectangleCropped()
                     .frame(height: 500)
                    
                 
                 // TODO: - поменять от вас
                 HStack {
-                    Text(info.price + "₽").font(.title3).bold().padding(.leading, 10)
-                    Spacer()
-                    Text(info.data).font(.title3).bold().padding(.trailing, 10)
-                }
-                // TODO: - кнопка ещё
-                Text(info.description)
-                    .foregroundColor(ColorPalette.text)
-                    .font(.callout)
-                    .padding(.leading, 10)
+                    Text(info.name).font(.title)
+                            .bold()
+                          
+                            
+                        .foregroundColor(ColorPalette.text)
+                        .padding(.leading, 10)
+                        
+                        Spacer()
+                    Text(info.data + " · " + info.price + "₽").font(.callout).bold().padding(.trailing, 10)
                     
-                    .padding(.top, 2)
-                    .lineLimit(3)
+                    
+                }  .padding(.top, 2)
+                // TODO: - кнопка ещё
+             
+                VStack(alignment: .leading) {
+                    Text(info.description)
+                        .foregroundColor(ColorPalette.text)
+                        .font(.callout)
+                        .padding(.leading, 10)
+
+                        .padding(.top, 1)
+                        .lineLimit(3)
+                }
                 HStack {
                     Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20) .padding(.top, -5)
                         .onTapGesture {
@@ -129,10 +139,11 @@ struct EventCell: View {
 
 
 struct EventCellPreviewContainer_2: View {
-    @State var lol: EventModel = EventModel(id: 1, name: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
+    @State var lol: EventModel = EventModel(id: 1, name: "Экватор", creatorName: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
+    @State var o = UserInfo()
 
     var body: some View {
-        EventCell(info: lol, fullAcсess: true, canEdit: true)
+        EventCell(info: $lol, people: $o, fullAcсess: true, canEdit: true)
     }
 }
 

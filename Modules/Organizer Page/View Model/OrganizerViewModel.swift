@@ -42,18 +42,28 @@ final class OrganizerViewModel: ObservableObject {
     private func createUser(data: UserData) -> UserInfo {
         var array = data.response.favorites
         var fav: [EventModel] = []
-        for i in 0..<array.capacity {
-            fav.append(EventModel(id: array[i]))
+        for i in 0..<array.count {
+            if let index = Int(array[i]) {
+            fav.append(EventModel(id: index))
+            }
         }
-        array = data.response.partiesCreated
+        let array2 =  data.response.partiesCreated
         var org:[EventModel] = []
-        for i in 0..<array.capacity {
-            org.append(EventModel(id: array[i]))
+        print("____e__")
+        print(array2.count)
+        print("____e__")
+        for i in 0..<array2.count {
+           
+            org.append(EventModel(id: array2[i]))
+            
         }
+            
         array = data.response.goingTo
         var sub:[EventModel] = []
-        for i in 0..<array.capacity {
-            sub.append(EventModel(id: array[i]))
+        for i in 0..<array.count {
+            if let index = Int(array[i]) {
+                sub.append(EventModel(id: index))
+            }
         }
     
         return UserInfo(name:  data.response.user.firstName , surname: data.response.user.lastName , patronymic: "", age: -1, nickname: data.response.user.username , password: "", number: "", mail: data.response.user.email , sex: "", image: nil, validate: false, favorities: fav, subscribes: sub, organiesed: org)

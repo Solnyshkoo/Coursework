@@ -4,18 +4,23 @@ import UIKit
 final class Service {
     static let adress = "https://7ec0-109-252-174-120.ngrok.io"
     
-    func getUsersData(token: String, _ closure: @escaping (Result<UserData, Error>) -> Void) {
+    func getUsersData(token: String, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
         let session = URLSession.shared.dataTask(with: url) { data, response, error in
-            var result: Result<UserData, Error>
+            var result: Result<UserData, InternetError>
             guard
                 let data = data,
                 let post = try? JSONDecoder().decode(UserData.self, from: data)
             else {
-                result = .failure(error!) //TODO мб nill
+                guard let response = response as? HTTPURLResponse else { return }
+                if response.statusCode == 404 {
+                    result = .failure(InternetError.internetError)
+                } else {
+                    result = .failure(InternetError.fromServerError)
+                }
                 closure(result)
                 return
             }
@@ -54,7 +59,7 @@ final class Service {
     }
     
     
-    func changeUserPhoto(token: String, nick: String, _ closure: @escaping (Result<UIImage, ChangeUserDataError>) -> Void) {
+    func getUserPhoto(token: String, nick: String, _ closure: @escaping (Result<UIImage, ChangeUserDataError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_photo?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
@@ -62,7 +67,8 @@ final class Service {
         let session = URLSession.shared.dataTask(with: url) { data, response, error in
             var result: Result<UIImage, ChangeUserDataError>
             guard
-                let data = data
+                let data = data,
+                let image = UIImage(data: data)
             else {
                 guard let response = response as? HTTPURLResponse else { return }
                 print(response.statusCode)
@@ -75,9 +81,9 @@ final class Service {
                 closure(result)
                 return
             }
-            var t = UIImage(data: data)
+            let t = image
            
-            result = .success(t!)
+            result = .success(t)
             closure(result)
         }
         session.resume()
@@ -113,6 +119,7 @@ final class Service {
             print(response)
         }).resume()
     }
+    
     
     
     
@@ -172,6 +179,38 @@ final class Service {
             }
             print(post)
             result = .success(post)
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    func getEventPhoto(token: String, id: Int, _ closure: @escaping (Result<UIImage, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/get_photo?access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+            var result: Result<UIImage, InternetError>
+            guard
+                let data = data,
+                let image = UIImage(data: data)
+
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response.statusCode)
+                if response.statusCode == 233 {
+                    result = .failure(InternetError.fromServerError)
+                } else {
+                    result = .failure(InternetError.internetError)
+                }
+                print(response.statusCode)
+                closure(result)
+                return
+            }
+            print(data)
+            let t = image
+           
+            result = .success(t)
             closure(result)
         }
         session.resume()

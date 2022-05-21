@@ -36,9 +36,10 @@ final class LogInViewModel: ObservableObject {
                     UserDefaults.standard.set(token, forKey: "token")
                     DispatchQueue.main.async {
                         self.signInFailed = " "
+                        self.token = token
                         self.showHomeView = true
                     }
-                    self.token = token
+                    
                 case .failure(let error):
                     DispatchQueue.main.async {
                         self.signInFailed = error.errorDescription!
@@ -172,4 +173,33 @@ final class LogInViewModel: ObservableObject {
     func getToken() -> String {
         return token
     }
+    
+    
+//
+//    func getData() {
+//        if token != "" {
+//            DispatchQueue.main.async {
+//                self.service.getUsersData(token: self.token) { [weak self] result in
+//                guard let self = self else { return }
+//                switch result {
+//                case .success(let data): // TODO: исправить
+//                    DispatchQueue.main.async {
+//                        self.user = self.createUser(data: data)
+//                        for i in 0..<self.user.subscribes.count {
+//                            self.getEventInfo(index: self.user.subscribes[i].id, i: i, array: 1)
+//                        }
+//                        for i in 0..<self.user.organiesed.count {
+//                            self.getEventInfo(index: self.user.organiesed[i].id, i: i,  array: 2)
+//                        }
+//                    }
+//
+//                case .failure:
+//                    self.nicknameWarningText = "Bad internet connection"
+//                }
+//            }
+//             }
+//        }
+//    }
+    
+    
 }

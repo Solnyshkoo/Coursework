@@ -8,7 +8,7 @@ struct UserData: Codable {
 
 // MARK: - Response
 struct UserResponse: Codable {
-    let favorites, goingTo: [Int]
+    let favorites, goingTo: [String]
     let partiesCreated: [Int]
     let user: User
 

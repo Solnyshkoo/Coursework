@@ -2,7 +2,7 @@ import Foundation
 
 import SwiftUI
 struct TabBar: View {
-    @State private var selection = 2
+    @State private var selection = 3
     @State var newUser: Bool
     @Binding var people: UserInfo
     var token: String
@@ -20,7 +20,7 @@ struct TabBar: View {
                     Image(systemName: "house")
                 }
                 .tag(1)
-            FavoriteView()
+            FavoriteView(favoriteViewModel: FavoriteViewModel(service: service, user: people, newUser: newUser))
                 .tabItem {
                     Image(systemName: "heart")
                 }

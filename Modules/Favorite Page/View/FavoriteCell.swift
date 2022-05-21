@@ -7,7 +7,7 @@ struct FavoriteCell: View {
     @State private var heart = false
     var body: some View {
         HStack(alignment: .top) {
-            event.mainPhoto?
+            event.mainPhoto
                 .mediumRectangleCropped()
                 
                
