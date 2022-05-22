@@ -2,9 +2,10 @@ import Foundation
 import SwiftUI
 struct InformationSettingsView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @Binding var user: UserInfo
     @State var showPersonalSettings: Bool = false
     @State var showSecuriteSettings: Bool = false
-    
+    @State var showVerification: Bool = false
     var body: some View {
         NavigationView {
             Form {
@@ -30,12 +31,12 @@ struct InformationSettingsView: View {
                     }
                     
                     Button(action: {
-                        
+                        self.showVerification.toggle()
                     }) {
                         Text("Пройти верификацию").foregroundColor(ColorPalette.buttonText)
                     }
-                    .fullScreenCover(isPresented: $showSecuriteSettings) {
-                     
+                    .fullScreenCover(isPresented: $showVerification) {
+                        VerificationView(output:VerificationViewModel(service: Service(), user: user))
                     }
                 }
                 
@@ -62,9 +63,9 @@ struct InformationSettingsView: View {
     }
 }
 
-struct InformationSettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        InformationSettingsView()
-            .preferredColorScheme(.dark)
-    }
-}
+//struct InformationSettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InformationSettingsView()
+//            .preferredColorScheme(.dark)
+//    }
+//}

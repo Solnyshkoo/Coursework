@@ -15,7 +15,7 @@ struct TabBar: View {
                     Image(systemName: "plus.app")
                 }
                 .tag(0)
-            EventsView(fullAcсess: true)
+            EventsView(personalViewModel: EventsViewModel(service: service, user: people), user: $people, fullAcсess: true)
                 .tabItem {
                     Image(systemName: "house")
                 }
@@ -25,8 +25,8 @@ struct TabBar: View {
                     Image(systemName: "heart")
                 }
                 .tag(2)
-            PersonalView(personalViewModel: PersonalViewModel(service: service, user: people, newUser: newUser), user: $people)
-          //  PersonalView(output: PersonalViewModel(service: service, user: people, newUser: newUser))
+            PersonalView(personalViewModel: PersonalViewModel(service: service, user: people), user: $people)
+         
                 .tabItem {
                     Image(systemName: "person")
                 }

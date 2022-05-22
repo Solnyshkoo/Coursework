@@ -73,6 +73,8 @@
 		5EF8136E2837FC7400DB0B28 /* SendCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */; };
 		5EF8137028380E4D00DB0B28 /* EmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */; };
 		5EF813722839481F00DB0B28 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF813712839481E00DB0B28 /* FavoriteViewModel.swift */; };
+		5EF81374283A651900DB0B28 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF81373283A651800DB0B28 /* EventsViewModel.swift */; };
+		5EF81376283A67E400DB0B28 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF81375283A67E400DB0B28 /* NavigationUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +145,8 @@
 		5EF8136D2837FC7400DB0B28 /* SendCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCodeError.swift; sourceTree = "<group>"; };
 		5EF8136F28380E4C00DB0B28 /* EmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailResponse.swift; sourceTree = "<group>"; };
 		5EF813712839481E00DB0B28 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		5EF81373283A651800DB0B28 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		5EF81375283A67E400DB0B28 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 		5E5970A7281C896000BF3240 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				5EF81373283A651800DB0B28 /* EventsViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -416,6 +421,7 @@
 				5EE034F9281F12E900754267 /* ActialPerson.swift */,
 				5EE034FA281F12E900754267 /* SearchBar.swift */,
 				5EE034FB281F12E900754267 /* ColorPalette.swift */,
+				5EF81375283A67E400DB0B28 /* NavigationUtil.swift */,
 			);
 			path = Common;
 			sourceTree = SOURCE_ROOT;
@@ -715,6 +721,7 @@
 				5EE0350C281FEA5B00754267 /* PersonalView.swift in Sources */,
 				5E647B9B28328AF30060CB71 /* NotificationSettings.swift in Sources */,
 				5EF8137028380E4D00DB0B28 /* EmailResponse.swift in Sources */,
+				5EF81374283A651900DB0B28 /* EventsViewModel.swift in Sources */,
 				5E0069A128351C3100B7EF9A /* InformationSettingsView.swift in Sources */,
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,
@@ -733,6 +740,7 @@
 				5E1826BA282EB79800C06315 /* AuthorizationAPIService.swift in Sources */,
 				5ECD458428324C1400729E2C /* VerificationModel.swift in Sources */,
 				5ECD45812832486A00729E2C /* VerificationView .swift in Sources */,
+				5EF81376283A67E400DB0B28 /* NavigationUtil.swift in Sources */,
 				5EE035262821A3AA00754267 /* SettingsView.swift in Sources */,
 				5EE034F2281F12CD00754267 /* MailConfirmationView.swift in Sources */,
 				5ECD458A2832534D00729E2C /* EventDetailView .swift in Sources */,

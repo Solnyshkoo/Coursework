@@ -65,8 +65,7 @@ struct AuthorizationView: View {
                     }
                     .foregroundColor(ColorPalette.activeText)
                     .sheet(isPresented: $showPreview) {
-                        EventsView(fullAcсess: false)
-                        // TODO: - показать превью
+                        EventsView(personalViewModel: EventsViewModel(service: Service(), user: man), user: $man, fullAcсess: false)
                     }
                     Text("или")
                     Button(action: {

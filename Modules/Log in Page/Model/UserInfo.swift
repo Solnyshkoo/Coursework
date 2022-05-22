@@ -12,6 +12,7 @@ struct UserInfo {
     var sex: String = ""
     var image: Image?
     var validate: Bool = false
+    var sendRespond: Bool = false
     var favorities: [EventModel] = []
     var subscribes: [EventModel] = []
     var organiesed: [EventModel] = []

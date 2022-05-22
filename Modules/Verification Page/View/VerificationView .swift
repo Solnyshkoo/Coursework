@@ -41,7 +41,7 @@ struct VerificationView: View {
                         .background(ColorPalette.secondBackground)
                         .cornerRadius(10)
                     Button(action: {
-                        self.showInfo.toggle()
+                        verificationViewModel.checkPassport(data: data)
                     }) {
                         Text("Проверить").font(Font.system(size: 20, design: .default))
                             .padding(.trailing, 3)
@@ -50,13 +50,10 @@ struct VerificationView: View {
                         .padding()
                         .background(ColorPalette.acсentColor)
                         .cornerRadius(10)
-                        .fullScreenCover(isPresented: $verificationViewModel.dataIsCorrect) {
-                            NewEventView(output: NewEventViewModel(service: verificationViewModel.service, user: verificationViewModel.user))
-                        }
                         .alert(verificationViewModel.textWarning, isPresented: $verificationViewModel.showWarning) {
                             Button("OK", role: .cancel) { }
                         }
-                        .alert("Данные отправлены. Длительность проверки до недели", isPresented: $showInfo) {
+                        .alert("Данные отправлены. Длительность проверки до недели", isPresented: $verificationViewModel.dataIsCorrect) {
                             Button("OK", role: .cancel) { }
                         }
                 }.padding(.top, 50)

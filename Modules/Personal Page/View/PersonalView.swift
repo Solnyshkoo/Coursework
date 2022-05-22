@@ -18,15 +18,6 @@ struct PersonalView: View {
     @State var wrongNameAndSurname = false
     @State var showSettings = false
     @State private var warning = ""
-    
-//    init(output: PersonalViewModel, people: UserInfo) {
-//        personalViewModel = output
-//        personalViewModel.setView(view: self)
-//        nameAndSurname = personalViewModel.getFio()
-//        nickname = personalViewModel.getNickname()
-//        user = people
-//    }
-
     var body: some View {
         VStack {
             VStack {
@@ -159,7 +150,7 @@ struct PersonalView: View {
                                 }
                             }.padding(.top, 445)
                                 .fullScreenCover(isPresented: $showSettings, content: {
-                                    SettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
+                                    SettingsView(settingsViewModel:  SettingsViewModel(service: Service(), tok: "", user: UserInfo()), user: $user)
                                 })
                                 .alert(personalViewModel.warningText, isPresented: $personalViewModel.warning) {
                                     Button("OK", role: .cancel) {}

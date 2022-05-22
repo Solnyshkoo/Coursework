@@ -4,7 +4,7 @@ import SwiftUI
 struct CourseApp: App {
    // let persistenceController = PersistenceController.shared
     @State var man: UserInfo =  UserInfo()
-    
+    @StateObject var navigationUtil = NavigationUtil()
     
     var body: some Scene {
         let service = AuthorizationAPIService()
@@ -12,10 +12,15 @@ struct CourseApp: App {
         
         
         WindowGroup {
+            if navigationUtil.isAuth {
+              //  TabBar(newUser: <#T##Bool#>, people: <#T##Binding<UserInfo>#>, token: <#T##String#>, service: <#T##Service#>)
+            } else {
+                AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
+            }
           //  EventsView(fullAcсess: true)
          //
        //     SecuriteSettingsView(output: SettingsViewModel(service: Service(), tok: "", user: UserInfo()))
-         AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
+   
            //   PasswordView(passwordViewModel: presenter, title: "Nickname и пароль", twoPassword: false, man: UserInfo())
            // EventsView()
           // EventDetailView()

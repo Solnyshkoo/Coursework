@@ -1,7 +1,8 @@
 import Foundation
 import SwiftUI
 struct EventsView: View {
-    @State var lol: EventModel = .init(id: 1, name: "День книги", creatorName: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "")
+    @ObservedObject  var personalViewModel: EventsViewModel
+    @Binding var user: UserInfo
     @State private var searchProperties: Set<String> = []
     @State var fullAcсess: Bool
     var body: some View {
@@ -22,7 +23,9 @@ struct EventsView: View {
                     }.padding(.leading, 20)
                         .padding(.bottom, 8)
                     ScrollView {
-//                        EventCell(info: $lol, people: , fullAcсess: fullAcсess, canEdit: false)
+                        ForEach($personalViewModel.allEvents) { item in
+                            EventCell(info: item, people: $user, fullAcсess: fullAcсess, canEdit: false, eventCellView: FavoriteViewModel(service: personalViewModel.service, user: user))
+                        }
                     }
                 }
                 Spacer()
@@ -33,10 +36,10 @@ struct EventsView: View {
     }
 }
 
-struct EventsView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self) {
-            EventsView(fullAcсess: true).preferredColorScheme($0)
-        }
-    }
-}
+//struct EventsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ForEach(ColorScheme.allCases, id: \.self) {
+//            EventsView(fullAcсess: true).preferredColorScheme($0)
+//        }
+//    }
+//}

@@ -32,7 +32,7 @@ struct EventCell: View {
                            self.showPersonalView.toggle()
                        }
                        .fullScreenCover(isPresented: $showPersonalView) {
-                           PersonalView(personalViewModel: PersonalViewModel(service: Service(), user: people, newUser: false), user: $people)
+                           PersonalView(personalViewModel: PersonalViewModel(service: Service(), user: people), user: $people)
                        }
                        
                    Spacer()
@@ -53,6 +53,10 @@ struct EventCell: View {
                            } else {
                                people.favorities.append(info)
                                eventCellView.addEventToFavorite(respond: info.id)
+                               if eventCellView.warning {
+                                   people.favorities.remove(at:
+                                       people.favorities.firstIndex(where: {$0.id == info.id })!)
+                               }
                            }
                        } else {
                            self.showAlertLike.toggle()
@@ -64,6 +68,9 @@ struct EventCell: View {
                        .alert("Чтобы использовать эту функцию, вам надо зарегистрироваться.", isPresented: $showAlertLike) {
                                Button("OK", role: .cancel) { }
                        }
+                       .alert("К сожалению, не получилось добавить мероприятие в избранное.", isPresented: $eventCellView.warning) {
+                               Button("OK", role: .cancel) { }
+                        }
                    }
                        
                }.padding(.bottom, 5)
@@ -76,8 +83,6 @@ struct EventCell: View {
                 HStack {
                     Text(info.name).font(.title)
                             .bold()
-                          
-                            
                         .foregroundColor(ColorPalette.text)
                         .padding(.leading, 10)
                         
@@ -134,6 +139,7 @@ struct EventCell: View {
                         .fullScreenCover(isPresented: $showDetailView) {
                             EventDetailView()
                         }
+                       
                             
                         
                 }

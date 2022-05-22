@@ -45,7 +45,7 @@ struct СonfidentialSettings: View {
                 
                 Section {
                     HStack {
-                        Text("Разрешить показывать, мероприятия, которые организую я").padding([.bottom, .top], 5)
+                        Text("Разрешить показывать, мероприятия, которые организую я в профиле").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
                         Spacer()
                         if third {

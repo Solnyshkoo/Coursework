@@ -48,8 +48,6 @@ struct NewEventView: View {
                        
                         EventTextField(text: $event.description, title: "Описание", subtitile: "Расскажи, что там будет..", width: 100)
                         EventTextField(text: $event.distination, title: "Местоположение", subtitile: "Адрес", width: 40)
-                       
-
                         EventTextField(text: $event.price, title: "Стоимость входа в рублях", subtitile: "0, если бесплатно", width: 40)
                         EventTextField(text: $event.contacts, title: "Контакты", subtitile: "И как к вам записаться?", width: 60)
                         Divider()

@@ -13,7 +13,7 @@ final class PersonalViewModel: ObservableObject {
     var token: String
     let service: Service
     
-    init(service: Service, user: UserInfo, newUser: Bool) {
+    init(service: Service, user: UserInfo) {
         self.service = service
         self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
         self.user = user

@@ -5,7 +5,8 @@ struct EventModel: Identifiable {
     var name: String = ""
     var creatorName: String = ""
     var logo: Image = Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
-    
+    var show: Bool = true
+    var passed: Bool = false
     var mainPhoto: Image = Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
     var distination: String = ""
     var price: String = ""
@@ -15,4 +16,5 @@ struct EventModel: Identifiable {
     var data: Date = Date()
     var contacts: String = ""
     var visitors: [Int] = []
+    var comments: [ReviewModel] = []
 }

@@ -6,8 +6,8 @@ struct EventDetailView: View {
     @State var people: UserInfo = .init()
     @State var showParticipants: Bool = false
     @State var showPersonalView: Bool = false
-    @State var alreadyGo: Bool = true
-    @State var passed: Bool = true
+    @State var alreadyGo: Bool = false
+    @State var passed: Bool = false
     @State var showReview: Bool = false
     var body: some View {
         VStack {
@@ -82,13 +82,7 @@ struct EventDetailView: View {
                                         ReviewView()
                                     }
                             } else {
-                                Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
-                                    .onTapGesture {
-                                        self.showParticipants.toggle()
-                                    }
-                                    .fullScreenCover(isPresented: $showParticipants) {
-                                       ParticipantsView()
-                                    }
+                              
                                 Spacer()
                                 Button(action: {
                                     // TODO: - подробнее
@@ -104,6 +98,14 @@ struct EventDetailView: View {
                                     .padding(.trailing, 20)
                             }
                         } else {
+                            Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                                .onTapGesture {
+                                    self.showParticipants.toggle()
+                                }
+                                .fullScreenCover(isPresented: $showParticipants) {
+                                   ParticipantsView()
+                                }
+                            Spacer()
                             Button(action: {
                                 // TODO: - подробнее
                             }) {
@@ -126,6 +128,16 @@ struct EventDetailView: View {
                     Divider()
                     // TODO: отзывы цикл
                     ReviewCell(info: ReviewModel(userName: "Петрова Ксения ", logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
+                        .swipeActions(edge: .trailing) {
+                               Button(role: .destructive) {
+                                   
+                                   //TODO:
+                                   
+                               } label: {
+                                   Label("Delete", systemImage: "trash")
+                               }
+                              
+                           }
                     //Spacer()
                 })
                 .navigationBarBackButtonHidden(true)

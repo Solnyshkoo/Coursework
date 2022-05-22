@@ -5,13 +5,14 @@ protocol SettingsViewProtocolOutput {}
 
 struct SettingsView: View {
     var settingsViewModel: SettingsViewModel
+    @Binding var user: UserInfo
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var showInformationSettings: Bool = false
     @State var showСonfidentialSettings: Bool = false
     @State var showNotificationSettings: Bool = false
-    init(output: SettingsViewModel) {
-        settingsViewModel = output
-    }
+    @State var showRoot: Bool = false
+    @EnvironmentObject var navigationUtil: NavigationUtil 
+  
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,7 @@ struct SettingsView: View {
                         Text("Профиль").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showInformationSettings) {
-                        InformationSettingsView()
+                        InformationSettingsView(user: $user)
                     }
                     
                     Button(action: {
@@ -49,11 +50,12 @@ struct SettingsView: View {
                 
                 Section {
                     Button(action: {
+                        UserDefaults.standard.set("", forKey: "token")
+                        navigationUtil.logOut()
+                        
                     }) {
                         Label("Выйти из профиля", systemImage: "rectangle.portrait.and.arrow.right").foregroundColor(ColorPalette.text)
-                      
                     }
-                    
                 }
             }.padding(.top, 10)
                 .navigationBarBackButtonHidden(true)
@@ -78,12 +80,12 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SettingsView(output: SettingsViewModel(service: Service(), tok: "lol", user: UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "lol", age: 20, nickname: "ksu09", password: "123", number: "12345", mail: "petr", sex: "female", image: Image("photo"), favorities: [], subscribes: [])))
-            SettingsView(output: SettingsViewModel(service: Service(), tok: "lol", user: UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "lol", age: 20, nickname: "ksu09", password: "123", number: "12345", mail: "petr", sex: "female", image: Image("photo"), favorities: [], subscribes: [])))
-                .preferredColorScheme(.dark)
-        }
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            SettingsView(output: SettingsViewModel(service: Service(), tok: "lol", user: UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "lol", age: 20, nickname: "ksu09", password: "123", number: "12345", mail: "petr", sex: "female", image: Image("photo"), favorities: [], subscribes: [])))
+//            SettingsView(output: SettingsViewModel(service: Service(), tok: "lol", user: UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "lol", age: 20, nickname: "ksu09", password: "123", number: "12345", mail: "petr", sex: "female", image: Image("photo"), favorities: [], subscribes: [])))
+//                .preferredColorScheme(.dark)
+//        }
+//    }
+//}
