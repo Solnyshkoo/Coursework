@@ -9,7 +9,7 @@ final class Service {
             print("что-то не то с твоим запросом...")
             return
         }
-        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<UserData, InternetError>
             guard
                 let data = data,
@@ -35,7 +35,7 @@ final class Service {
             print("что-то не то с твоим запросом...")
             return
         }
-        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<Bool, ChangeUserDataError>
             guard
                 let data = data,
@@ -58,13 +58,12 @@ final class Service {
         session.resume()
     }
     
-    
     func getUserPhoto(token: String, nick: String, _ closure: @escaping (Result<UIImage, ChangeUserDataError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_photo?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
-        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<UIImage, ChangeUserDataError>
             guard
                 let data = data,
@@ -89,8 +88,8 @@ final class Service {
         session.resume()
     }
     
-    func uploadUserPhoto(photo: Image , token: String,  _ closure: @escaping (Result<Bool, Error>) -> Void) {
-        let image : UIImage = photo.asUIImage()
+    func uploadUserPhoto(photo: Image, token: String, _ closure: @escaping (Result<Bool, Error>) -> Void) {
+        let image: UIImage = photo.asUIImage()
         guard let url = URL(string: "\(Service.adress)/user/upload_photo?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
@@ -107,7 +106,7 @@ final class Service {
             if error == nil {
                 let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)
           
-                    print(jsonData)
+                print(jsonData)
                 
             } else {
                 print(error)
@@ -120,15 +119,12 @@ final class Service {
         }).resume()
     }
     
-    
-    
-    
-    func createEvent(respond: EventModel, token: String, _ closure: @escaping (Result<Int, InternetError>) -> Void)  {
+    func createEvent(respond: EventModel, token: String, _ closure: @escaping (Result<Int, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/party/create?access_token=\(token)&name=\(respond.name)&description=\(respond.description)&address=\(respond.distination)&price=\(respond.price)&starting_at=\(respond.data)&ending_at=\(respond.contacts)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
-        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<Int, InternetError>
             guard
                 let data = data,
@@ -153,14 +149,13 @@ final class Service {
         session.resume()
     }
     
-   
     // TODO: исправить видимо
     func getEventInfo(eventId: Int, token: String, _ closure: @escaping (Result<PartyData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/party/get_info?access_token=\(token)&party_id=\(eventId)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
-        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<PartyData, InternetError>
             guard
                 let data = data,
@@ -189,7 +184,7 @@ final class Service {
             print("что-то не то с твоим запросом...")
             return
         }
-        let session = URLSession.shared.dataTask(with: url) { data, response, error in
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<UIImage, InternetError>
             guard
                 let data = data,
@@ -216,9 +211,29 @@ final class Service {
         session.resume()
     }
     
-    func verificationPassport(respond: VerificationModel) {
-    }
+    func verificationPassport(respond: VerificationModel) {}
     
+    func setLike(token: String, index: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/add_favorite?access_token=\(token)&party_id=\(index)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
 }
 
 extension String {
@@ -230,11 +245,13 @@ extension String {
         return self.removingPercentEncoding!
     }
 }
+
 struct Details: Codable {
     let response: Response
 }
 
 // MARK: - Response
+
 struct Response: Codable {
     let accessToken: String
 
@@ -242,8 +259,9 @@ struct Response: Codable {
         case accessToken = "access_token"
     }
 }
-extension View {
-    public func asUIImage() -> UIImage {
+
+public extension View {
+    func asUIImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
          
         controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
@@ -259,9 +277,10 @@ extension View {
         return image
     }
 }
-extension UIView {
-// This is the function to convert UIView to UIImage
-    public func asUIImage() -> UIImage {
+
+public extension UIView {
+    // This is the function to convert UIView to UIImage
+    func asUIImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)

@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 struct EventDetailView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var info: EventModel = .init(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "Красная площадь", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "Пишите kepetrova@edu.hse.ru")
+    @State var info: EventModel = .init(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "Красная площадь", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "Пишите kepetrova@edu.hse.ru")
     @State var people: UserInfo = .init()
     @State var showParticipants: Bool = false
     @State var showPersonalView: Bool = false
@@ -29,11 +29,21 @@ struct EventDetailView: View {
                         .font(Font.system(size: 18, design: .default))
                         .bold()
                         .padding(.leading, 15)
-                    
-                    Text("Дата: " + info.data)
+                    HStack {
+                    Text("Дата: ")
                         .font(Font.system(size: 18, design: .default))
                         .bold()
                         .padding(.leading, 15)
+                        Text(info.data, style: .date)
+                            .font(Font.system(size: 18, design: .default))
+                            .bold()
+                            .padding(.leading, 2)
+                        Text(info.data, style: .time)
+                            .font(Font.system(size: 18, design: .default))
+                            .bold()
+                            .padding(.leading, 2)
+                        Spacer()
+                    }
                     Text("Стоимость: " + info.price + "₽")
                         .font(Font.system(size: 18, design: .default))
                         .bold()

@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 struct EventsView: View {
-    @State var lol: EventModel = .init(id: 1, name: "День книги", creatorName: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")
+    @State var lol: EventModel = .init(id: 1, name: "День книги", creatorName: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "")
     @State private var searchProperties: Set<String> = []
     @State var fullAcсess: Bool
     var body: some View {

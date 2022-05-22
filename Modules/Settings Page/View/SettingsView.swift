@@ -20,7 +20,7 @@ struct SettingsView: View {
                     Button(action: {
                         self.showInformationSettings.toggle()
                     }) {
-                        Text("Профиль").foregroundColor(ColorPalette.buttonText)
+                        Text("Профиль").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showInformationSettings) {
                         InformationSettingsView()
@@ -29,7 +29,7 @@ struct SettingsView: View {
                     Button(action: {
                         self.showСonfidentialSettings.toggle()
                     }) {
-                        Text("Конфиденциальность").foregroundColor(ColorPalette.buttonText)
+                        Text("Конфиденциальность").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showСonfidentialSettings) {
                         СonfidentialSettings()
@@ -40,7 +40,7 @@ struct SettingsView: View {
                     Button(action: {
                         self.showNotificationSettings.toggle()
                     }) {
-                        Text("Уведомления").foregroundColor(ColorPalette.buttonText)
+                        Text("Уведомления").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showNotificationSettings) {
                         NotificationSettings()
@@ -50,7 +50,7 @@ struct SettingsView: View {
                 Section {
                     Button(action: {
                     }) {
-                        Label("Выйти из профиля", systemImage: "rectangle.portrait.and.arrow.right").foregroundColor(ColorPalette.buttonText)
+                        Label("Выйти из профиля", systemImage: "rectangle.portrait.and.arrow.right").foregroundColor(ColorPalette.text)
                       
                     }
                     

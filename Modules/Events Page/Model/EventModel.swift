@@ -12,7 +12,7 @@ struct EventModel: Identifiable {
     var description: String = ""
     var participant: Int = -1
     var like: Bool = false
-    var data: String = ""
+    var data: Date = Date()
     var contacts: String = ""
     var visitors: [Int] = []
 }

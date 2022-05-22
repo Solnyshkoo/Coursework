@@ -3,12 +3,15 @@ import SwiftUI
 struct NewEventView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var newEventViewModel: NewEventViewModel
+    @State private var selectedDate: Date = .init()
     @State var event = EventModel()
     @State private var shoosePhoto = false
     @State private var photo: Image?
+    @State private var isShowCalendar = false
     init(output: NewEventViewModel) {
         newEventViewModel = output
     }
+
     var body: some View {
         VStack {
             NavigationView {
@@ -24,18 +27,29 @@ struct NewEventView: View {
                                     .onTapGesture {
                                         shoosePhoto.toggle()
                                     }
-                               
+
                             }.foregroundColor(ColorPalette.lightGray2)
                             .sheet(isPresented: $shoosePhoto) {
                                 ImagePicker(image: $photo, isPresented: $shoosePhoto)
                             }
                     }
                     .padding(.bottom, 15)
+                    
                     VStack(alignment: .leading, spacing: 20) {
+                        HStack {
+                            Text("Дата").font(.title2).fontWeight(.light).foregroundColor(ColorPalette.text).padding(.leading, 18)
+                                .padding(.bottom, -1)
+                            DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                                .datePickerStyle(CompactDatePickerStyle())
+                                .frame(width: 150)
+                        }.padding(.top, 10)
+                        
                         EventTextField(text: $event.name, title: "Название", subtitile: "Название", width: 40)
+                       
                         EventTextField(text: $event.description, title: "Описание", subtitile: "Расскажи, что там будет..", width: 100)
                         EventTextField(text: $event.distination, title: "Местоположение", subtitile: "Адрес", width: 40)
-                        EventTextField(text: $event.data, title: "Дата", subtitile: "Когда?", width: 40)
+                       
+
                         EventTextField(text: $event.price, title: "Стоимость входа в рублях", subtitile: "0, если бесплатно", width: 40)
                         EventTextField(text: $event.contacts, title: "Контакты", subtitile: "И как к вам записаться?", width: 60)
                         Divider()
@@ -53,7 +67,7 @@ struct NewEventView: View {
                             .background(ColorPalette.secondBackground)
                             .cornerRadius(10)
                         Button(action: {
-                            event.mainPhoto = photo ?? Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
+                            event.mainPhoto = photo ?? Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
                             newEventViewModel.createEvent(data: event)
                             if newEventViewModel.canCreateEvent {
                                 self.mode.wrappedValue.dismiss()
@@ -67,7 +81,7 @@ struct NewEventView: View {
                             .background(ColorPalette.acсentColor)
                             .cornerRadius(10)
                             .alert(newEventViewModel.textWarning, isPresented: $newEventViewModel.showWarning) {
-                                Button("OK", role: .cancel) { }
+                                Button("OK", role: .cancel) {}
                             }
 
                     }).padding(.top, 12)
@@ -90,12 +104,12 @@ struct NewEventView: View {
     }
 }
 
-//struct NewEventView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            NewEventView()
-//            NewEventView()
-//                .preferredColorScheme(.dark)
-//        }
-//    }
-//}
+struct NewEventView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            NewEventView(output: NewEventViewModel(service: Service(), user: UserInfo()))
+            NewEventView(output: NewEventViewModel(service: Service(), user: UserInfo()))
+                .preferredColorScheme(.dark)
+        }
+    }
+}

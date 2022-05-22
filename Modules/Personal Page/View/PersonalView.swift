@@ -8,6 +8,7 @@ protocol PersonalViewProtocolInput {
 
 struct PersonalView: View {
     @ObservedObject  var personalViewModel: PersonalViewModel
+    @Binding var user: UserInfo
     @State private var selectedIndex: Int? = 0
     @State private var nameAndSurname = ""
     @State private var nickname = ""
@@ -18,12 +19,13 @@ struct PersonalView: View {
     @State var showSettings = false
     @State private var warning = ""
     
-    init(output: PersonalViewModel) {
-        personalViewModel = output
-        personalViewModel.setView(view: self)
-        nameAndSurname = personalViewModel.getFio()
-        nickname = personalViewModel.getNickname()
-    }
+//    init(output: PersonalViewModel, people: UserInfo) {
+//        personalViewModel = output
+//        personalViewModel.setView(view: self)
+//        nameAndSurname = personalViewModel.getFio()
+//        nickname = personalViewModel.getNickname()
+//        user = people
+//    }
 
     var body: some View {
         VStack {
@@ -174,11 +176,11 @@ struct PersonalView: View {
                     Spacer()
                     if selectedIndex == 0 {
                         ForEach($personalViewModel.user.subscribes) { item in
-                            EventCell(info: item, people: $personalViewModel.user, fullAcсess: true, canEdit: false)
+                            EventCell(info: item, people: $user, fullAcсess: true, canEdit: false, eventCellView: FavoriteViewModel(service: personalViewModel.service, user:  user))
                         }
                     } else {
                         ForEach($personalViewModel.user.organiesed) { item in
-                            EventCell(info: item, people: $personalViewModel.user, fullAcсess: true, canEdit: false)
+                            EventCell(info: item, people: $user, fullAcсess: true, canEdit: false,  eventCellView: FavoriteViewModel(service: personalViewModel.service, user:  user))
                         }
                         
                     }

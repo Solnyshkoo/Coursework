@@ -18,9 +18,6 @@ final class NewEventViewModel: ObservableObject {
         if data.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             showWarning = true
             textWarning = "Пустое название меропрития"
-        } else if data.data.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            showWarning = true
-            textWarning = "Ненаписана дата мероприятия"
         } else if data.contacts.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             showWarning = true
             textWarning = "Нет контактов для обратной связи"
@@ -30,7 +27,7 @@ final class NewEventViewModel: ObservableObject {
         } else if data.distination.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             showWarning = true
             textWarning = "Не указан адрес"
-        } else if data.mainPhoto == nil {
+        } else if data.mainPhoto == Image(uiImage:UIImage(imageLiteralResourceName: "noImage")) {
             showWarning = true
             textWarning = "Фотография не добавлена"
         } else {

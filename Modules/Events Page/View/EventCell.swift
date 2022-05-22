@@ -10,6 +10,7 @@ struct EventCell: View {
     @State var showParticipants: Bool = false
     @State var showDetailView: Bool = false
     @State var showPersonalView: Bool = false
+    @ObservedObject var eventCellView: FavoriteViewModel 
     var body: some View {
         // TODO: - шрифты
         VStack {
@@ -31,7 +32,7 @@ struct EventCell: View {
                            self.showPersonalView.toggle()
                        }
                        .fullScreenCover(isPresented: $showPersonalView) {
-                           PersonalView(output: PersonalViewModel(service: Service(), user: people, newUser: false))
+                           PersonalView(personalViewModel: PersonalViewModel(service: Service(), user: people, newUser: false), user: $people)
                        }
                        
                    Spacer()
@@ -51,11 +52,11 @@ struct EventCell: View {
                                    people.favorities.firstIndex(where: { $0.id == info.id })!)
                            } else {
                                people.favorities.append(info)
+                               eventCellView.addEventToFavorite(respond: info.id)
                            }
                        } else {
                            self.showAlertLike.toggle()
                        }
-                       
                    }) {
                        Image(systemName: people.favorities.contains(where: { $0.id == info.id }) ? "heart.fill" : "heart").font(Font.system(size: 25, design: .default)).padding(.top, 4)
                            .padding(.trailing, 10)
@@ -81,7 +82,12 @@ struct EventCell: View {
                         .padding(.leading, 10)
                         
                         Spacer()
-                    Text(info.data + " · " + info.price + "₽").font(.callout).bold().padding(.trailing, 10)
+                    HStack {
+                        Text(info.data, style: .date).font(.callout).bold().padding(.trailing, 10)
+                        Text(" · " + info.price + "₽").font(.callout).bold().padding(.trailing, 10)
+                        Spacer()
+                    }
+                   
                     
                     
                 }  .padding(.top, 2)
@@ -138,23 +144,23 @@ struct EventCell: View {
 }
 
 
-struct EventCellPreviewContainer_2: View {
-    @State var lol: EventModel = EventModel(id: 1, name: "Экватор", creatorName: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
-    @State var o = UserInfo()
-
-    var body: some View {
-        EventCell(info: $lol, people: $o, fullAcсess: true, canEdit: true)
-    }
-}
-
-struct EventCell_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            EventCellPreviewContainer_2()
-                .preferredColorScheme(.dark)
-            EventCellPreviewContainer_2()
-                .preferredColorScheme(.light)
-        }
-    }
-}
+//struct EventCellPreviewContainer_2: View {
+//    @State var lol: EventModel = EventModel(id: 1, name: "Экватор", creatorName: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
+//    @State var o = UserInfo()
+//
+//    var body: some View {
+//        EventCell(info: $lol, people: $o, fullAcсess: true, canEdit: true), eventCellView: FavoriteViewModel(service: Service, user: <#T##UserInfo#>, newUser: <#T##Bool#>)
+//    }
+//}
+//
+//struct EventCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            EventCellPreviewContainer_2()
+//                .preferredColorScheme(.dark)
+//            EventCellPreviewContainer_2()
+//                .preferredColorScheme(.light)
+//        }
+//    }
+//}
 

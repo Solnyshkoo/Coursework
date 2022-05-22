@@ -20,12 +20,13 @@ struct TabBar: View {
                     Image(systemName: "house")
                 }
                 .tag(1)
-            FavoriteView(favoriteViewModel: FavoriteViewModel(service: service, user: people, newUser: newUser))
+            FavoriteView(favoriteViewModel: FavoriteViewModel(service: service, user: people), user:  $people)
                 .tabItem {
                     Image(systemName: "heart")
                 }
                 .tag(2)
-            PersonalView(output: PersonalViewModel(service: service, user: people, newUser: newUser))
+            PersonalView(personalViewModel: PersonalViewModel(service: service, user: people, newUser: newUser), user: $people)
+          //  PersonalView(output: PersonalViewModel(service: service, user: people, newUser: newUser))
                 .tabItem {
                     Image(systemName: "person")
                 }

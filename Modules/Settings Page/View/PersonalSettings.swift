@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 struct PersonalSettigs: View {
-    @State private var man = UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "Эдуардовна", age: 19, nickname: "ksu", password: "", number: "0000", mail: "kepetrova@edu.hse.ru", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: "20.05.2022", contacts: "")], organiesed: [])
+    @State private var man = UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "Эдуардовна", age: 19, nickname: "ksu", password: "", number: "0000", mail: "kepetrova@edu.hse.ru", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "")], organiesed: [])
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State private var shoosePhoto = false
     @State private var selectedColorIndex = 0
