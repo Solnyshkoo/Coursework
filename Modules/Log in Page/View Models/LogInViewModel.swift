@@ -40,6 +40,7 @@ final class LogInViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.signInFailed = " "
                         self.token = token
+                        print(token)
                         self.getData()
                     }
                 case .failure(let error):
@@ -61,6 +62,7 @@ final class LogInViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.signUpFailed = " "
                         self.token = token
+                    
                         self.showHome = true
                         self.showSignUpAlert = false
                         UserDefaults.standard.set(token, forKey: "token")
@@ -100,7 +102,7 @@ final class LogInViewModel: ObservableObject {
                             self.getEventInfo(index: self.user.favorities[i].id, i: i,  array: 3)
                            
                         }
-                       
+                        self.showHomeView = true
                     }
                        
                 case .failure:
@@ -109,6 +111,7 @@ final class LogInViewModel: ObservableObject {
             }
              }
         }
+  
     }
     
     func getEventInfo(index: Int, i: Int, array: Int) {
@@ -125,7 +128,7 @@ final class LogInViewModel: ObservableObject {
                         } else {
                             self.user.favorities[i] = self.createEvent(data: data)
                         }
-                        self.showHomeView = true
+                      
                     }
                 case .failure:
                     break
@@ -228,6 +231,9 @@ final class LogInViewModel: ObservableObject {
     }
     
     func verifyEmail(email: String, nickname: String) {
+        print("____7____")
+        print(nickname)
+        print("____8____")
         if let m = mails[nickname] {
             if m.trimmingCharacters(in: .whitespacesAndNewlines) == email {
                 self.emailUser = false
@@ -280,6 +286,9 @@ final class LogInViewModel: ObservableObject {
     }
     
     func sendCodeToEmail(email: String) {
+        print("____6____")
+        print(email)
+        print("____6____")
         DispatchQueue.main.async {
             self.service.sendUserCodeToEmail(email: email) { [weak self] result in
                 guard let self = self else { return }
@@ -322,6 +331,7 @@ final class LogInViewModel: ObservableObject {
     func getToken() -> String {
         return token
     }
+    
     
     
 //

@@ -14,6 +14,7 @@ struct CourseApp: App {
         WindowGroup {
             if navigationUtil.isAuth {
               //  TabBar(newUser: <#T##Bool#>, people: <#T##Binding<UserInfo>#>, token: <#T##String#>, service: <#T##Service#>)
+                AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
             } else {
                 AuthorizationView(output: LogInViewModel(service: AuthorizationAPIService()))
             }

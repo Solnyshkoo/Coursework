@@ -12,7 +12,7 @@ struct PersonalView: View {
     @State private var selectedIndex: Int? = 0
     @State private var nameAndSurname = ""
     @State private var nickname = ""
-    @State private var photo: Image?
+    @State private var photo: UIImage?
     @State var canEdit = false
     @State var pickPhoto = false
     @State var wrongNameAndSurname = false
@@ -91,7 +91,12 @@ struct PersonalView: View {
                                                 if !wrongNameAndSurname {
                                                     wrongNameAndSurname =  false
                                                     warning = ""
-                                                    personalViewModel.changePhoto(image: photo ?? personalViewModel.getImage())
+                                                    if photo == nil {
+                                                        personalViewModel.changePhoto(image: personalViewModel.getImage())
+                                                    } else {
+                                                        personalViewModel.changePhoto(image: Image(uiImage: photo!))
+                                                    }
+                                                   
                                                     personalViewModel.changeNickname(nick: nickname)
                                                  
                                                 }
@@ -150,7 +155,7 @@ struct PersonalView: View {
                                 }
                             }.padding(.top, 445)
                                 .fullScreenCover(isPresented: $showSettings, content: {
-                                    SettingsView(settingsViewModel:  SettingsViewModel(service: Service(), tok: "", user: UserInfo()), user: $user)
+                                    SettingsView(settingsViewModel:  SettingsViewModel(service: Service(), tok: "", user: personalViewModel.user), user: $user)
                                 })
                                 .alert(personalViewModel.warningText, isPresented: $personalViewModel.warning) {
                                     Button("OK", role: .cancel) {}

@@ -14,7 +14,7 @@ final class AuthorizationAPIService {
                 let post = try? JSONDecoder().decode(Details.self, from: data)
             else {
                 guard let response = response as? HTTPURLResponse else { return }
-                
+                print(response)
                 if response.statusCode == 233 {
                     result = .failure(ValidationError.noUser)
                 } else if response.statusCode == 234 {

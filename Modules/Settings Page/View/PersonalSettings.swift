@@ -1,147 +1,190 @@
 import Foundation
 import SwiftUI
 struct PersonalSettigs: View {
-    @State private var man = UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "Эдуардовна", age: 19, nickname: "ksu", password: "", number: "0000", mail: "kepetrova@edu.hse.ru", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "")], organiesed: [])
+    @ObservedObject var settingsViewModel: SettingsViewModel
+    @Binding var man: UserInfo
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State private var shoosePhoto = false
     @State private var selectedColorIndex = 0
     @State private var selectedYear = ""
-    @State private var photo: Image?
+    @State private var photo: UIImage?
     var years = Array(16 ... 100)
     var body: some View {
         NavigationView {
-        ScrollView {
-        VStack {
-            HStack(alignment: .center) {
-                man.image?.centerSquareCropped()
-                    .clipShape(Circle())
-                    .frame(width: 160, height: 160)
-                    .scaledToFit()
-                    .foregroundColor(ColorPalette.secondBackground)
-                    .overlay {
-                        ZStack {
-                            Circle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 160)
-                    Image(systemName: "camera").resizable().frame(width: 80, height: 60)
-                        .onTapGesture {
-                            shoosePhoto.toggle()
-                        }
-                       
-                        .foregroundColor(ColorPalette.lightGray2)
-                    .sheet(isPresented: $shoosePhoto) {
-                        ImagePicker(image: $photo, isPresented: $shoosePhoto)
-                    }
-                        }
-                }
-            }
-            .padding(.bottom, 15)
-            VStack(alignment: .leading) {
-                
-                
-                ClassicTextField(labelText: "Имя", fieldText: "Введите имя", user: $man.name).padding(.bottom, 15)
+            ScrollView {
+                VStack {
+                    HStack(alignment: .center) {
 
-                ClassicTextField(labelText: "Фамилия", fieldText: "Введите фамилию", user: $man.surname).padding(.bottom, 15)
+                        if  settingsViewModel.editableUser.image == nil {
+                            if photo == nil {
+                            Circle()
+                                .frame(width: 150, height: 150)
+                                .clipShape(Circle())
+                                .foregroundColor(ColorPalette.secondBackground)
+                                .overlay {
+                                    Image(systemName: "camera").resizable().frame(width: 80, height: 60)
+                                        .onTapGesture {
+                                            shoosePhoto.toggle()
+                                        }
 
-                ClassicTextField(labelText: "Отчество", fieldText: "Введите отчество(не обязательно)", user: $man.patronymic).padding(.bottom, 15)
+                                }.foregroundColor(ColorPalette.lightGray2)
+                                .sheet(isPresented: $shoosePhoto) {
+                                    ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                }
+                            } else {
+                                Image(uiImage: photo!)
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: 160, height: 160)
+                                .scaledToFit()
+                                .foregroundColor(ColorPalette.secondBackground)
+                                .overlay {
+                                    ZStack {
+                                        Circle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 160)
+                                        Image(systemName: "camera").resizable().frame(width: 80, height: 60)
+                                            .onTapGesture {
+                                                shoosePhoto.toggle()
+                                            }
 
-                VStack(alignment: .leading) {
-                    Text("Возраст").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
-            
-                        Menu {
-                            Picker("0", selection: $man.age) {
-                                ForEach(years, id: \.self) {
-                                    Text("\($0.formatted(.number.grouping(.never)))")
-                                        .foregroundColor(Color.red)
+                                            .foregroundColor(ColorPalette.lightGray2)
+                                            .sheet(isPresented: $shoosePhoto) {
+                                                ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                            }
+                                    }
                                 }
                             }
-                            .padding(.bottom, -3)
-                            .padding(.leading, -6)
-                            .colorMultiply(.white)
+                        } else {
+                            settingsViewModel.editableUser.image?.centerSquareCropped()
+                                .clipShape(Circle())
+                                .frame(width: 160, height: 160)
+                                .scaledToFit()
+                                .foregroundColor(ColorPalette.secondBackground)
+                                .overlay {
+                                    ZStack {
+                                        Circle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 160)
+                                        Image(systemName: "camera").resizable().frame(width: 80, height: 60)
+                                            .onTapGesture {
+                                                shoosePhoto.toggle()
+                                            }
 
-                        } label: {
-                            Text(man.age == -1 ? "Выберите возраст" : String(man.age)).foregroundColor(man.age == -1 ? ColorPalette.lightGray2 :ColorPalette.text)
-                                .padding(.top, 5)
-                                .padding(.bottom, -3)
-                        
-                    }
-                    Divider()
-                        .padding(.bottom, 15)
-                }
-                ClassicTextField(labelText: "Телефон", fieldText: "Введите телефон(не обязательно)", user: $man.number).padding(.bottom, 15)
-
-                VStack(alignment: .leading) {
-                    Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
-                    Menu {
-                    Picker("Пол", selection: $man.sex) {
-                        Text("").tag("none")
-                        Text("Ж").tag("female")
-                        Text("М").tag("male")
-                    }.padding(.bottom, -3)
-                        .colorMultiply(ColorPalette.lightGray)
-                    } label: {
-                        Text(man.sex == "" ? "Выберите пол" : man.sex).foregroundColor(man.sex == "" ? ColorPalette.lightGray2 :ColorPalette.text)
-                            .padding(.top, 5)
-                            .padding(.bottom, -3)
-                    
-                }
-                Divider() .padding(.bottom, 15)
-                }
-                HStack(alignment: .center, spacing: 20, content: {
-                    Button(action: {
-                        // TODO: - подробнее
-                    }) {
-                        Text("Отменить").font(Font.system(size: 20, design: .default))
-                            .padding(.trailing, 3)
-                            .frame(width: 160, height: 20)
-                    }.foregroundColor(ColorPalette.buttonText)
-                        .padding()
-                        .background(ColorPalette.secondBackground)
-                        .cornerRadius(10)
-                       // .padding(.top, 10)
-                        //.padding(.trailing, 10)
-                    
-                    Button(action: {
-                        // TODO: - подробнее
-                    }) {
-                        Text("Сохранить").font(Font.system(size: 20, design: .default))
-                            .padding(.trailing, 3)
-                            .frame(width: 160, height: 20)
-                    }.foregroundColor(ColorPalette.buttonText)
-                        .padding()
-                        .background(ColorPalette.acсentColor)
-                        .cornerRadius(10)
-                       
-                      //  .padding(.trailing, 10)
-                }).padding(.top, 12)
-            }.padding(.horizontal, 6)
-        }.padding()
-      
-    }.padding(.bottom, 100)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
-        .toolbar(content: {
-            ToolbarItem(placement: .navigation) {
-                HStack(alignment: .center, content: {
-                    Image(systemName: "arrow.left")
-                        .foregroundColor(ColorPalette.navigationBarItem)
-                        .onTapGesture {
-                            self.mode.wrappedValue.dismiss()
+                                            .foregroundColor(ColorPalette.lightGray2)
+                                            .sheet(isPresented: $shoosePhoto) {
+                                                ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                            }
+                                    }
+                                }
                         }
+                    }
+                    .padding(.bottom, 15)
+                    VStack(alignment: .leading) {
+                        ClassicTextField(labelText: "Имя", fieldText: "Введите имя", user: $settingsViewModel.editableUser.name).padding(.bottom, 15)
+
+                        ClassicTextField(labelText: "Фамилия", fieldText: "Введите фамилию", user: $settingsViewModel.editableUser.surname).padding(.bottom, 15)
+
+                        ClassicTextField(labelText: "Отчество", fieldText: "Введите отчество(не обязательно)", user: $settingsViewModel.editableUser.patronymic).padding(.bottom, 15)
+
+                        VStack(alignment: .leading) {
+                            Text("Возраст").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
             
-                    Text("Личные данные").fontWeight(.heavy).font(.title)
-                        .padding(.leading, 65)
-                        .padding(.top, 18)
+                            Menu {
+                                Picker("0", selection: $settingsViewModel.editableUser.age) {
+                                    ForEach(years, id: \.self) {
+                                        Text("\($0.formatted(.number.grouping(.never)))")
+                                            .foregroundColor(Color.red)
+                                    }
+                                }
+                                .padding(.bottom, -3)
+                                .padding(.leading, -6)
+                                .colorMultiply(.white)
+
+                            } label: {
+                                Text(settingsViewModel.editableUser.age == -1 ? "Выберите возраст" : String(settingsViewModel.editableUser.age)).foregroundColor(settingsViewModel.editableUser.age == -1 ? ColorPalette.lightGray2 : ColorPalette.text)
+                                    .padding(.top, 5)
+                                    .padding(.bottom, -3)
+                            }
+                            Divider()
+                                .padding(.bottom, 15)
+                        }
+                        ClassicTextField(labelText: "Телефон", fieldText: "Введите телефон(не обязательно)", user: $settingsViewModel.editableUser.number).padding(.bottom, 15)
+
+                        VStack(alignment: .leading) {
+                            Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
+                            Menu {
+                                Picker("Пол", selection: $settingsViewModel.editableUser.sex) {
+                                    Text("").tag("none")
+                                    Text("Ж").tag("female")
+                                    Text("М").tag("male")
+                                }.padding(.bottom, -3)
+                                    .colorMultiply(ColorPalette.lightGray)
+                            } label: {
+                                Text(settingsViewModel.editableUser.sex == "" ? "Выберите пол" : settingsViewModel.editableUser.sex).foregroundColor(settingsViewModel.editableUser.sex == "" ? ColorPalette.lightGray2 : ColorPalette.text)
+                                    .padding(.top, 5)
+                                    .padding(.bottom, -3)
+                            }
+                            Divider().padding(.bottom, 15)
+                        }
+                        HStack(alignment: .center, spacing: 20, content: {
+                            Button(action: {
+                                settingsViewModel.cancelChanges()
+                            }) {
+                                Text("Отменить").font(Font.system(size: 20, design: .default))
+                                    .padding(.trailing, 3)
+                                    .frame(width: 160, height: 20)
+                            }.foregroundColor(ColorPalette.buttonText)
+                                .padding()
+                                .background(ColorPalette.secondBackground)
+                                .cornerRadius(10)
+                            // .padding(.top, 10)
+                            // .padding(.trailing, 10)
+                    
+                            Button(action: {
+                                if photo != nil {
+                                    settingsViewModel.editableUser.image = Image(uiImage: photo!)
+                                }
+                                settingsViewModel.checkAllChanges()
+                                if settingsViewModel.allFields {
+                                    settingsViewModel.saveAllChanges()
+                                }
+                                if settingsViewModel.saveChanges {
+                                    man = settingsViewModel.editableUser
+                                }
+                            }) {
+                                Text("Сохранить").font(Font.system(size: 20, design: .default))
+                                    .padding(.trailing, 3)
+                                    .frame(width: 160, height: 20)
+                            }.foregroundColor(ColorPalette.buttonText)
+                                .padding()
+                                .background(ColorPalette.acсentColor)
+                                .cornerRadius(10)
+                                .alert("Не получилось сохранить", isPresented: $settingsViewModel.warningAllChanges) {
+                                    Button("OK", role: .cancel) {}
+                                }
+                                .alert(settingsViewModel.warning, isPresented: $settingsViewModel.notAllFieldsWarning) {
+                                    Button("OK", role: .cancel) {}
+                                }
+                        }).padding(.top, 12)
+                    }.padding(.horizontal, 6)
+                }.padding()
+      
+            }.padding(.bottom, 100)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigation) {
+                        HStack(alignment: .center, content: {
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(ColorPalette.navigationBarItem)
+                                .onTapGesture {
+                                    self.mode.wrappedValue.dismiss()
+                                }
+            
+                            Text("Личные данные").fontWeight(.heavy).font(.title)
+                                .padding(.leading, 65)
+                                .padding(.top, 18)
         
-                }).padding(.bottom, 20)
-                
-            }                    })
+                        }).padding(.bottom, 20)
+                    }
+                })
         }
-    }
-}
-
-
-struct PersonalSettigs_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonalSettigs()
-            .preferredColorScheme(.dark)
     }
 }

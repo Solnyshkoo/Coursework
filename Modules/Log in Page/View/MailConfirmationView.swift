@@ -4,7 +4,7 @@ import SwiftUI
 struct MailConfirmationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var mailConfirmationViewModel: LogInViewModel
-    @State var man: UserInfo
+    @Binding var man: UserInfo
     @State var mail = ""
     @State var сoder = ""
     var restorePassword: Bool
@@ -88,7 +88,7 @@ struct checkKey: View {
         .clipShape(Capsule())
         .padding(.top, 50)
         .fullScreenCover(isPresented: $model.showPasswordView) {
-            PasswordView(passwordViewModel: model, title: newPassword ? "Новый пароль" : "Регистрация", twoPassword: newPassword, man: man)
+            PasswordView(passwordViewModel: model, title: newPassword ? "Новый пароль" : "Регистрация", twoPassword: newPassword, man: $man)
         }
     }
 }

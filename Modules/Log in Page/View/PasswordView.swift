@@ -12,7 +12,7 @@ struct PasswordView: View {
     @ObservedObject var passwordViewModel: LogInViewModel
     @State var title: String
     @State var twoPassword: Bool
-    @State var man: UserInfo
+    @Binding var man: UserInfo
     @State var firstPassword = ""
     @State private var warningText = " "
     

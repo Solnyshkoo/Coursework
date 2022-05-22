@@ -17,7 +17,7 @@ struct SecuriteSettingsView: View {
                     Spacer()
                     Button {
                         if canEdit {
-                            settingsViewModel.saveChanges()
+                            settingsViewModel.saveSecurityChanges()
                             if settingsViewModel.canSave {
                                 self.canEdit.toggle()
                             }

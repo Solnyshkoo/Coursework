@@ -13,7 +13,6 @@ struct AuthorizationView: View {
     init(output: LogInViewModel) {
         mainViewModel = output
     }
-
     var body: some View {
         VStack {
             Text("Авторизация").fontWeight(.heavy).font(.largeTitle)
@@ -25,14 +24,17 @@ struct AuthorizationView: View {
                     Button(action: {
                         if user.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                             self.showAlertRestore.toggle()
+                            
                         } else {
                             showingRestoringView.toggle()
+                            man.nickname = user
+                            man.password = pass
                         }
                     }){
                         Text("Восстановить пароль?").font(Font.system(size: 12, design: .default)).padding([.top, .leading], 5)
                     }.foregroundColor(ColorPalette.activeText)
                         .fullScreenCover(isPresented: $showingRestoringView) {
-                        MailConfirmationView(mailConfirmationViewModel: mainViewModel, man: man, restorePassword: true)
+                        MailConfirmationView(mailConfirmationViewModel: mainViewModel, man: $man, restorePassword: true)
                     }
                         .alert("Чтобы востановить пароль обязательно введите никней", isPresented: $showAlertRestore) {
                             Button("OK", role: .cancel) { }
@@ -75,7 +77,7 @@ struct AuthorizationView: View {
                     }
                     .foregroundColor(ColorPalette.activeText)
                     .fullScreenCover(isPresented: $showingRegistrationView) {
-                        RegistrationView()
+                        RegistrationView( man: $man)
                     }
                 }.padding(.top, 25)
             }

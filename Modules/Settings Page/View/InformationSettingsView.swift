@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 struct InformationSettingsView: View {
+    @ObservedObject var settingsViewModel: SettingsViewModel
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @Binding var user: UserInfo
     @State var showPersonalSettings: Bool = false
@@ -16,7 +17,8 @@ struct InformationSettingsView: View {
                      Text("Личные данные").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showPersonalSettings) {
-                        PersonalSettigs()
+                        PersonalSettigs(settingsViewModel: settingsViewModel, man: $user)
+              
                 }
                 
                 }

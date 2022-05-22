@@ -2,13 +2,13 @@ import Foundation
 import SwiftUI
 struct RegistrationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State private var man = UserInfo()
+    @Binding var man: UserInfo
     @Environment(\.colorScheme) var colorScheme
     @State private var showingRegistrationView = false
     @State private var shoosePhoto = false
     @State private var selectedColorIndex = 0
     @State private var selectedYear = ""
-    @State private var photo: Image?
+    @State private var photo: UIImage?
     var years = Array(16 ... 100)
     var body: some View {
         VStack {
@@ -17,19 +17,39 @@ struct RegistrationView: View {
                     ScrollView {
                     VStack {
                         HStack(alignment: .center) {
-                            Circle()
-                                .frame(width: 150, height: 150)
-                                .foregroundColor(ColorPalette.secondBackground)
-                                .overlay {
-                                Image(systemName: "camera").resizable().frame(width: 80, height: 60)
-                                    .onTapGesture {
-                                        shoosePhoto.toggle()
+                            if photo == nil {
+                                Circle()
+                                    .frame(width: 150, height: 150)
+                                    .clipShape(Circle())
+                                    .foregroundColor(ColorPalette.secondBackground)
+                                    .overlay {
+                                    Image(systemName: "camera").resizable().frame(width: 80, height: 60)
+                                        .onTapGesture {
+                                            shoosePhoto.toggle()
+                                        }
+                                       
+                                        }.foregroundColor(ColorPalette.lightGray2)
+                                    .sheet(isPresented: $shoosePhoto) {
+                                        ImagePicker(image: $photo, isPresented: $shoosePhoto)
                                     }
-                                   
-                                    }.foregroundColor(ColorPalette.lightGray2)
-                                .sheet(isPresented: $shoosePhoto) {
-                                    ImagePicker(image: $man.image, isPresented: $shoosePhoto)
-                            }
+                            } else {
+                                Image(uiImage: photo!)
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                                    .clipShape(Circle())
+                                  
+                                    .overlay {
+                                    Image(systemName: "camera").resizable().frame(width: 80, height: 60)
+                                        .onTapGesture {
+                                            shoosePhoto.toggle()
+                                        }
+                                       
+                                        }.foregroundColor(ColorPalette.lightGray2)
+                                    .sheet(isPresented: $shoosePhoto) {
+                                        ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                    }
+                                }
+                            
                         }
                         .padding(.bottom, 15)
                         VStack(alignment: .leading) {
@@ -88,6 +108,12 @@ struct RegistrationView: View {
                     }.padding()
                     VStack {
                         Button(action: {
+                            if photo == nil {
+                                man.image = Image(uiImage:UIImage(imageLiteralResourceName: "noImage"))
+                            } else {
+                                man.image = Image(uiImage: photo!)
+                            }
+                            
                             self.showingRegistrationView.toggle()
                         }) {
                             Text("Продолжить").foregroundColor(ColorPalette.text).frame(width: UIScreen.main.bounds.width - 120).padding()
@@ -97,7 +123,7 @@ struct RegistrationView: View {
                             .clipShape(Capsule())
                             .padding(.top, 15)
                             .foregroundColor(ColorPalette.activeText).fullScreenCover(isPresented: $showingRegistrationView) {
-                                MailConfirmationView(mailConfirmationViewModel: LogInViewModel(service: AuthorizationAPIService()), man: man, restorePassword: false)
+                                MailConfirmationView(mailConfirmationViewModel: LogInViewModel(service: AuthorizationAPIService()), man: $man, restorePassword: false)
                             }
                     }
                 }.padding(.bottom, 100)
@@ -127,17 +153,17 @@ struct RegistrationView: View {
     }
 }
 
-struct RegistrationViewPreviewContainer_2: View {
-    @State var lol: UserInfo = .init(name: "Ksenia", surname: "Perova", age: 18, nickname: "ksu", password: "123", sex: "female")
-
-    var body: some View {
-        RegistrationView()
-    }
-}
-
-struct RegistrationView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegistrationViewPreviewContainer_2()
-            .preferredColorScheme(.dark)
-    }
-}
+//struct RegistrationViewPreviewContainer_2: View {
+//    @State var lol: UserInfo = .init(name: "Ksenia", surname: "Perova", age: 18, nickname: "ksu", password: "123", sex: "female")
+//
+//    var body: some View {
+//        RegistrationView()
+//    }
+//}
+//
+//struct RegistrationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RegistrationViewPreviewContainer_2()
+//            .preferredColorScheme(.dark)
+//    }
+//}

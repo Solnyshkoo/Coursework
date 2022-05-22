@@ -8,18 +8,31 @@ final class SettingsViewModel: ObservableObject {
     @Published var mailConfirm: Bool = false
     @Published var passConfirm: Bool = false
     @Published var canSave: Bool = false
+    @Published var saveChanges: Bool = false
+    @Published var warningAllChanges: Bool = false
+    @Published var allFields: Bool = false
+    @Published var notAllFieldsWarning: Bool = false
+    @Published var warning: String = ""
     @Published var code: String = ""
     @Published var pass: Bool = false
     init (service: Service, tok: String, user: UserInfo) {
         self.service = service
         token = tok
         self.user = user
-        self.user =  UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "Эдуардовна", age: 19, nickname: "ksu", password: "*********", number: "0000", mail: "kepetrova@edu.hse.ru", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "")], organiesed: [])
         self.editableUser = user
-        self.editableUser =  UserInfo(name: "Ksenia", surname: "Petrova", patronymic: "Эдуардовна", age: 19, nickname: "ksu", password: "*********", number: "0000", mail: "kepetrova@edu.hse.ru", sex: "female", favorities: [], subscribes: [EventModel(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "")], organiesed: [])
+
     }
     
-    func saveChanges() {
+    func saveAllChanges() {
+       
+    }
+    
+    func checkAllChanges() {
+        allFields = false
+        notAllFieldsWarning = true
+        
+    }
+    func saveSecurityChanges() {
         var origStr: String = user.mail
         var noChanges: Bool = true
         if origStr.trimmingCharacters(in: .whitespacesAndNewlines) != editableUser.mail.trimmingCharacters(in: .whitespacesAndNewlines) {
@@ -35,7 +48,6 @@ final class SettingsViewModel: ObservableObject {
             canSave = true
         }
     }
-    
     func cancelChanges() {
         editableUser = user
     }

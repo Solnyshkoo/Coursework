@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 struct ImagePicker: UIViewControllerRepresentable {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @Binding var image: Image?
+    @Binding var image: UIImage?
     @Binding var isPresented: Bool
     
     func makeCoordinator() -> ImagePickerViewCoordinator {
@@ -22,16 +22,16 @@ struct ImagePicker: UIViewControllerRepresentable {
 }
 
 class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    @Binding var image: Image?
+    @Binding var image: UIImage?
     @Binding var isPresented: Bool
     
-    init(image: Binding<Image?>, isPresented: Binding<Bool>) {
+    init(image: Binding<UIImage?>, isPresented: Binding<Bool>) {
         self._image = image
         self._isPresented = isPresented
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? Image {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.image = image
         }
         self.isPresented = false

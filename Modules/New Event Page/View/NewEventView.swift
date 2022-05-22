@@ -6,7 +6,7 @@ struct NewEventView: View {
     @State private var selectedDate: Date = .init()
     @State var event = EventModel()
     @State private var shoosePhoto = false
-    @State private var photo: Image?
+    @State private var photo: UIImage?
     @State private var isShowCalendar = false
     init(output: NewEventViewModel) {
         newEventViewModel = output
@@ -65,7 +65,12 @@ struct NewEventView: View {
                             .background(ColorPalette.secondBackground)
                             .cornerRadius(10)
                         Button(action: {
-                            event.mainPhoto = photo ?? Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
+                            if photo == nil {
+                                event.mainPhoto =  Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
+                            } else {
+                                event.mainPhoto = Image(uiImage: photo!)
+                            }
+                           
                             newEventViewModel.createEvent(data: event)
                             if newEventViewModel.canCreateEvent {
                                 self.mode.wrappedValue.dismiss()

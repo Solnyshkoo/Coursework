@@ -4,7 +4,7 @@ import SwiftUI
 protocol SettingsViewProtocolOutput {}
 
 struct SettingsView: View {
-    var settingsViewModel: SettingsViewModel
+    @ObservedObject var settingsViewModel: SettingsViewModel
     @Binding var user: UserInfo
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @State var showInformationSettings: Bool = false
@@ -24,7 +24,8 @@ struct SettingsView: View {
                         Text("Профиль").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showInformationSettings) {
-                        InformationSettingsView(user: $user)
+                        InformationSettingsView(settingsViewModel: settingsViewModel, user: $user)
+
                     }
                     
                     Button(action: {
