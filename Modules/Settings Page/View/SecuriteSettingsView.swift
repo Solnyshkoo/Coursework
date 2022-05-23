@@ -24,12 +24,9 @@ struct SecuriteSettingsView: View {
                         } else {
                             self.canEdit.toggle()
                         }
-                        
-                       
                     } label: {
                         Text(canEdit ? "Готово " : "Править").bold()
                     }
-
                 }).padding(.trailing, 25)
                     .padding(.top, 10)
 
@@ -38,7 +35,6 @@ struct SecuriteSettingsView: View {
                         VStack(alignment: .horizontalCenterAlignment, spacing: 15) {
                             HStack {
                                 Text("Почта").padding(.trailing, 10)
-                                
                                 if canEdit {
                                     TextField("Почта", text: $settingsViewModel.editableUser.mail)
                                         .foregroundColor(canEdit ? ColorPalette.activeText : ColorPalette.buttonText)

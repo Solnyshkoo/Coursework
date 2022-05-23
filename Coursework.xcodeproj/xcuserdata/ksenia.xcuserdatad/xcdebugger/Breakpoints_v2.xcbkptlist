@@ -432,7 +432,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
             endingLineNumber = "144"
-            landmarkName = "uploadPartyPhoto()"
+            landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -494,8 +494,8 @@
             filePath = "Modules/Settings Page/View/SecuriteSettingsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -510,8 +510,8 @@
             filePath = "Modules/Settings Page/View/SecuriteSettingsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -560,7 +560,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "getUserPhoto(token:nick:_:)"
+            landmarkName = "changeUserNickname(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -576,7 +576,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "getUserPhoto(token:nick:_:)"
+            landmarkName = "changeUserNickname(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -592,7 +592,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "getUserPhoto(token:nick:_:)"
+            landmarkName = "changeUserNickname(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -608,7 +608,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "getUserPhoto(token:nick:_:)"
+            landmarkName = "changeUserNickname(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -624,7 +624,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "getUserPhoto(token:nick:_:)"
+            landmarkName = "changeUserNickname(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -640,7 +640,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
-            landmarkName = "getUserPhoto(token:nick:_:)"
+            landmarkName = "changeUserNickname(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -656,8 +656,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "141"
             endingLineNumber = "141"
-            landmarkName = "Service"
-            landmarkType = "3">
+            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -672,7 +672,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
             endingLineNumber = "149"
-            landmarkName = "createEvent(respond:token:_:)"
+            landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -688,7 +688,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "150"
             endingLineNumber = "150"
-            landmarkName = "createEvent(respond:token:_:)"
+            landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -704,7 +704,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "createEvent(respond:token:_:)"
+            landmarkName = "uploadUserPhoto(photo:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -720,7 +720,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
             endingLineNumber = "96"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -768,7 +768,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -816,7 +816,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -832,7 +832,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
             endingLineNumber = "101"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -848,7 +848,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "105"
             endingLineNumber = "105"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -864,7 +864,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
             endingLineNumber = "109"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -880,7 +880,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "uploadUserPhoto(photo:token:_:)"
+            landmarkName = "getUserPhoto(token:nick:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1392,7 +1392,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
             endingLineNumber = "212"
-            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1408,7 +1408,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
             endingLineNumber = "216"
-            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1424,7 +1424,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1440,7 +1440,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "214"
             endingLineNumber = "214"
-            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1456,7 +1456,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
             endingLineNumber = "219"
-            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1472,7 +1472,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
             endingLineNumber = "225"
-            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1504,8 +1504,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "240"
             endingLineNumber = "240"
-            landmarkName = "Service"
-            landmarkType = "3">
+            landmarkName = "getEventPhoto(token:id:_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1520,7 +1520,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "243"
             endingLineNumber = "243"
-            landmarkName = "setLike(token:index:_:)"
+            landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1536,7 +1536,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "247"
             endingLineNumber = "247"
-            landmarkName = "setLike(token:index:_:)"
+            landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1776,7 +1776,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "258"
             endingLineNumber = "258"
-            landmarkName = "setLike(token:index:_:)"
+            landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2366,10 +2366,10 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
-            landmarkName = "Response"
-            landmarkType = "14">
+            startingLineNumber = "376"
+            endingLineNumber = "376"
+            landmarkName = "getAllEvents(token:startIndex:_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2382,10 +2382,10 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "Response"
-            landmarkType = "14">
+            startingLineNumber = "425"
+            endingLineNumber = "425"
+            landmarkName = "Service"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2398,9 +2398,9 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "View"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
+            landmarkName = "String"
             landmarkType = "21">
             <Locations>
                <Location
@@ -2446,10 +2446,10 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
-            landmarkName = "asUIImage()"
-            landmarkType = "7">
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "encodeUrl"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2462,10 +2462,10 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "asUIImage()"
-            landmarkType = "7">
+            startingLineNumber = "434"
+            endingLineNumber = "434"
+            landmarkName = "decodeUrl"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

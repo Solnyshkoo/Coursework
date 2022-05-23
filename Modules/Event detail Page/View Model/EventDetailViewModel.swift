@@ -2,6 +2,13 @@ import Foundation
 import SwiftUI
 final class EventDetailViewModel: ObservableObject {
     @Published var info: EventModel = EventModel()
+    @Published var warning: Bool = false
+    @Published var warningDelete: Bool = false
+    @Published var warningGoing: Bool = false
+    @Published var warningGoingDelete: Bool = false
+    @Published var review: Bool = false
+    @Published var warningReviewDelete: Bool = false
+    @Published var warningReview: Bool = false
     var token: String
     let service: Service
     var partyId: Int
@@ -102,8 +109,117 @@ final class EventDetailViewModel: ObservableObject {
         return item
     }
     
+    func deleteFromFavorite(respond: Int) {
+        DispatchQueue.main.async {
+            self.service.setLike(token: self.token, index: respond) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success: 
+                    DispatchQueue.main.async {
+                        self.warning = false
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.warning = true
+                    }
+                }
+            }
+        }
+    }
     
-    func getComments() {
-        
+    func addEventToFavorite(respond: Int) {
+        DispatchQueue.main.async {
+            self.service.setLike(token: self.token, index: respond) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.warning = false
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.warning = true
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func deleteFromGoingTo(respond: Int) {
+        DispatchQueue.main.async {
+            self.service.setGoingTo(token: self.token, index: respond) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        
+                        self.warningGoing = false
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.warningGoing = true
+                    }
+                }
+            }
+        }
+
+    }
+    
+    func addEventToGoingTo(respond: Int) {
+        DispatchQueue.main.async {
+            self.service.deleteGoingTo (token: self.token, index: respond) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.warningGoingDelete = false
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.warningGoingDelete = true
+                    }
+                }
+            }
+        }
+    }
+
+    func addReview(text: String) {
+        DispatchQueue.main.async {
+            self.service.addReview(token: self.token, partyId: self.partyId, text: text) {  [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.warningReview = false
+                        self.review = true
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.warningReview = true
+                        self.review = false
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteReview(id: Int) {
+        DispatchQueue.main.async {
+            self.service.deleteReview(token: self.token, reviewId: id) {  [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.warningReviewDelete = false
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.warningReviewDelete = true
+                    }
+                }
+            }
+        }
     }
 }

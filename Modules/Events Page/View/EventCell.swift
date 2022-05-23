@@ -76,6 +76,9 @@ struct EventCell: View {
                        .alert("К сожалению, не получилось добавить мероприятие в избранное.", isPresented: $eventCellView.warning) {
                                Button("OK", role: .cancel) { }
                         }
+                       .alert("К сожалению, не получилось удалить мероприятие из избранношл.", isPresented: $eventCellView.warningDelete) {
+                               Button("OK", role: .cancel) { }
+                        }
                    }
                        
                }.padding(.bottom, 5)

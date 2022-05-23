@@ -305,6 +305,51 @@ final class Service {
         }
         session.resume()
     }
+
+    func setGoingTo(token: String, index: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/add_going_to?access_token=\(token)&party_id=\(index)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func deleteGoingTo(token: String, index: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/delete_going_to?access_token=\(token)&party_id=\(index)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
     
     func getAllEvents(token: String, startIndex: Int, _ closure: @escaping (Result<AllEventsData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/search/party?access_token=\(token)&index=\(startIndex)".encodeUrl) else {
@@ -333,6 +378,50 @@ final class Service {
         }
         session.resume()
     }
+    
+    func addReview(token: String, partyId: Int, text: String, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/review/create?access_token=\(token)&party_id=\(partyId)&text=\(text)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    func deleteReview(token: String, reviewId: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/review/create?access_token=\(token)&review_id=\(reviewId)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
 }
 
 extension String {
@@ -345,44 +434,3 @@ extension String {
     }
 }
 
-struct Details: Codable {
-    let response: Response
-}
-
-// MARK: - Response
-
-struct Response: Codable {
-    let accessToken: String
-
-    enum CodingKeys: String, CodingKey {
-        case accessToken = "access_token"
-    }
-}
-
-public extension View {
-    func asUIImage() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-         
-        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
-        UIApplication.shared.windows.first!.rootViewController?.view.addSubview(controller.view)
-         
-        let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
-        controller.view.bounds = CGRect(origin: .zero, size: size)
-        controller.view.sizeToFit()
-         
-        // here is the call to the function that converts UIView to UIImage: `.asImage()`
-        let image = controller.view.asUIImage()
-        controller.view.removeFromSuperview()
-        return image
-    }
-}
-
-public extension UIView {
-    // This is the function to convert UIView to UIImage
-    func asUIImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}

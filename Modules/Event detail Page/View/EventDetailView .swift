@@ -79,13 +79,13 @@ struct EventDetailView: View {
                                     .padding(.top, 6)
                                     .padding(.trailing, 20)
                                     .sheet(isPresented: $showReview) {
-                                        ReviewView()
+                                        ReviewView(eventDetailViewModel: eventDetailViewModel)
                                     }
                             } else {
                               
                                 Spacer()
                                 Button(action: {
-                                    // TODO: - подробнее
+                                    
                                 }) {
                                     Text("Прошло").font(Font.system(size: 18, design: .default)).padding(.top, 0)
                                         .padding(.trailing, 3)
@@ -107,9 +107,23 @@ struct EventDetailView: View {
                                 }
                             Spacer()
                             Button(action: {
-                                // TODO: - подробнее
+                                if user.subscribes.contains(where: { $0.id ==  eventDetailViewModel.info.id }) {
+                                    user.subscribes.remove(at:
+                                    user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })!)
+                                    eventDetailViewModel.deleteFromGoingTo(respond: eventDetailViewModel.info.id)
+                                    if eventDetailViewModel.warningGoingDelete {
+                                        user.subscribes.append( eventDetailViewModel.info)
+                                    }
+                                } else {
+                                    eventDetailViewModel.addEventToGoingTo(respond: eventDetailViewModel.info.id)
+                                    user.subscribes.append( eventDetailViewModel.info)
+                                    if eventDetailViewModel.warningGoing {
+                                        user.subscribes.remove(at:
+                                        user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })!)
+                                    }
+                                }
                             }) {
-                                Text(user.subscribes.contains(where: { $0.id == eventDetailViewModel.info.id }) ? "Иду" : "Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)
+                                Text(user.subscribes.contains(where: { $0.id == eventDetailViewModel.info.id }) ? " Уже иду" : "Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)
                                     .padding(.trailing, 3)
                                     .frame(width: 110, height: 8)
                             }.foregroundColor(ColorPalette.buttonText)
@@ -118,6 +132,12 @@ struct EventDetailView: View {
                                 .cornerRadius(10)
                                 .padding(.top, 6)
                                 .padding(.trailing, 20)
+                                .alert("К сожалению, не получилось записаться на мероприятие.", isPresented: $eventDetailViewModel.warningGoing) {
+                                        Button("OK", role: .cancel) { }
+                                 }
+                                .alert("К сожалению, не получилось отписаться от мероприятия.", isPresented: $eventDetailViewModel.warningGoingDelete) {
+                                        Button("OK", role: .cancel) { }
+                                 }
                         }
                       
                       
@@ -174,14 +194,29 @@ struct EventDetailView: View {
                             Button(action: {
                                 if user.favorities.contains(where: { $0.id == eventDetailViewModel.info.id }) {
                                     user.favorities.remove(at:
-                                                            user.favorities.firstIndex(where: { $0.id == eventDetailViewModel.info.id })!)
+                                            user.favorities.firstIndex(where: { $0.id == eventDetailViewModel.info.id })!)
+                                    eventDetailViewModel.deleteFromFavorite(respond: eventDetailViewModel.info.id)
+                                       if eventDetailViewModel.warningDelete {
+                                           user.favorities.append(eventDetailViewModel.info)
+                                       }
                                 } else {
                                     user.favorities.append(eventDetailViewModel.info)
+                                    eventDetailViewModel.addEventToFavorite(respond: eventDetailViewModel.info.id)
+                                     if eventDetailViewModel.warning {
+                                         user.favorities.remove(at:
+                                                                    user.favorities.firstIndex(where: {$0.id == eventDetailViewModel.info.id })!)
+                                     }
                                 }
                             }) {
                                 Image(systemName:
                                         user.favorities.contains(where: { $0.id == eventDetailViewModel.info.id }) ? "heart.fill" : "heart").font(Font.system(size: 22, design: .default))
                             }.foregroundColor(user.favorities.contains(where: { $0.id == eventDetailViewModel.info.id }) ? Color.red : ColorPalette.text)
+                                .alert("К сожалению, не получилось добавить мероприятие в избранное.", isPresented: $eventDetailViewModel.warning) {
+                                        Button("OK", role: .cancel) { }
+                                 }
+                                .alert("К сожалению, не получилось удалить мероприятие из избранношл.", isPresented: $eventDetailViewModel.warningDelete) {
+                                        Button("OK", role: .cancel) { }
+                                 }
                         }).padding(.top, -2)
                     }
                 })
@@ -190,11 +225,3 @@ struct EventDetailView: View {
         }
     }
 }
-
-//struct EventDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ForEach(ColorScheme.allCases, id: \.self) {
-//            EventDetailView().preferredColorScheme($0)
-//        }
-//    }
-//}
