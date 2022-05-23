@@ -8,6 +8,7 @@ final class EventDetailViewModel: ObservableObject {
     @Published var warningGoingDelete: Bool = false
     @Published var review: Bool = false
     @Published var warningReviewDelete: Bool = false
+    @Published var reviewDelete: Bool = false
     @Published var warningReview: Bool = false
     var token: String
     let service: Service
@@ -212,10 +213,12 @@ final class EventDetailViewModel: ObservableObject {
                 switch result {
                 case .success:
                     DispatchQueue.main.async {
+                        self.reviewDelete = true
                         self.warningReviewDelete = false
                     }
                 case .failure:
                     DispatchQueue.main.async {
+                        self.reviewDelete = true
                         self.warningReviewDelete = true
                     }
                 }

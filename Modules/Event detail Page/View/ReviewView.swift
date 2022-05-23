@@ -51,11 +51,3 @@ struct ReviewView: View {
         }
     }
 }
-
-//struct ReviewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ForEach(ColorScheme.allCases, id: \.self) {
-//            ReviewView().preferredColorScheme($0)
-//        }
-//    }
-//}

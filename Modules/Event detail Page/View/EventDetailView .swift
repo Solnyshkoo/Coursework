@@ -149,17 +149,22 @@ struct EventDetailView: View {
                     // TODO: отзывы цикл
                     ForEach(eventDetailViewModel.info.comments) { item in
                         ReviewCell(info: item)
+                            .swipeActions {
+                                    Button {
+                                        eventDetailViewModel.deleteReview(id: item.id)
+                                        if eventDetailViewModel.reviewDelete {
+                                            eventDetailViewModel.info.comments.remove(at:  eventDetailViewModel.info.comments.firstIndex(where: { $0.id == item.id })!)
+                                        }
+                                    } label: {
+                                            Label("Delete", systemImage: "trash")
+                                    }
+                                    .tint(.red)
+                            }
                     }
-//                        .swipeActions(edge: .trailing) {
-//                               Button(role: .destructive) {
-//
-//                                   //TODO:
-//
-//                               } label: {
-//                                   Label("Delete", systemImage: "trash")
-//                               }
-//
-//                           }
+                    .alert("К сожалению, не получилось удалить комментарий.", isPresented: $eventDetailViewModel.reviewDelete) {
+                            Button("OK", role: .cancel) { }
+                     }
+
                     //Spacer()
                 })
                 .navigationBarBackButtonHidden(true)
