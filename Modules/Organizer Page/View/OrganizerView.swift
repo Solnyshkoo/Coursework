@@ -15,8 +15,8 @@ struct OrganizerView: View {
             VStack {
                 ScrollView {
                     SearchBar(searchText: searchText, isSearching: isSearching)
-                    ForEach($organizerViewModel.user.organiesed) { item in
-                        EventCell(info: item, people: $user, fullAcсess: true, canEdit: true, eventCellView: FavoriteViewModel(service: organizerViewModel.service, user: user))
+                    ForEach($user.organiesed) { item in
+                        EventCell(info: item, people: $user, fullAcсess: true, canEdit: true, eventCellView: FavoriteViewModel(service: organizerViewModel.service))
                     }
                 }
             }
@@ -29,7 +29,7 @@ struct OrganizerView: View {
                 trailing:
                 Button(
                     action: {
-                        if organizerViewModel.user.validate {
+                        if user.validate {
                             self.showingNewEventPage.toggle()
                         } else {
                             self.showingVerification.toggle()
@@ -41,11 +41,11 @@ struct OrganizerView: View {
                 ).padding(.trailing, 10)
                     .padding(.top, 40)
                     .fullScreenCover(isPresented: $showingNewEventPage, content: {
-                        NewEventView(newEventViewModel: NewEventViewModel(service: Service(), user: organizerViewModel.user), user: $user)
+                        NewEventView(newEventViewModel: NewEventViewModel(service: Service(), user: user), user: $user)
          
                     })
                     .sheet(isPresented: $showingVerification, content: {
-                        VerificationView(verificationViewModel: VerificationViewModel(service: organizerViewModel.service, user: organizerViewModel.user), user: $user)
+                        VerificationView(verificationViewModel: VerificationViewModel(service: organizerViewModel.service, user: user), user: $user)
                     })
             )
             .padding(.top, 10)

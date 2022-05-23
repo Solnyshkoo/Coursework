@@ -10,17 +10,17 @@ struct TabBar: View {
     
     var body: some View {
         TabView(selection: $selection){
-            OrganizerView(organizerViewModel: OrganizerViewModel(service: service, user: people), user: $people)
+            OrganizerView(organizerViewModel: OrganizerViewModel(service: service), user: $people)
                 .tabItem {
                     Image(systemName: "plus.app")
                 }
                 .tag(0)
-            EventsView(personalViewModel: EventsViewModel(service: service, user: people), user: $people, fullAcсess: true)
+            EventsView(personalViewModel: EventsViewModel(service: service), user: $people, fullAcсess: true)
                 .tabItem {
                     Image(systemName: "house")
                 }
                 .tag(1)
-            FavoriteView(favoriteViewModel: FavoriteViewModel(service: service, user: people), user:  $people)
+            FavoriteView(favoriteViewModel: FavoriteViewModel(service: service), user:  $people)
                 .tabItem {
                     Image(systemName: "heart")
                 }

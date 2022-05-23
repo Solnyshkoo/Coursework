@@ -40,9 +40,9 @@ struct ReviewCell: View {
 struct ReviewCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ReviewCell(info: ReviewModel(userName: "Петрова Ксения ", logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
+            ReviewCell(info: ReviewModel( logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
                 .preferredColorScheme(.dark)
-            ReviewCell(info:  ReviewModel(userName: "Петрова Ксения ", logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
+            ReviewCell(info:  ReviewModel(logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
                 .preferredColorScheme(.light)
         }
     }

@@ -2,8 +2,8 @@ import Foundation
 import SwiftUI
 struct EventDetailView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var info: EventModel = .init(id: 1, name: "reading.club", logo: Image("logoRead"), mainPhoto: Image("photoRead"), distination: "Красная площадь", price: "100", description: "Привет! Мы приглашаем тебе на посиделки в антикафе. Обсудим книги, поделимся впечатлениемя. И да, каждого ждёт сюрприз", participant: 5, like: false, data: Date(), contacts: "Пишите kepetrova@edu.hse.ru")
-    @State var people: UserInfo = .init()
+    @ObservedObject  var eventDetailViewModel: EventDetailViewModel
+    @Binding var user: UserInfo
     @State var showParticipants: Bool = false
     @State var showPersonalView: Bool = false
     @State var alreadyGo: Bool = false
@@ -14,10 +14,10 @@ struct EventDetailView: View {
             NavigationView {
                 ScrollView {
                 VStack(alignment: .leading, spacing: 8, content:  {
-                    info.mainPhoto.resizable().smallRectangleCropped()
+                    eventDetailViewModel.info.mainPhoto.resizable().smallRectangleCropped()
                         .frame(height: 500)
                     // TODO: - кнопка ещё
-                    Text(info.description)
+                    Text(eventDetailViewModel.info.description)
                         .foregroundColor(ColorPalette.text)
                       //  .font(.subheadline)
                         .font(Font.system(size: 18, design: .default))
@@ -25,7 +25,7 @@ struct EventDetailView: View {
                         .lineLimit(3)
                         .padding(.leading, 15)
                     
-                    Text("Адрес: " + info.distination)
+                    Text("Адрес: " + eventDetailViewModel.info.distination)
                         .font(Font.system(size: 18, design: .default))
                         .bold()
                         .padding(.leading, 15)
@@ -34,37 +34,37 @@ struct EventDetailView: View {
                         .font(Font.system(size: 18, design: .default))
                         .bold()
                         .padding(.leading, 15)
-                        Text(info.data, style: .date)
+                        Text(eventDetailViewModel.info.data, style: .date)
                             .font(Font.system(size: 18, design: .default))
                             .bold()
                             .padding(.leading, 2)
-                        Text(info.data, style: .time)
+                        Text(eventDetailViewModel.info.data, style: .time)
                             .font(Font.system(size: 18, design: .default))
                             .bold()
                             .padding(.leading, 2)
                         Spacer()
                     }
-                    Text("Стоимость: " + info.price + "₽")
+                    Text("Стоимость: " + eventDetailViewModel.info.price + "₽")
                         .font(Font.system(size: 18, design: .default))
                         .bold()
                         .padding(.leading, 15)
-                    Text("Контакты: " + info.contacts)
+                    Text("Контакты: " + eventDetailViewModel.info.contacts)
                         .font(Font.system(size: 18, design: .default))
                         .bold()
                         .padding(.leading, 15)
                     HStack {
                       
                         
-                        if passed {
-                            Text(info.participant == 0 ? "" : String(info.participant) + " было").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                        if eventDetailViewModel.info.passed {
+                            Text(eventDetailViewModel.info.participant == 0 ? "" : String(eventDetailViewModel.info.participant) + " было").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
                                 .onTapGesture {
                                     self.showParticipants.toggle()
                                 }
                                 .fullScreenCover(isPresented: $showParticipants) {
-                                   ParticipantsView()
+                                    ParticipantsView(participantsViewModel: ParticipantsViewModel(service: eventDetailViewModel.service, visitors: eventDetailViewModel.info.visitors))
                                 }
                             Spacer()
-                            if alreadyGo {
+                            if user.subscribes.contains(where: { $0.id == eventDetailViewModel.info.id }) {
                                 Button(action: {
                                     self.showReview.toggle()
                                 }) {
@@ -98,18 +98,18 @@ struct EventDetailView: View {
                                     .padding(.trailing, 20)
                             }
                         } else {
-                            Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
+                            Text(eventDetailViewModel.info.participant == 0 ? "" : String(eventDetailViewModel.info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20).padding(.top)
                                 .onTapGesture {
                                     self.showParticipants.toggle()
                                 }
                                 .fullScreenCover(isPresented: $showParticipants) {
-                                   ParticipantsView()
+                                    ParticipantsView(participantsViewModel: ParticipantsViewModel(service: eventDetailViewModel.service, visitors: eventDetailViewModel.info.visitors))
                                 }
                             Spacer()
                             Button(action: {
                                 // TODO: - подробнее
                             }) {
-                                Text(alreadyGo ? "Иду" : "Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)
+                                Text(user.subscribes.contains(where: { $0.id == eventDetailViewModel.info.id }) ? "Иду" : "Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)
                                     .padding(.trailing, 3)
                                     .frame(width: 110, height: 8)
                             }.foregroundColor(ColorPalette.buttonText)
@@ -127,17 +127,19 @@ struct EventDetailView: View {
              
                     Divider()
                     // TODO: отзывы цикл
-                    ReviewCell(info: ReviewModel(userName: "Петрова Ксения ", logo: Image("logo"), nickname: "ksu", review: "Прекрасное мероприятие. Очень понравилось, жаль, что мне надо было спешить и не смогла посидеть дольше. Очень жду следующего события!"))
-                        .swipeActions(edge: .trailing) {
-                               Button(role: .destructive) {
-                                   
-                                   //TODO:
-                                   
-                               } label: {
-                                   Label("Delete", systemImage: "trash")
-                               }
-                              
-                           }
+                    ForEach(eventDetailViewModel.info.comments) { item in
+                        ReviewCell(info: item)
+                    }
+//                        .swipeActions(edge: .trailing) {
+//                               Button(role: .destructive) {
+//
+//                                   //TODO:
+//
+//                               } label: {
+//                                   Label("Delete", systemImage: "trash")
+//                               }
+//
+//                           }
                     //Spacer()
                 })
                 .navigationBarBackButtonHidden(true)
@@ -152,7 +154,7 @@ struct EventDetailView: View {
                                     self.mode.wrappedValue.dismiss()
                                 }
                         
-                            info.logo
+                            eventDetailViewModel.info.logo
                                 .resizable()
                                 .centerSquareCropped()
                                 .clipShape(Circle())
@@ -160,7 +162,7 @@ struct EventDetailView: View {
                                 .scaledToFit()
                                 .padding(.leading, 20)
                                 .padding(.trailing, 15)
-                            Text(info.name).foregroundColor(ColorPalette.text).font(.title3)
+                            Text(eventDetailViewModel.info.name).foregroundColor(ColorPalette.text).font(.title3)
                                 .bold()
                                 .padding(.trailing, 10)
                                 .lineLimit(1)
@@ -170,16 +172,16 @@ struct EventDetailView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         VStack(alignment: .trailing, content: {
                             Button(action: {
-                                if people.favorities.contains(where: { $0.id == info.id }) {
-                                    people.favorities.remove(at:
-                                        people.favorities.firstIndex(where: { $0.id == info.id })!)
+                                if user.favorities.contains(where: { $0.id == eventDetailViewModel.info.id }) {
+                                    user.favorities.remove(at:
+                                                            user.favorities.firstIndex(where: { $0.id == eventDetailViewModel.info.id })!)
                                 } else {
-                                    people.favorities.append(info)
+                                    user.favorities.append(eventDetailViewModel.info)
                                 }
                             }) {
                                 Image(systemName:
-                                        people.favorities.contains(where: { $0.id == info.id }) ? "heart.fill" : "heart").font(Font.system(size: 22, design: .default))
-                            }.foregroundColor(people.favorities.contains(where: { $0.id == info.id }) ? Color.red : ColorPalette.text)
+                                        user.favorities.contains(where: { $0.id == eventDetailViewModel.info.id }) ? "heart.fill" : "heart").font(Font.system(size: 22, design: .default))
+                            }.foregroundColor(user.favorities.contains(where: { $0.id == eventDetailViewModel.info.id }) ? Color.red : ColorPalette.text)
                         }).padding(.top, -2)
                     }
                 })
@@ -189,10 +191,10 @@ struct EventDetailView: View {
     }
 }
 
-struct EventDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self) {
-            EventDetailView().preferredColorScheme($0)
-        }
-    }
-}
+//struct EventDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ForEach(ColorScheme.allCases, id: \.self) {
+//            EventDetailView().preferredColorScheme($0)
+//        }
+//    }
+//}

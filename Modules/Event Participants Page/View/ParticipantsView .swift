@@ -2,14 +2,13 @@ import Foundation
 import SwiftUI
 struct ParticipantsView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var users: [ParticipantsModel] = [ParticipantsModel(id: 1, name: "Катя", surname: "Иванова", nickname: "kate", photo: Image("logo"), show: true),
-                                             ParticipantsModel(id: 2, name: "Иван", surname: "Иванов", nickname: "ivan", photo: Image("ivan"), show: true)]
+    @ObservedObject var participantsViewModel: ParticipantsViewModel
     // TODO: -  из modelView
     var body: some View {
         NavigationView {
             VStack {
                 ScrollView {
-                    ForEach(users) { item in
+                    ForEach(participantsViewModel.party) { item in
                         ParticipantsCell(user: item)
                     }
                 }
@@ -24,16 +23,6 @@ struct ParticipantsView: View {
                         }
                 }
             })
-        }
-    }
-}
-
-struct ParticipantsView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ParticipantsView()
-            ParticipantsView()
-                .preferredColorScheme(.dark)
         }
     }
 }

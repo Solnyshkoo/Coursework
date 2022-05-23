@@ -23,6 +23,8 @@
 		5E647B9B28328AF30060CB71 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E647B9A28328AF30060CB71 /* NotificationSettings.swift */; };
 		5E7CA66E282590E2001D4C4F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CA66D282590E2001D4C4F /* ImagePicker.swift */; };
 		5E8324D6283B06ED0037ABF3 /* AllEventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8324D5283B06ED0037ABF3 /* AllEventsData.swift */; };
+		5E8324D9283BD1360037ABF3 /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8324D8283BD1360037ABF3 /* EventDetailViewModel.swift */; };
+		5E8324DC283BD7A50037ABF3 /* ParticipantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8324DB283BD7A50037ABF3 /* ParticipantsViewModel.swift */; };
 		5E896CD72824073300D67E92 /* OrganizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E896CD62824073300D67E92 /* OrganizerView.swift */; };
 		5E896CD928241A3400D67E92 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E896CD828241A3400D67E92 /* FavoriteView.swift */; };
 		5E896CDB28241C6A00D67E92 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E896CDA28241C6A00D67E92 /* FavoriteCell.swift */; };
@@ -95,6 +97,8 @@
 		5E647B9A28328AF30060CB71 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		5E7CA66D282590E2001D4C4F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5E8324D5283B06ED0037ABF3 /* AllEventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsData.swift; sourceTree = "<group>"; };
+		5E8324D8283BD1360037ABF3 /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		5E8324DB283BD7A50037ABF3 /* ParticipantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsViewModel.swift; sourceTree = "<group>"; };
 		5E896CD62824073300D67E92 /* OrganizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerView.swift; sourceTree = "<group>"; };
 		5E896CD828241A3400D67E92 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		5E896CDA28241C6A00D67E92 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
@@ -232,6 +236,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5E8324D7283BD11E0037ABF3 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E8324D8283BD1360037ABF3 /* EventDetailViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		5E8324DA283BD78F0037ABF3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5E8324DB283BD7A50037ABF3 /* ParticipantsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5E896CDE2824908F00D67E92 /* New Event Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +289,7 @@
 		5ECD457528323F3400729E2C /* Event Participants Page */ = {
 			isa = PBXGroup;
 			children = (
+				5E8324DA283BD78F0037ABF3 /* ViewModel */,
 				5ECD457B2832401D00729E2C /* Model */,
 				5ECD457628323F9200729E2C /* View */,
 			);
@@ -321,6 +342,7 @@
 		5ECD45872832526E00729E2C /* Event detail Page */ = {
 			isa = PBXGroup;
 			children = (
+				5E8324D7283BD11E0037ABF3 /* View Model */,
 				5EF8135F28367ACA00DB0B28 /* Model */,
 				5ECD45882832527D00729E2C /* View */,
 			);
@@ -700,6 +722,7 @@
 				5EE034F0281F12CD00754267 /* SecretTextField.swift in Sources */,
 				5EA591782829CA53007D4BAC /* UserDataResponseModel.swift in Sources */,
 				5E0069A328351E3100B7EF9A /* SecuriteSettingsView.swift in Sources */,
+				5E8324DC283BD7A50037ABF3 /* ParticipantsViewModel.swift in Sources */,
 				5E5970AB281C8C0C00BF3240 /* EventsView.swift in Sources */,
 				5ECD457828323FA900729E2C /* ParticipantsView .swift in Sources */,
 				5EE0350E281FED1100754267 /* PersonalViewModel.swift in Sources */,
@@ -726,6 +749,7 @@
 				5E8324D6283B06ED0037ABF3 /* AllEventsData.swift in Sources */,
 				5EF8137028380E4D00DB0B28 /* EmailResponse.swift in Sources */,
 				5EF81374283A651900DB0B28 /* EventsViewModel.swift in Sources */,
+				5E8324D9283BD1360037ABF3 /* EventDetailViewModel.swift in Sources */,
 				5E0069A128351C3100B7EF9A /* InformationSettingsView.swift in Sources */,
 				5EE03500281F12E900754267 /* ColorPalette.swift in Sources */,
 				5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */,

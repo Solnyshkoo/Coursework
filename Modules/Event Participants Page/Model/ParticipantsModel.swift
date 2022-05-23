@@ -1,10 +1,10 @@
 import Foundation
 import SwiftUI
 struct ParticipantsModel: Identifiable {
-    var id: Int
-    let name: String
-    let surname: String
-    let nickname: String
-    let photo: Image
-    let show: Bool
+    var id: Int = 0
+    var name: String  = ""
+    var surname: String = ""
+    var nickname: String = ""
+    var photo: Image = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
+    var show: Bool = true
 }

@@ -47,9 +47,14 @@ struct EventCell: View {
                    } else {
                    Button(action: {
                        if  fullAcсess {
+                           
                            if people.favorities.contains(where: { $0.id == info.id }) {
                                people.favorities.remove(at:
                                    people.favorities.firstIndex(where: { $0.id == info.id })!)
+                               eventCellView.deleteFromFavorite(respond: info.id)
+                               if eventCellView.warningDelete {
+                                   people.favorities.append(info)
+                               }
                            } else {
                                people.favorities.append(info)
                                eventCellView.addEventToFavorite(respond: info.id)
@@ -113,7 +118,7 @@ struct EventCell: View {
                             self.showParticipants.toggle()
                         }
                         .fullScreenCover(isPresented: $showParticipants) {
-                           ParticipantsView()
+                            ParticipantsView(participantsViewModel: ParticipantsViewModel(service: eventCellView.service, visitors: info.visitors))
                         }
                          Spacer()
                     Button(action: {
@@ -137,11 +142,8 @@ struct EventCell: View {
                                 Button("OK", role: .cancel) { }
                          }
                         .fullScreenCover(isPresented: $showDetailView) {
-                            EventDetailView()
+                            EventDetailView(eventDetailViewModel: EventDetailViewModel(service: eventCellView.service, id: info.id), user: $people)
                         }
-                       
-                            
-                        
                 }
                 Spacer()
             }

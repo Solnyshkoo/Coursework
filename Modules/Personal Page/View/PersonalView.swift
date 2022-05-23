@@ -172,11 +172,11 @@ struct PersonalView: View {
                     Spacer()
                     if selectedIndex == 0 {
                         ForEach($personalViewModel.user.subscribes) { item in
-                            EventCell(info: item, people: $user, fullAcсess: true, canEdit: false, eventCellView: FavoriteViewModel(service: personalViewModel.service, user:  user))
+                            EventCell(info: item, people: $user, fullAcсess: true, canEdit: false, eventCellView: FavoriteViewModel(service: personalViewModel.service))
                         }
                     } else {
                         ForEach($personalViewModel.user.organiesed) { item in
-                            EventCell(info: item, people: $user, fullAcсess: true, canEdit: false,  eventCellView: FavoriteViewModel(service: personalViewModel.service, user:  user))
+                            EventCell(info: item, people: $user, fullAcсess: true, canEdit: false,  eventCellView: FavoriteViewModel(service: personalViewModel.service))
                         }
                         
                     }

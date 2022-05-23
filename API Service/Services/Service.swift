@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    static let adress = "https://59e6-89-175-18-189.ngrok.io"
+    static let adress = "https://6683-89-175-18-189.ngrok.io"
     
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
@@ -29,6 +29,34 @@ final class Service {
         }
         session.resume()
     }
+    
+    func getUsersDataByID(token: String, id: Int, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)&user_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
+            var result: Result<UserData, InternetError>
+            guard
+                let data = data,
+                let post = try? JSONDecoder().decode(UserData.self, from: data)
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                if response.statusCode == 404 {
+                    result = .failure(InternetError.internetError)
+                } else {
+                    result = .failure(InternetError.fromServerError)
+                }
+                closure(result)
+                return
+            }
+            result = .success(post)
+            closure(result)
+        }
+        session.resume()
+    }
+   
+    
     
     func changeUserNickname(token: String, nick: String, _ closure: @escaping (Result<Bool, ChangeUserDataError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/change/username?username=\(nick)&access_token=\(token)".encodeUrl) else {
@@ -235,6 +263,29 @@ final class Service {
     
     func setLike(token: String, index: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/add_favorite?access_token=\(token)&party_id=\(index)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func deleteLike(token: String, index: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/delete_favorite?access_token=\(token)&party_id=\(index)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }

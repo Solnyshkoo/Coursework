@@ -1,37 +1,19 @@
 import Foundation
 import SwiftUI
 final class OrganizerViewModel: ObservableObject {
-    @Published var user: UserInfo
+   // @Published var user: UserInfo
     @Published var warningText: String = ""
     @Published var showWarning: Bool = false
     let service: Service
     var token: String
     
-    init(service: Service, user: UserInfo) {
+    init(service: Service) {
         self.service = service
         self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
-        self.user = user
+//        self.user = user
     }
     
-    func getUserData() {
-        DispatchQueue.main.async {
-            self.service.getUsersData(token: self.token) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let data):
-                    DispatchQueue.main.async {
-                        self.user = self.createUser(data: data)
-                    }
-                    
-                case .failure:
-                    DispatchQueue.main.async {
-                        self.warningText = "Ошибка"
-                        self.showWarning = true
-                    }
-                }
-            }
-        }
-    }
+  
     
     private func createUser(data: UserData) -> UserInfo {
         var array = data.response.favorites
