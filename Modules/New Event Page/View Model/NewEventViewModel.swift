@@ -46,12 +46,16 @@ final class NewEventViewModel: ObservableObject {
                         break
                     case .failure:
                         self.showWarning = true
-                        self.textWarning = "Фотография не добавлена"
+                        self.textWarning = "К сожалению, мы не смогли сохранить мероприятие("
                         self.canCreateEvent = false
                         break
                     }
                 }
             }
+            
+            self.service.uploadPartyPhoto()
+            self.canCreateEvent = true
+            
         }
     }
 }

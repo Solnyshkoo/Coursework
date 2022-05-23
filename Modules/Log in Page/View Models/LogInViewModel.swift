@@ -115,12 +115,14 @@ final class LogInViewModel: ObservableObject {
     }
     
     func getEventInfo(index: Int, i: Int, array: Int) {
+        var item = EventModel()
         DispatchQueue.main.async {
             self.service2.getEventInfo(eventId: index, token: self.token) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
+                        item = self.createEvent(data: data)
                         if array == 1 {
                             self.user.subscribes[i] = self.createEvent(data: data)
                         } else if array == 2 {
@@ -160,7 +162,7 @@ final class LogInViewModel: ObservableObject {
                 }
             }
             
-            self.service2.getUserPhoto(token: self.token, nick: self.user.subscribes[i].creatorName) { result in
+            self.service2.getUserPhoto(token: self.token, nick: item.creatorName) { result in
                 switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
@@ -222,7 +224,9 @@ final class LogInViewModel: ObservableObject {
         item.contacts = data.response.endingAt
         item.price = String(data.response.price)
         item.distination = data.response.address
-      //  item.data = data.response.startingAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        item.data = dateFormatter.date(from: data.response.startingAt) ?? Date()
         item.description = data.response.responseDescription
         item.name = data.response.name
         item.creatorName = data.response.creatorName

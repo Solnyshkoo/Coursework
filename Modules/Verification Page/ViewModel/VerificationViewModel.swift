@@ -19,6 +19,7 @@ final class VerificationViewModel: ObservableObject {
         service.verificationPassport(respond: data)
         dataIsCorrect = true
         showWarning = false
+        user.sendRespond = true
         textWarning = ""
     }
 }

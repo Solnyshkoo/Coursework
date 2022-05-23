@@ -16,5 +16,16 @@ struct UserInfo {
     var favorities: [EventModel] = []
     var subscribes: [EventModel] = []
     var organiesed: [EventModel] = []
+    var settings: Settings = Settings()
+}
+
+
+struct Settings {
+    var privateAccount: Bool = true
+    var showGoingTo: Bool = true
+    var showCreated: Bool = true
+    var showList: Bool = true
+    var notificationsAboutGoingTo: Bool = true
+    var notifications_about_favorites: Bool = true
 }
 

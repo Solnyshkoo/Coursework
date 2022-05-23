@@ -3,15 +3,12 @@ import SwiftUI
 struct NewEventView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var newEventViewModel: NewEventViewModel
+    @Binding var user: UserInfo
     @State private var selectedDate: Date = .init()
     @State var event = EventModel()
     @State private var shoosePhoto = false
     @State private var photo: UIImage?
     @State private var isShowCalendar = false
-    init(output: NewEventViewModel) {
-        newEventViewModel = output
-    }
-
     var body: some View {
         VStack {
             NavigationView {
@@ -34,7 +31,6 @@ struct NewEventView: View {
                             }
                     }
                     .padding(.bottom, 15)
-                    
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
                             Text("Дата").font(.title2).fontWeight(.light).foregroundColor(ColorPalette.text).padding(.leading, 18)
@@ -45,7 +41,6 @@ struct NewEventView: View {
                         }.padding(.top, 10)
                         
                         EventTextField(text: $event.name, title: "Название", subtitile: "Название", width: 40)
-                       
                         EventTextField(text: $event.description, title: "Описание", subtitile: "Расскажи, что там будет..", width: 100)
                         EventTextField(text: $event.distination, title: "Местоположение", subtitile: "Адрес", width: 40)
                         EventTextField(text: $event.price, title: "Стоимость входа в рублях", subtitile: "0, если бесплатно", width: 40)
@@ -73,6 +68,7 @@ struct NewEventView: View {
                            
                             newEventViewModel.createEvent(data: event)
                             if newEventViewModel.canCreateEvent {
+                                user.organiesed.append(event)
                                 self.mode.wrappedValue.dismiss()
                             }
                         }) {
@@ -107,12 +103,3 @@ struct NewEventView: View {
     }
 }
 
-struct NewEventView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            NewEventView(output: NewEventViewModel(service: Service(), user: UserInfo()))
-            NewEventView(output: NewEventViewModel(service: Service(), user: UserInfo()))
-                .preferredColorScheme(.dark)
-        }
-    }
-}

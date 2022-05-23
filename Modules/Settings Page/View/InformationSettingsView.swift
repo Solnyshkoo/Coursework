@@ -38,7 +38,7 @@ struct InformationSettingsView: View {
                         Text("Пройти верификацию").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showVerification) {
-                        VerificationView(output:VerificationViewModel(service: Service(), user: user))
+                        VerificationView(verificationViewModel: VerificationViewModel(service: Service(), user: settingsViewModel.user), user: $user)
                     }
                 }
                 

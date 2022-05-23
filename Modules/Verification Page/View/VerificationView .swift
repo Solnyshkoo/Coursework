@@ -3,11 +3,9 @@ import SwiftUI
 struct VerificationView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @ObservedObject var verificationViewModel: VerificationViewModel
+    @Binding var user: UserInfo
     @State private var data: VerificationModel = .init()
     @State var showInfo: Bool = false
-    init(output: VerificationViewModel) {
-        verificationViewModel = output
-    }
     var body: some View {
         NavigationView {
             VStack {
@@ -42,6 +40,9 @@ struct VerificationView: View {
                         .cornerRadius(10)
                     Button(action: {
                         verificationViewModel.checkPassport(data: data)
+                        if verificationViewModel.dataIsCorrect {
+                            user.sendRespond = true
+                        }
                     }) {
                         Text("Проверить").font(Font.system(size: 20, design: .default))
                             .padding(.trailing, 3)
@@ -73,13 +74,3 @@ struct VerificationView: View {
         }
     }
 }
-
-//struct VerificationView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            VerificationView()
-//            VerificationView()
-//                .preferredColorScheme(.dark)
-//        }
-//    }
-//}

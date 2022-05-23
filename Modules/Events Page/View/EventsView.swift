@@ -6,8 +6,6 @@ struct EventsView: View {
     @State private var searchProperties: Set<String> = []
     @State var fullAcсess: Bool
     var body: some View {
-        // TODO: - скрол пофиксить + кнопка наверх
-        
             VStack {
                 VStack(alignment: .leading) {
                     SearchBar(searchText: "Найди своё мероприятие", isSearching: false)
@@ -35,11 +33,3 @@ struct EventsView: View {
         
     }
 }
-
-//struct EventsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ForEach(ColorScheme.allCases, id: \.self) {
-//            EventsView(fullAcсess: true).preferredColorScheme($0)
-//        }
-//    }
-//}

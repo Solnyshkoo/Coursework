@@ -7,15 +7,10 @@ final class OrganizerViewModel: ObservableObject {
     let service: Service
     var token: String
     
-    init(service: Service, user: UserInfo, newUser: Bool) {
+    init(service: Service, user: UserInfo) {
         self.service = service
         self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
-        if newUser {
-            self.user = user
-        } else {
-            self.user = UserInfo()
-            getUserData()
-        }
+        self.user = user
     }
     
     func getUserData() {
@@ -33,7 +28,6 @@ final class OrganizerViewModel: ObservableObject {
                         self.warningText = "Ошибка"
                         self.showWarning = true
                     }
-                    // self.nicknameWarningText = "Bad internet connection"
                 }
             }
         }

@@ -1,28 +1,23 @@
 import Foundation
 import SwiftUI
-
-
-
 struct OrganizerView: View {
     @State private var searchText = "Найди мероприятие..."
     @ObservedObject var organizerViewModel: OrganizerViewModel
+    @Binding var user: UserInfo
     @State private var isSearching = false
     @State private var showingAlert = false
     @State private var showingVerification = false
     @State private var showingNewEventPage = false
     @State private var verification = true
-    init(output: OrganizerViewModel) {
-        organizerViewModel = output
-    }
+  
     var body: some View {
-        
         NavigationView {
             VStack {
                 ScrollView {
                     SearchBar(searchText: searchText, isSearching: isSearching)
-//                    ForEach(organizerViewModel.user.organiesed) { item in
-//                        EventCell(info: item, fullAcсess: true, canEdit: true)
-              //      }
+                    ForEach($organizerViewModel.user.organiesed) { item in
+                        EventCell(info: item, people: $user, fullAcсess: true, canEdit: true, eventCellView: FavoriteViewModel(service: organizerViewModel.service, user: user))
+                    }
                 }
             }
             .alert(organizerViewModel.warningText, isPresented: $organizerViewModel.showWarning) {
@@ -46,24 +41,15 @@ struct OrganizerView: View {
                 ).padding(.trailing, 10)
                     .padding(.top, 40)
                     .fullScreenCover(isPresented: $showingNewEventPage, content: {
-                        NewEventView(output: NewEventViewModel(service: organizerViewModel.service, user: organizerViewModel.user))
+                        NewEventView(newEventViewModel: NewEventViewModel(service: Service(), user: organizerViewModel.user), user: $user)
+         
                     })
                     .sheet(isPresented: $showingVerification, content: {
-                        VerificationView(output: VerificationViewModel(service: organizerViewModel.service, user: organizerViewModel.user))
+                        VerificationView(verificationViewModel: VerificationViewModel(service: organizerViewModel.service, user: organizerViewModel.user), user: $user)
                     })
             )
             .padding(.top, 10)
         }.padding(.top, -70)
 
-    }
-}
-
-struct OrganizerView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            OrganizerView(output: OrganizerViewModel(service: Service(), user: UserInfo(), newUser: false))
-            OrganizerView(output: OrganizerViewModel(service: Service(), user: UserInfo(), newUser: false))
-                .preferredColorScheme(.dark)
-        }
     }
 }

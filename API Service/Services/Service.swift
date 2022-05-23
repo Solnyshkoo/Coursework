@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    static let adress = "https://7ec0-109-252-174-120.ngrok.io"
+    static let adress = "https://f6aa-2a00-1370-8182-3789-34bc-1b4b-cfce-36f4.ngrok.io"
     
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
@@ -94,14 +94,18 @@ final class Service {
             print("что-то не то с твоим запросом...")
             return
         }
-        let boundary = UUID().uuidString
+ 
         let session = URLSession.shared
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        urlRequest
+        
+        
+        let d = image.pngData()
+        let strBase64 = d!.base64EncodedString(options: .lineLength64Characters)
+        
         var data = Data()
-        data.append(image.pngData()!)
+        data.append(d!)
         session.uploadTask(with: urlRequest, from: data, completionHandler: { responseData, response, error in
             if error == nil {
                 let jsonData = try? JSONSerialization.jsonObject(with: responseData!, options: .allowFragments)
@@ -117,6 +121,22 @@ final class Service {
             print(responseData)
             print(response)
         }).resume()
+//
+//
+
+//        var parameterJSON = JS([
+//               "id_user": "test"
+//           ])
+//           // JSON stringify
+//           let parameterString = parameterJSON.rawString(encoding: NSUTF8StringEncoding, options: nil)
+//           let jsonParameterData = parameterString!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+//           // convert image to binary
+//            let imageData = image.jpegData(compressionQuality: 0.7)
+    }
+    
+    
+    func uploadPartyPhoto() {
+        
     }
     
     func createEvent(respond: EventModel, token: String, _ closure: @escaping (Result<Int, InternetError>) -> Void) {
@@ -230,6 +250,34 @@ final class Service {
             } else {
                 result = .failure(InternetError.fromServerError)
             }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    func getAllEvents(token: String, startIndex: Int, _ closure: @escaping (Result<AllEventsData, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/search/party?access_token=\(token)&index=\(startIndex)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
+            var result: Result<AllEventsData, InternetError>
+            guard
+                let data = data,
+                let parseData = try? JSONDecoder().decode(AllEventsData.self, from: data)
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response.statusCode)
+                if response.statusCode != 404 {
+                    result = .failure(InternetError.fromServerError)
+                } else {
+                    result = .failure(InternetError.internetError)
+                }
+                print(response.statusCode)
+                closure(result)
+                return
+            }
+            result = .success(parseData)
             closure(result)
         }
         session.resume()

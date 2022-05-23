@@ -10,7 +10,7 @@ struct TabBar: View {
     
     var body: some View {
         TabView(selection: $selection){
-            OrganizerView(output: OrganizerViewModel(service: service, user: people, newUser: newUser))
+            OrganizerView(organizerViewModel: OrganizerViewModel(service: service, user: people), user: $people)
                 .tabItem {
                     Image(systemName: "plus.app")
                 }
