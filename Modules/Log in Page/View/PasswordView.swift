@@ -61,7 +61,7 @@ struct PasswordView: View {
                         .padding(.top, 45)
                         .onTapGesture(perform: {})
                         .fullScreenCover(isPresented: $passwordViewModel.showHome) { // TODO: если никнейм то вход
-                            TabBar(newUser: !twoPassword, people: $man, token: "", service: Service())
+                            TabBar(newUser: !twoPassword, people: $man, service: Service())
                             // AuthorizationView(output: passwordViewModel)
                         }
                         .alert(passwordViewModel.failRestoreText, isPresented: $passwordViewModel.showRestoreAlert) {

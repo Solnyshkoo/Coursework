@@ -53,7 +53,7 @@ struct AuthorizationView: View {
                     .clipShape(Capsule())
                     .padding(.top, 45)
                     .fullScreenCover(isPresented: $mainViewModel.showHomeView) {
-                        TabBar(newUser: false, people: $mainViewModel.user, token: mainViewModel.getToken(), service: Service())
+                        TabBar(newUser: false, people: $mainViewModel.user, service: Service())
                     }.onTapGesture {
                         if true {
                             self.mode.wrappedValue.dismiss()
@@ -67,7 +67,7 @@ struct AuthorizationView: View {
                     }
                     .foregroundColor(ColorPalette.activeText)
                     .sheet(isPresented: $showPreview) {
-                        EventsView(personalViewModel: EventsViewModel(service: Service()), user: $man, fullAcсess: false)
+                        EventsView(user: $man, fullAcсess: false)
                     }
                     Text("или")
                     Button(action: {

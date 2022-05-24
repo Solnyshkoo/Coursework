@@ -10,7 +10,8 @@ struct EventCell: View {
     @State var showParticipants: Bool = false
     @State var showDetailView: Bool = false
     @State var showPersonalView: Bool = false
-    @ObservedObject var eventCellView: FavoriteViewModel 
+ 
+    @ObservedObject private var eventCellView: FavoriteViewModel = FavoriteViewModel(service: Service())
     var body: some View {
         // TODO: - шрифты
         VStack {
@@ -46,12 +47,12 @@ struct EventCell: View {
                        }.foregroundColor(ColorPalette.text)
                    } else {
                    Button(action: {
-                       if  fullAcсess {
-                           
+                       if  fullAcсess {                           
                            if people.favorities.contains(where: { $0.id == info.id }) {
+                               eventCellView.deleteFromFavorite(respond: info.id)
                                people.favorities.remove(at:
                                    people.favorities.firstIndex(where: { $0.id == info.id })!)
-                               eventCellView.deleteFromFavorite(respond: info.id)
+                               
                                if eventCellView.warningDelete {
                                    people.favorities.append(info)
                                }
@@ -154,24 +155,4 @@ struct EventCell: View {
     }
 }
 
-
-//struct EventCellPreviewContainer_2: View {
-//    @State var lol: EventModel = EventModel(id: 1, name: "Экватор", creatorName: "moscow.malina", logo: Image("logo"), mainPhoto: Image("photo"), distination: "16 км", price: "1000", description: "Очередная очень крутая тусовка, где будут все твои друзья с потока и самые-самые развлечения. Ах да, там будет фонк и даже дабстеп, так что надо что то написать, чтобы протестить", participant: 10, like: false, data: "34 марта")
-//    @State var o = UserInfo()
-//
-//    var body: some View {
-//        EventCell(info: $lol, people: $o, fullAcсess: true, canEdit: true), eventCellView: FavoriteViewModel(service: Service, user: <#T##UserInfo#>, newUser: <#T##Bool#>)
-//    }
-//}
-//
-//struct EventCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            EventCellPreviewContainer_2()
-//                .preferredColorScheme(.dark)
-//            EventCellPreviewContainer_2()
-//                .preferredColorScheme(.light)
-//        }
-//    }
-//}
 

@@ -2,17 +2,19 @@ import Foundation
 import SwiftUI
 final class EventsViewModel: ObservableObject {
  //   @Published var user: UserInfo
-    @Published var allEvents: [EventModel] = []
+    @Published var allEvents:[EventModel] = []
     var startIndex: Int = 0
     var totalAmount: Int = 0
-    var token: String
-    let service: Service
-    
-    init(service: Service) {
-        self.service = service
-        self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
+    var token: String = UserDefaults.standard.object(forKey: "token") as? String ?? ""
+    let service: Service = Service()
+//
+    init() {
+        
+
    //     self.user = user
+        print("___init_____")
         getEvents()
+
 
     }
     
@@ -85,6 +87,7 @@ final class EventsViewModel: ObservableObject {
         item.name = data.name
         item.creatorName = data.creatorName
         item.participant = data.visitors.count
+        item.visitors = data.visitors
         return item
     }
     

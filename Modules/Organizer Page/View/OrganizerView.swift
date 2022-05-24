@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 struct OrganizerView: View {
     @State private var searchText = "Найди мероприятие..."
-    @ObservedObject var organizerViewModel: OrganizerViewModel
+    @ObservedObject var organizerViewModel: OrganizerViewModel = OrganizerViewModel(service: Service())
     @Binding var user: UserInfo
     @State private var isSearching = false
     @State private var showingAlert = false
@@ -16,7 +16,7 @@ struct OrganizerView: View {
                 ScrollView {
                     SearchBar(searchText: searchText, isSearching: isSearching)
                     ForEach($user.organiesed) { item in
-                        EventCell(info: item, people: $user, fullAcсess: true, canEdit: true, eventCellView: FavoriteViewModel(service: organizerViewModel.service))
+                        EventCell(info: item, people: $user, fullAcсess: true, canEdit: true)
                     }
                 }
             }

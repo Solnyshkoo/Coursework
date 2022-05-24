@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 struct EventDetailView: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @ObservedObject  var eventDetailViewModel: EventDetailViewModel
+    @StateObject var eventDetailViewModel: EventDetailViewModel
     @Binding var user: UserInfo
     @State var showParticipants: Bool = false
     @State var showPersonalView: Bool = false
@@ -16,15 +16,12 @@ struct EventDetailView: View {
                 VStack(alignment: .leading, spacing: 8, content:  {
                     eventDetailViewModel.info.mainPhoto.resizable().smallRectangleCropped()
                         .frame(height: 500)
-                    // TODO: - кнопка ещё
                     Text(eventDetailViewModel.info.description)
                         .foregroundColor(ColorPalette.text)
-                      //  .font(.subheadline)
                         .font(Font.system(size: 18, design: .default))
                         .padding(.top, 2)
                         .lineLimit(3)
                         .padding(.leading, 15)
-                    
                     Text("Адрес: " + eventDetailViewModel.info.distination)
                         .font(Font.system(size: 18, design: .default))
                         .bold()
@@ -108,19 +105,42 @@ struct EventDetailView: View {
                             Spacer()
                             Button(action: {
                                 if user.subscribes.contains(where: { $0.id ==  eventDetailViewModel.info.id }) {
+                                    let index = user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })
+                                    user.subscribes[index!].participant -= 1
+                                    
+                                    eventDetailViewModel.deleteFromGoingTo(respond: eventDetailViewModel.info.id)
                                     user.subscribes.remove(at:
                                     user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })!)
-                                    eventDetailViewModel.deleteFromGoingTo(respond: eventDetailViewModel.info.id)
+                                   
+                                   // user.subscribes.first(where:
+                                    
                                     if eventDetailViewModel.warningGoingDelete {
-                                        user.subscribes.append( eventDetailViewModel.info)
+                                        let index = user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })
+                                        user.subscribes[index!].participant += 1
+                                        eventDetailViewModel.info.visitors.append(eventDetailViewModel.info.id)
+                                    
+                                        user.subscribes.append(eventDetailViewModel.info)
+                                      
                                     }
+                                    eventDetailViewModel.getEventInfo()
                                 } else {
+                                   
                                     eventDetailViewModel.addEventToGoingTo(respond: eventDetailViewModel.info.id)
+                                    eventDetailViewModel.info.visitors.append(eventDetailViewModel.info.id)
                                     user.subscribes.append( eventDetailViewModel.info)
+                                    let index = user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })
+                                    user.subscribes[index!].participant += 1
+                                    
                                     if eventDetailViewModel.warningGoing {
+                                        let index = user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })
+                                        user.subscribes[index!].participant -= 1
+                                        eventDetailViewModel.info.visitors.remove(at: eventDetailViewModel.info.visitors.first(where: { $0 == eventDetailViewModel.info.id })!)
+                                        
                                         user.subscribes.remove(at:
                                         user.subscribes.firstIndex(where: { $0.id ==  eventDetailViewModel.info.id })!)
+                                       
                                     }
+                                    eventDetailViewModel.getEventInfo()
                                 }
                             }) {
                                 Text(user.subscribes.contains(where: { $0.id == eventDetailViewModel.info.id }) ? " Уже иду" : "Пойду! ").font(Font.system(size: 18, design: .default)).padding(.top, 0)

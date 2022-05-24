@@ -4,21 +4,21 @@ final class FavoriteViewModel: ObservableObject {
    // @Published var user: UserInfo
     @Published var warning: Bool = false
     @Published var warningDelete: Bool = false
-    var token: String
+    var token: String = UserDefaults.standard.object(forKey: "token") as? String ?? ""
     let service: Service
     
     init(service: Service) {
         self.service = service
-        self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
-       // self.user = user
         
+       // self.user = user
+        print("init - FavoriteViewModel")
     
     }
     
     
     func deleteFromFavorite(respond: Int) {
         DispatchQueue.main.async {
-            self.service.setLike(token: self.token, index: respond) { [weak self] result in
+            self.service.deleteLike(token: self.token, index: respond) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success: // TODO: исправить

@@ -1,13 +1,14 @@
 import Foundation
 import SwiftUI
 struct EventsView: View {
-    @ObservedObject  var personalViewModel: EventsViewModel
+    @StateObject var eventsViewModel: EventsViewModel = EventsViewModel()
     @Binding var user: UserInfo
     @State private var searchProperties: Set<String> = []
     @State var fullAcсess: Bool
     @State var free: Bool = false
     @State var today: Bool = false
     @State var tomorrow: Bool = false
+    
     var body: some View {
             VStack {
                 VStack(alignment: .leading) {
@@ -33,8 +34,8 @@ struct EventsView: View {
                     }.padding(.leading, 20)
                         .padding(.bottom, 8)
                     ScrollView {
-                        ForEach($personalViewModel.allEvents) { item in
-                            EventCell(info: item, people: $user, fullAcсess: fullAcсess, canEdit: false, eventCellView: FavoriteViewModel(service: personalViewModel.service))
+                        ForEach($eventsViewModel.allEvents) { item in
+                            EventCell(info: item, people: $user, fullAcсess: fullAcсess, canEdit: false)
                         }
                     }
                 }

@@ -10,6 +10,7 @@ final class OrganizerViewModel: ObservableObject {
     init(service: Service) {
         self.service = service
         self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
+        print("init - OrganizerViewModel")
 //        self.user = user
     }
     

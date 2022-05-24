@@ -100,6 +100,7 @@ final class EventDetailViewModel: ObservableObject {
         item.name = data.response.name
         item.creatorName = data.response.creatorName
         item.participant = data.response.visitors.count
+        item.visitors = data.response.visitors
         for i in 0..<data.response.comments.count {
             var r = ReviewModel()
             r.review = data.response.comments[i].text
@@ -150,7 +151,7 @@ final class EventDetailViewModel: ObservableObject {
     
     func deleteFromGoingTo(respond: Int) {
         DispatchQueue.main.async {
-            self.service.setGoingTo(token: self.token, index: respond) { [weak self] result in
+            self.service.deleteGoingTo(token: self.token, index: respond) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success:
@@ -170,7 +171,7 @@ final class EventDetailViewModel: ObservableObject {
     
     func addEventToGoingTo(respond: Int) {
         DispatchQueue.main.async {
-            self.service.deleteGoingTo (token: self.token, index: respond) { [weak self] result in
+            self.service.setGoingTo(token: self.token, index: respond) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success:

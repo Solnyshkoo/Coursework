@@ -8,9 +8,12 @@ final class ParticipantsViewModel: ObservableObject {
     init(service: Service, visitors: [Int]) {
         self.service = service
         self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
-        
+        print("_____678___")
+        print(visitors)
+        print("_____678___")
         for i in 0..<visitors.count {
             let index = self.party.count
+            self.party.append(ParticipantsModel())
             getUserInfo(user_id: visitors[i], index: index)
         }
     }
@@ -22,8 +25,10 @@ final class ParticipantsViewModel: ObservableObject {
                 guard let self = self else {return}
                 switch result {
                 case .success(let data):
-                    self.party.append(self.createParticipants(data: data))
+                    DispatchQueue.main.async {
+                    self.party[index] = (self.createParticipants(data: data))
                     self.party[index].id = user_id
+                    }
                     break
                 case .failure(let error):
                     break
@@ -48,6 +53,9 @@ final class ParticipantsViewModel: ObservableObject {
     
     
     func createParticipants(data: UserData) -> ParticipantsModel {
+        print("________vvv_____")
+        print(data)
+        print("________vvv_____")
         return ParticipantsModel(id: 0, name:  data.response.user.firstName , surname:  data.response.user.lastName, nickname: data.response.user.username, show: true)
     }
 }

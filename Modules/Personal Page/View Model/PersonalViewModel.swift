@@ -17,6 +17,8 @@ final class PersonalViewModel: ObservableObject {
         self.service = service
         self.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
         self.user = user
+        
+         print("init - PersonalViewModel")
 
     }
     
