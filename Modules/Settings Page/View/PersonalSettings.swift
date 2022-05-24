@@ -111,9 +111,9 @@ struct PersonalSettigs: View {
                             Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
                             Menu {
                                 Picker("Пол", selection: $settingsViewModel.editableUser.sex) {
-                                    Text("").tag("none")
-                                    Text("Ж").tag("female")
-                                    Text("М").tag("male")
+                                        Text("").tag("Нет")
+                                        Text("Жен").tag("Жен")
+                                        Text("Муж").tag("Муж")
                                 }.padding(.bottom, -3)
                                     .colorMultiply(ColorPalette.lightGray)
                             } label: {

@@ -24,6 +24,12 @@ final class NewEventViewModel: ObservableObject {
         } else if data.price.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             showWarning = true
             textWarning = "Не указана цена"
+        } else if !data.price.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            guard Int(data.price) != nil else {
+                showWarning = true
+                textWarning = "Цена должна быть целым числом"
+                return
+            }
         } else if data.distination.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             showWarning = true
             textWarning = "Не указан адрес"

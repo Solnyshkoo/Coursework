@@ -1,12 +1,13 @@
 import Foundation
-import Foundation
 
 // MARK: - UserData
+
 struct UserData: Codable {
     let response: UserResponse
 }
 
 // MARK: - Response
+
 struct UserResponse: Codable {
     let favorites, goingTo: [String]
     let partiesCreated: [Int]
@@ -21,15 +22,28 @@ struct UserResponse: Codable {
 }
 
 // MARK: - User
+
 struct User: Codable {
+    let age: Int
     let email, firstName, lastName: String
-    let photo: Int
+    let notificationsAboutFavorites, notificationsAboutGoingTo, photo, privateAccount: Int
+    let sex: String
+    let showCreated, showGoingTo, showList: Int
     let username: String
+    let verified: Int
 
     enum CodingKeys: String, CodingKey {
-        case email
+        case age, email
         case firstName = "first_name"
         case lastName = "last_name"
-        case photo, username
+        case notificationsAboutFavorites = "notifications_about_favorites"
+        case notificationsAboutGoingTo = "notifications_about_going_to"
+        case photo
+        case privateAccount = "private_account"
+        case sex
+        case showCreated = "show_created"
+        case showGoingTo = "show_going_to"
+        case showList = "show_list"
+        case username, verified
     }
 }

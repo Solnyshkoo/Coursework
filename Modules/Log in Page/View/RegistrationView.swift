@@ -91,8 +91,8 @@ struct RegistrationView: View {
                                 Menu {
                                 Picker("Пол", selection: $man.sex) {
                                     Text("").tag("Нет")
-                                    Text("Ж").tag("Ж")
-                                    Text("М").tag("М")
+                                    Text("Жен").tag("Жен")
+                                    Text("Муж").tag("Муж")
                                 }.padding(.bottom, -3)
                                     .colorMultiply(ColorPalette.lightGray)
                                 } label: {

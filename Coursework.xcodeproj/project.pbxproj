@@ -13,6 +13,8 @@
 		5E0069A72835658400B7EF9A /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */; };
 		5E0069A92835782500B7EF9A /* ChangeUserDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */; };
 		5E1826BA282EB79800C06315 /* AuthorizationAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */; };
+		5E3C2923283CDEFC00352A85 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C2922283CDEFC00352A85 /* EditEventView.swift */; };
+		5E3C2925283CDF2700352A85 /* EditEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3C2924283CDF2700352A85 /* EditEventViewModel.swift */; };
 		5E59707C28196B6D00BF3240 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707B28196B6D00BF3240 /* Service.swift */; };
 		5E59707E28196F1800BF3240 /* ValidateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707D28196F1800BF3240 /* ValidateUserModel.swift */; };
 		5E5970802819723E00BF3240 /* ValidateUserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E59707F2819723E00BF3240 /* ValidateUserError.swift */; };
@@ -88,6 +90,8 @@
 		5E0069A62835658400B7EF9A /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		5E0069A82835782500B7EF9A /* ChangeUserDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserDataError.swift; sourceTree = "<group>"; };
 		5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAPIService.swift; sourceTree = "<group>"; };
+		5E3C2922283CDEFC00352A85 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		5E3C2924283CDF2700352A85 /* EditEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewModel.swift; sourceTree = "<group>"; };
 		5E59707B28196B6D00BF3240 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5E59707D28196F1800BF3240 /* ValidateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserModel.swift; sourceTree = "<group>"; };
 		5E59707F2819723E00BF3240 /* ValidateUserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUserError.swift; sourceTree = "<group>"; };
@@ -175,6 +179,39 @@
 				5E1826B9282EB79800C06315 /* AuthorizationAPIService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		5E3C291E283CDEA500352A85 /* Edit event Page */ = {
+			isa = PBXGroup;
+			children = (
+				5E3C2921283CDEE300352A85 /* View */,
+				5E3C2920283CDED800352A85 /* View Model */,
+				5E3C291F283CDECD00352A85 /* Model */,
+			);
+			path = "Edit event Page";
+			sourceTree = "<group>";
+		};
+		5E3C291F283CDECD00352A85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5E3C2920283CDED800352A85 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				5E3C2924283CDF2700352A85 /* EditEventViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		5E3C2921283CDEE300352A85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E3C2922283CDEFC00352A85 /* EditEventView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5E59707A28196B3600BF3240 /* API Service */ = {
@@ -614,6 +651,7 @@
 				5ECD457E2832484C00729E2C /* Verification Page */,
 				5E896CDE2824908F00D67E92 /* New Event Page */,
 				5E5970A6281C88C900BF3240 /* Events Page */,
+				5E3C291E283CDEA500352A85 /* Edit event Page */,
 				5ECD45872832526E00729E2C /* Event detail Page */,
 				5ECD457528323F3400729E2C /* Event Participants Page */,
 				5EE035132821941700754267 /* Favorite Page */,
@@ -710,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E59707C28196B6D00BF3240 /* Service.swift in Sources */,
+				5E3C2923283CDEFC00352A85 /* EditEventView.swift in Sources */,
 				5EE034ED281F12CD00754267 /* UserInfo.swift in Sources */,
 				5E896CDB28241C6A00D67E92 /* FavoriteCell.swift in Sources */,
 				5E0069A72835658400B7EF9A /* UIAlertControllerExtension.swift in Sources */,
@@ -731,6 +770,7 @@
 				5ECD457828323FA900729E2C /* ParticipantsView .swift in Sources */,
 				5EE0350E281FED1100754267 /* PersonalViewModel.swift in Sources */,
 				5E0069A92835782500B7EF9A /* ChangeUserDataError.swift in Sources */,
+				5E3C2925283CDF2700352A85 /* EditEventViewModel.swift in Sources */,
 				5ECD457D2832403C00729E2C /* ParticipantsModel.swift in Sources */,
 				5EF8135E28367AB900DB0B28 /* ReviewCell.swift in Sources */,
 				5EE034FC281F12E900754267 /* CourseApp.swift in Sources */,

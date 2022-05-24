@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    static let adress = "https://2cae-2a00-1370-8182-3789-c9ad-c734-b9fd-9b8f.ngrok.io"
+    static let adress = "https://7b27-109-252-174-120.ngrok.io"
     
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
@@ -166,9 +166,151 @@ final class Service {
     func uploadPartyPhoto() {
         
     }
+
+    
+    func changePartyDate(token: String, time: Date, id: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/change/starting_at?starting_at=\(time)&access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    func changePartyName(token: String, name: String, id: Int,  _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/change/name?name=\(name)&access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func changePartyContacts(token: String, contacts: String,  id: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/change/ending_at?ending_at=\(contacts)&access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    
+    func changePartyPrice(token: String, price: Int, id: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/change/price?price=\(price)&access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func changePartyDescription(token: String, description: String, id: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)//party/change/description?description=\(description)&access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func deleteParty(token: String, id: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/delete?&access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
     
     func createEvent(respond: EventModel, token: String, _ closure: @escaping (Result<Int, InternetError>) -> Void) {
-        guard let url = URL(string: "\(Service.adress)/party/create?access_token=\(token)&name=\(respond.name)&description=\(respond.description)&address=\(respond.distination)&price=\(respond.price)&starting_at=\(respond.data)&ending_at=\(respond.contacts)".encodeUrl) else {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'"
+        var data = dateFormatter.string(from: respond.data)
+        guard let url = URL(string: "\(Service.adress)/party/create?access_token=\(token)&name=\(respond.name)&description=\(respond.description)&address=\(respond.distination)&price=\(respond.price)&starting_at=\(data)&ending_at=\(respond.contacts)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }

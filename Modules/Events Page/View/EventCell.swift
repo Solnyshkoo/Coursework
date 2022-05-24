@@ -10,6 +10,7 @@ struct EventCell: View {
     @State var showParticipants: Bool = false
     @State var showDetailView: Bool = false
     @State var showPersonalView: Bool = false
+    @State var showEditView: Bool = false
  
     @ObservedObject private var eventCellView: FavoriteViewModel = FavoriteViewModel(service: Service())
     var body: some View {
@@ -39,12 +40,14 @@ struct EventCell: View {
                    Spacer()
                    if canEdit {
                        Button(action: {
-                       
-                           
+                           self.showEditView.toggle()
                        }) {
-                           Image(systemName:  "pencil" ).font(Font.system(size: 25, design: .default)).padding(.top, 4)
+                           Image(systemName: "pencil").font(Font.system(size: 25, design: .default)).padding(.top, 4)
                                .padding(.trailing, 10)
                        }.foregroundColor(ColorPalette.text)
+                           .fullScreenCover(isPresented: $showEditView) {
+                               EditEventView(editEventViewModel: EditEventViewModel(service: Service(), user: people, eventInfo: info), user: $people)
+                           }
                    } else {
                    Button(action: {
                        if  fullAcсess {                           
@@ -77,7 +80,7 @@ struct EventCell: View {
                        .alert("К сожалению, не получилось добавить мероприятие в избранное.", isPresented: $eventCellView.warning) {
                                Button("OK", role: .cancel) { }
                         }
-                       .alert("К сожалению, не получилось удалить мероприятие из избранношл.", isPresented: $eventCellView.warningDelete) {
+                       .alert("К сожалению, не получилось удалить мероприятие из избранное.", isPresented: $eventCellView.warningDelete) {
                                Button("OK", role: .cancel) { }
                         }
                    }
@@ -108,6 +111,7 @@ struct EventCell: View {
                 // TODO: - кнопка ещё
              
                 VStack(alignment: .leading) {
+                    HStack {
                     Text(info.description)
                         .foregroundColor(ColorPalette.text)
                         .font(.callout)
@@ -115,6 +119,8 @@ struct EventCell: View {
 
                         .padding(.top, 1)
                         .lineLimit(3)
+                        Spacer()
+                    }
                 }
                 HStack {
                     Text(info.participant == 0 ? "" : String(info.participant) + " уже идут").font(.title3).underline().italic().padding(.leading, 20) .padding(.top, -5)

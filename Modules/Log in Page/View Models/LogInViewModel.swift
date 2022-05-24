@@ -215,7 +215,15 @@ final class LogInViewModel: ObservableObject {
             }
         }
     
-        return UserInfo(name: data.response.user.firstName, surname: data.response.user.lastName, patronymic: "", age: -1, nickname: data.response.user.username, password: "", number: "", mail: data.response.user.email, sex: "", image: nil, validate: false, favorities: fav, subscribes: sub, organiesed: org)
+        var set = Settings()
+        set.notificationsAboutGoingTo = (data.response.user.notificationsAboutGoingTo != 0)
+        set.notifications_about_favorites = (data.response.user.notificationsAboutFavorites != 0)
+        set.privateAccount = (data.response.user.privateAccount != 0)
+        set.showCreated = (data.response.user.showCreated != 0)
+        set.showGoingTo = (data.response.user.showGoingTo != 0)
+        set.showList = (data.response.user.showList != 0)
+        return UserInfo(name: data.response.user.firstName, surname: data.response.user.lastName, patronymic: "", age: data.response.user.age, nickname: data.response.user.username, password: "", mail:  data.response.user.email, sex: data.response.user.sex, image: nil, validate: (data.response.user.verified != 0), favorities: fav, subscribes: sub, organiesed: org, settings: set)
+       
     }
     
     private func createEvent(data: PartyData) -> EventModel {
@@ -225,8 +233,11 @@ final class LogInViewModel: ObservableObject {
         item.price = String(data.response.price)
         item.distination = data.response.address
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'"
         item.data = dateFormatter.date(from: data.response.startingAt) ?? Date()
+        print(data.response.startingAt)
+        print( item.data)
+        print(Date())
         item.description = data.response.responseDescription
         item.name = data.response.name
         item.creatorName = data.response.creatorName
@@ -337,32 +348,7 @@ final class LogInViewModel: ObservableObject {
     }
     
     
-    
-//
-//    func getData() {
-//        if token != "" {
-//            DispatchQueue.main.async {
-//                self.service.getUsersData(token: self.token) { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let data): // TODO: исправить
-//                    DispatchQueue.main.async {
-//                        self.user = self.createUser(data: data)
-//                        for i in 0..<self.user.subscribes.count {
-//                            self.getEventInfo(index: self.user.subscribes[i].id, i: i, array: 1)
-//                        }
-//                        for i in 0..<self.user.organiesed.count {
-//                            self.getEventInfo(index: self.user.organiesed[i].id, i: i,  array: 2)
-//                        }
-//                    }
-//
-//                case .failure:
-//                    self.nicknameWarningText = "Bad internet connection"
-//                }
-//            }
-//             }
-//        }
-//    }
+
     
     
 }

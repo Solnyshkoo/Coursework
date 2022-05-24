@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 struct EventsView: View {
-    @StateObject var eventsViewModel: EventsViewModel = EventsViewModel()
+    @ObservedObject var eventsViewModel: EventsViewModel = EventsViewModel()
     @Binding var user: UserInfo
     @State private var searchProperties: Set<String> = []
     @State var fullAcсess: Bool

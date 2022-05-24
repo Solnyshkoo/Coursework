@@ -990,8 +990,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "checkEmailCode(&#x441;ode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1006,8 +1006,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1022,8 +1022,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "301"
-            endingLineNumber = "301"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1038,8 +1038,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1054,8 +1054,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1070,8 +1070,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1086,8 +1086,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1102,8 +1102,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "sendCodeToEmail(email:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1358,8 +1358,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "verifyEmail(email:nickname:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1390,8 +1390,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1406,8 +1406,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "358"
+            endingLineNumber = "358"
             landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1422,8 +1422,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1438,8 +1438,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
             landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1454,8 +1454,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1470,8 +1470,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "getEventInfo(eventId:token:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1486,8 +1486,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
             landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1502,8 +1502,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
             landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,8 +1518,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "384"
+            endingLineNumber = "384"
             landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1534,8 +1534,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1774,8 +1774,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "399"
+            endingLineNumber = "399"
             landmarkName = "getEventPhoto(token:id:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1934,8 +1934,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "verifyEmail(email:nickname:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1950,8 +1950,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "verifyEmail(email:nickname:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1966,8 +1966,8 @@
             filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "verifyEmail(email:nickname:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2366,8 +2366,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "getAllEvents(token:startIndex:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2382,8 +2382,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "566"
+            endingLineNumber = "566"
             landmarkName = "Service"
             landmarkType = "3">
          </BreakpointContent>
@@ -2398,8 +2398,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "String"
             landmarkType = "21">
             <Locations>
@@ -2446,8 +2446,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
             landmarkName = "encodeUrl"
             landmarkType = "24">
          </BreakpointContent>
@@ -2462,8 +2462,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "decodeUrl"
             landmarkType = "24">
          </BreakpointContent>
@@ -2478,8 +2478,8 @@
             filePath = "Modules/Events Page/View/EventCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2494,8 +2494,8 @@
             filePath = "Modules/Events Page/View/EventCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2510,8 +2510,8 @@
             filePath = "Modules/Events Page/View/EventCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2622,8 +2622,8 @@
             filePath = "Modules/Events Page/View/EventCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2638,8 +2638,8 @@
             filePath = "Modules/Events Page/View/EventCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -2648,22 +2648,6 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5B30E526-49C8-4AD3-B6F2-1B27A8F0B7E1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Modules/Events Page/View/EventCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2E8FBDDD-7428-4E06-8102-4F519F37B018"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -2679,6 +2663,22 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "2E8FBDDD-7428-4E06-8102-4F519F37B018"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Events Page/View/EventCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             uuid = "962FEDF1-0D9A-4895-9BC2-09F216B12914"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -2686,8 +2686,8 @@
             filePath = "Modules/Events Page/View/EventCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -3166,8 +3166,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "334"
-            endingLineNumber = "334"
+            startingLineNumber = "476"
+            endingLineNumber = "476"
             landmarkName = "deleteGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3182,8 +3182,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "339"
-            endingLineNumber = "339"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
             landmarkName = "deleteGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3198,8 +3198,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "deleteGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3214,8 +3214,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
             landmarkName = "deleteGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3230,8 +3230,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "deleteGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3246,8 +3246,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
             landmarkName = "setGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3262,8 +3262,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "317"
-            endingLineNumber = "317"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "setGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3278,8 +3278,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
             landmarkName = "setGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3294,8 +3294,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "setGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3310,8 +3310,8 @@
             filePath = "API Service/Services/Service.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
             landmarkName = "setGoingTo(token:index:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3618,6 +3618,374 @@
             endingLineNumber = "7"
             landmarkName = "EventsViewModel"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FEE58D1-31DC-48B9-A751-B92EA36DEB4D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View/EditEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B514BFA0-F989-4E59-AC93-B68545D26025"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View/EditEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10752959-DC2A-4257-9093-02DA2107277E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View/EditEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6ADBC841-F145-4B99-9BD1-6EA3AC25993A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View/EditEventView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0FAE90F7-87D3-4785-A5B3-498E2328E26C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC929E9C-CEE0-468D-A5AA-2080517B6B66"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6030860B-125E-4204-BE20-F7CAFDBAB7C2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9F1CDEF-AC2C-48F8-AC31-C4B95D3BD414"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8094F532-F7FC-4B9F-863B-26C5572BADB1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C1B89ED-855A-4269-A4DE-E61FA9B40D8D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3AA36A7-BB0F-40C8-92E5-6C24B3CBAF52"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE3FA424-4696-47D6-922C-E6C54D2D5F6A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD4A656F-BA38-4920-925F-486C19EB6C2B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0C98EE24-B332-491C-B912-40C12B03142E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Edit event Page/View Model/EditEventViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "saveEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F2D81D2-E5B7-4CAC-83E6-E3643A90E516"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "createEvent(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95C9510F-D797-4E39-8522-547702210CCF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "createEvent(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFAEB1B7-4487-42D5-80DC-DA7652902587"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "createEvent(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3532FF60-A5AA-419C-9D00-7C59AF7B98A1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Modules/Log in Page/View Models/LogInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "createEvent(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98EC85DB-F85B-473D-B97E-ABA400CF5CB2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API Service/Services/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "changePartyDate(token:time:id:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7FE024EA-DFA6-4BCC-ACDE-AF68BB874D1E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API Service/Services/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "changePartyDate(token:time:id:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90B65703-BBF1-4FD1-BF45-87812A67FE49"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API Service/Services/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "changePartyDate(token:time:id:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F7615A4C-C5B2-49E3-AA34-2ABD38C5FD7A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API Service/Services/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "changePartyDate(token:time:id:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "44B07DA7-4E2B-493C-A24E-D3003CBFE75F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "API Service/Services/Service.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "changePartyDate(token:time:id:_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
