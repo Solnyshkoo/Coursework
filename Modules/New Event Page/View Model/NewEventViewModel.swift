@@ -48,20 +48,33 @@ final class NewEventViewModel: ObservableObject {
                         respond.id = data
                         self.user.organiesed.append(respond)
                         self.showWarning = false
-                        self.canCreateEvent = true
+                   //     self.canCreateEvent = true
                         break
                     case .failure:
                         self.showWarning = true
                         self.textWarning = "К сожалению, мы не смогли сохранить мероприятие("
-                        self.canCreateEvent = false
+                      //  self.canCreateEvent = false
                         break
                     }
                 }
+                
+                self.service.uploadPartyPhoto(photo: respond.mainPhoto, token: self.token, id: respond.id) { [weak self] result in
+                    guard let self = self else {return}
+                    switch result {
+                    case .success(let ans):
+                        DispatchQueue.main.async {
+                            self.canCreateEvent = true
+                        }
+                     
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            self.showWarning = true
+                            self.textWarning = "К сожалению, мы не смогли сохранить мероприятие("
+                            self.canCreateEvent = false
+                        }
+                    }
+                }
             }
-            
-            self.service.uploadPartyPhoto()
-            self.canCreateEvent = true
-            
         }
     }
 }

@@ -21,12 +21,94 @@ final class SettingsViewModel: ObservableObject {
         token = tok
         self.user = user
         self.editableUser = user
-        photo =  UIImage(imageLiteralResourceName: "noImage") 
+        photo =  user.image?.asUIImage()
 
     }
     
     func saveAllChanges() {
-       
+        if editableUser.nickname != user.nickname {
+            DispatchQueue.main.async {
+                self.service.changeUserNickname(token: self.token, nick: self.editableUser.nickname) { [weak self] result in
+                    guard let self = self else {return}
+                    switch result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.saveChanges = true
+                            self.warningAllChanges = false
+                        }
+                    case .failure:
+                        DispatchQueue.main.async {
+                            self.saveChanges = false
+                            self.warningAllChanges = true
+                        }
+                    }
+                }
+            }
+        }
+        
+        if editableUser.name != user.name && saveChanges{
+            DispatchQueue.main.async {
+                self.service.changeUserName(token: self.token, name: self.editableUser.name) { [weak self] result in
+                    guard let self = self else {return}
+                    switch result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.saveChanges = true
+                            self.warningAllChanges = false
+                        }
+                    case .failure:
+                        DispatchQueue.main.async {
+                            self.saveChanges = false
+                            self.warningAllChanges = true
+                        }
+                    }
+                }
+            }
+        }
+        
+        if editableUser.surname != user.surname && saveChanges {
+            DispatchQueue.main.async {
+                self.service.changeUserSurname(token: self.token, name: self.editableUser.surname) { [weak self] result in
+                    guard let self = self else {return}
+                    switch result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.saveChanges = true
+                            self.warningAllChanges = false
+                        }
+                    case .failure:
+                        DispatchQueue.main.async {
+                            self.saveChanges = false
+                            self.warningAllChanges = true
+                        }
+                    }
+                }
+            }
+        }
+        
+        if editableUser.age != user.age && saveChanges {
+          
+        }
+        
+        if editableUser.image != user.image {
+            DispatchQueue.main.async {
+                self.service.uploadUserPhoto(photo: self.editableUser.image!, token: self.token) {  [weak self] result in
+                    guard let self = self else {return}
+                    switch result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.saveChanges = true
+                            self.warningAllChanges = false
+                        }
+                    case .failure:
+                        DispatchQueue.main.async {
+                            self.saveChanges = false
+                            self.warningAllChanges = true
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func checkAllChanges() {
@@ -46,6 +128,10 @@ final class SettingsViewModel: ObservableObject {
             allFields = false
             notAllFieldsWarning = true
             warning = "Отсутвует возраст"
+        } else if photo ==  UIImage(imageLiteralResourceName: "noImage") {
+            allFields = false
+            notAllFieldsWarning = true
+            warning = "Отсутвует фотография"
         } else {
             allFields = true
             notAllFieldsWarning = false

@@ -89,8 +89,6 @@ struct EventCell: View {
             
                 info.mainPhoto.resizable().smallRectangleCropped()
                     .frame(height: 500)
-                   
-                
                 // TODO: - поменять от вас
                 HStack {
                     Text(info.name).font(.title)
@@ -101,12 +99,9 @@ struct EventCell: View {
                         Spacer()
                     HStack {
                         Text(info.data, style: .date).font(.callout).bold().padding(.trailing, 10)
-                        Text(" · " + info.price + "₽").font(.callout).bold().padding(.trailing, 10)
-                        Spacer()
+                        Text(info.price + "₽").font(.callout).bold().padding(.trailing, 10)
+                      
                     }
-                   
-                    
-                    
                 }  .padding(.top, 2)
                 // TODO: - кнопка ещё
              

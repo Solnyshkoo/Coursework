@@ -91,6 +91,7 @@ final class LogInViewModel: ObservableObject {
                 case .success(let data): // TODO: исправить
                     DispatchQueue.main.async {
                         self.user = self.createUser(data: data)
+                        self.getUserPhoto()
                         for i in 0..<self.user.subscribes.count {
                             self.getEventInfo(index: self.user.subscribes[i].id, i: i, array: 1)
                         }
@@ -112,6 +113,22 @@ final class LogInViewModel: ObservableObject {
              }
         }
   
+    }
+    
+    
+    func getUserPhoto() {
+        self.service2.getUserPhoto(token: self.token, nick: self.user.nickname) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.user.image = Image(uiImage: data)
+                }
+            case .failure:
+                DispatchQueue.main.async {
+                    self.user.image = Image(uiImage: UIImage(imageLiteralResourceName: "noImage"))
+                }
+            }
+        }
     }
     
     func getEventInfo(index: Int, i: Int, array: Int) {

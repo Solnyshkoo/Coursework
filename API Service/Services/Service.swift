@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    static let adress = "https://711a-2a00-1370-8182-3789-3c71-8c39-2137-9e81.ngrok.io"
+    static let adress = "https://3375-109-252-174-120.ngrok.io"
     
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
@@ -86,6 +86,98 @@ final class Service {
         session.resume()
     }
     
+    
+    func changeUserName(token: String, name: String, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/change/first_name?first_name=\(name)&access_token=\(token)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func changeUserSurname(token: String, name: String, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/change/last_name?last_name=\(name)&access_token=\(token)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
+    func changeUserEmail(token: String, name: String, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/change/email?email=\(name)&access_token=\(token)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    func changeUserPassword(token: String, name: String, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/user/change/password?password=\(name)&access_token=\(token)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    
     func getUserPhoto(token: String, nick: String, _ closure: @escaping (Result<UIImage, ChangeUserDataError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_photo?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
@@ -93,6 +185,7 @@ final class Service {
         }
         let session = URLSession.shared.dataTask(with: url) { data, response, _ in
             var result: Result<UIImage, ChangeUserDataError>
+         
             guard
                 let data = data,
                 let image = try? JSONDecoder().decode(Lol.self, from: data)
@@ -128,29 +221,21 @@ final class Service {
     
     func uploadUserPhoto(photo: Image, token: String, _ closure: @escaping (Result<Bool, InternetError>) -> Void) {
         let image: UIImage = photo.asUIImage()
-       
-        let data = image.jpegData(compressionQuality: 0.1)
-
+        let data = image.jpegData(compressionQuality: 0.0)
         let base64String = data!.base64EncodedString()
-
         guard let url = URL(string: "\(Service.adress)/user/upload_photo?access_token=\(token)".encodeUrl) else {
             print("что-то не то с твоим запросом...")
             return
         }
        let parameters: [String: String] = ["name": base64String]
        var request = URLRequest(url: url)
-
        request.httpMethod = "POST"
-
           do {
               request.httpBody = try JSONSerialization.data(withJSONObject: parameters) // pass dictionary to nsdata object and set it as request body
 
           } catch let error {
               print(error.localizedDescription)
           }
-        
-
-
         let session = URLSession.shared.dataTask(with: request) { _, response, _ in
             var result: Result<Bool, InternetError>
             guard
@@ -165,14 +250,86 @@ final class Service {
             }
             closure(result)
         }
-
+        print(base64String)
         session.resume()
-
     }
     
     
-    func uploadPartyPhoto() {
+    func getEventPhoto(token: String, id: Int, _ closure: @escaping (Result<UIImage, InternetError>) -> Void) {
+        guard let url = URL(string: "\(Service.adress)/party/get_photo?access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
+            var result: Result<UIImage, InternetError>
+            print(data)
+            guard
+                let data = data,
+                let image = try? JSONDecoder().decode(Lol.self, from: data)
+
+            else {
+                guard let response = response as? HTTPURLResponse else { return }
+                print(response)
+                print(response.statusCode)
+                if response.statusCode == 233 {
+                    result = .failure(InternetError.fromServerError)
+                } else {
+                    result = .failure(InternetError.internetError)
+                }
+              
+                closure(result)
+                return
+            }
+            let str = image.response.image as String
+            let newString =  str.replacingOccurrences(of: " ", with: "+")
         
+            guard let newBase64String =  newString.components(separatedBy: ",").last else {
+                     return
+                 }
+            guard let imgNSData = NSData(base64Encoded: newBase64String, options: NSData.Base64DecodingOptions()) else {
+                 return
+             }
+            guard let codeImage = UIImage(data: imgNSData as Data) else {
+                 return
+            }
+            result = .success(codeImage)
+            closure(result)
+        }
+        session.resume()
+    }
+    
+    func uploadPartyPhoto(photo: Image, token: String, id: Int, _ closure: @escaping (Result<Bool, InternetError>) -> Void)  {
+        let image: UIImage = photo.asUIImage()
+        let data = image.jpegData(compressionQuality: 0.0)
+        let base64String = data!.base64EncodedString()
+        guard let url = URL(string: "\(Service.adress)/party/upload_photo?access_token=\(token)&party_id=\(id)".encodeUrl) else {
+            print("что-то не то с твоим запросом...")
+            return
+        }
+       let parameters: [String: String] = ["name": base64String]
+       var request = URLRequest(url: url)
+       request.httpMethod = "POST"
+          do {
+              request.httpBody = try JSONSerialization.data(withJSONObject: parameters) // pass dictionary to nsdata object and set it as request body
+
+          } catch let error {
+              print(error.localizedDescription)
+          }
+        let session = URLSession.shared.dataTask(with: request) { _, response, _ in
+            var result: Result<Bool, InternetError>
+            guard
+                let response = response as? HTTPURLResponse
+            else { return }
+            if response.statusCode == 200 {
+                result = .success(true)
+            } else if response.statusCode == 404 {
+                result = .failure(InternetError.internetError)
+            } else {
+                result = .failure(InternetError.fromServerError)
+            }
+            closure(result)
+        }
+        session.resume()
     }
 
     
@@ -401,37 +558,7 @@ final class Service {
         session.resume()
     }
     
-    func getEventPhoto(token: String, id: Int, _ closure: @escaping (Result<UIImage, InternetError>) -> Void) {
-        guard let url = URL(string: "\(Service.adress)/party/get_photo?access_token=\(token)&party_id=\(id)".encodeUrl) else {
-            print("что-то не то с твоим запросом...")
-            return
-        }
-        let session = URLSession.shared.dataTask(with: url) { data, response, _ in
-            var result: Result<UIImage, InternetError>
-            guard
-                let data = data,
-                let image = UIImage(data: data)
-
-            else {
-                guard let response = response as? HTTPURLResponse else { return }
-                print(response.statusCode)
-                if response.statusCode == 233 {
-                    result = .failure(InternetError.fromServerError)
-                } else {
-                    result = .failure(InternetError.internetError)
-                }
-                print(response.statusCode)
-                closure(result)
-                return
-            }
-            print(data)
-            let t = image
-           
-            result = .success(t)
-            closure(result)
-        }
-        session.resume()
-    }
+   
     
     func verificationPassport(respond: VerificationModel) {}
     
@@ -616,4 +743,20 @@ struct Lol: Codable {
 // MARK: - Response
 struct ResponseLol: Codable {
     let image: String
+}
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+
+    /// Returns the data for the specified image in JPEG format.
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    func jpeg(_ quality: JPEGQuality) -> Data? {
+        return self.jpegData(compressionQuality: quality.rawValue)
+    }
 }

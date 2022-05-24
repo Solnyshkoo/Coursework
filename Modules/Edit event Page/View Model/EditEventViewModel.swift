@@ -53,8 +53,24 @@ final class EditEventViewModel: ObservableObject {
     
             
             if respond.mainPhoto != event.mainPhoto {
-                self.service.uploadPartyPhoto()
-                first = true
+                DispatchQueue.main.async {
+                    self.service.uploadPartyPhoto(photo: respond.mainPhoto, token: self.token, id: respond.id) { [weak self] result in
+                        guard let self = self else {return}
+                        switch result {
+                        case .success(let ans):
+                            DispatchQueue.main.async {
+                                self.first = ans
+                            }
+                         
+                        case .failure(let error):
+                            DispatchQueue.main.async {
+                                self.showWarning = true
+                                self.textWarning = error.errorDescription!
+                                self.first = false
+                            }
+                        }
+                    }
+                }
             } else {
                 first = true
             }
