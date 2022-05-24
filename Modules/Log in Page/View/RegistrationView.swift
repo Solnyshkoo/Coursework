@@ -59,7 +59,7 @@ struct RegistrationView: View {
 
                             ClassicTextField(labelText: "Фамилия", fieldText: "Введите фамилию", user: $man.surname).padding(.bottom, 15)
 
-                            ClassicTextField(labelText: "Отчество", fieldText: "Введите отчество(не обязательно)", user: $man.patronymic).padding(.bottom, 15)
+                           
 
                             VStack(alignment: .leading) {
                                 Text("Возраст").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
@@ -84,7 +84,7 @@ struct RegistrationView: View {
                                 Divider()
                                     .padding(.bottom, 15)
                             }
-                            ClassicTextField(labelText: "Телефон", fieldText: "Введите телефон(не обязательно)", user: $man.number).padding(.bottom, 15)
+                          
 
                             VStack(alignment: .leading) {
                                 Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)

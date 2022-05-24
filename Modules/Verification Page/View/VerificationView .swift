@@ -41,7 +41,7 @@ struct VerificationView: View {
                     Button(action: {
                         verificationViewModel.checkPassport(data: data)
                         if verificationViewModel.dataIsCorrect {
-                            user.sendRespond = true
+                            user.validate = true
                         }
                     }) {
                         Text("Проверить").font(Font.system(size: 20, design: .default))

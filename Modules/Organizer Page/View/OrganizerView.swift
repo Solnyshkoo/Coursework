@@ -41,8 +41,6 @@ struct OrganizerView: View {
                     action: {
                         if user.validate {
                             self.showingNewEventPage.toggle()
-                        } else if user.sendRespond {
-                            self.respondSend.toggle()
                         } else {
                             self.showingVerification.toggle()
                         }
@@ -59,9 +57,7 @@ struct OrganizerView: View {
                     .sheet(isPresented: $showingVerification, content: {
                         VerificationView(verificationViewModel: VerificationViewModel(service: organizerViewModel.service, user: user), user: $user)
                     })
-                    .alert("Вы отправили данные на валидацию. Дождитесь, пожалуйста их проверки.", isPresented: $respondSend) {
-                        Button("OK", role: .cancel) {}
-                    }
+                   
             )
             .padding(.top, 10)
         }.padding(.top, -70)

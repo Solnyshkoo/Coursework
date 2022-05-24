@@ -5,6 +5,7 @@ final class SettingsViewModel: ObservableObject {
     @State var token: String
     @State var user: UserInfo
     @Published var editableUser: UserInfo
+    @Published var photo: UIImage?
     @Published var mailConfirm: Bool = false
     @Published var passConfirm: Bool = false
     @Published var canSave: Bool = false
@@ -20,6 +21,7 @@ final class SettingsViewModel: ObservableObject {
         token = tok
         self.user = user
         self.editableUser = user
+        photo =  UIImage(imageLiteralResourceName: "noImage") 
 
     }
     
@@ -28,10 +30,29 @@ final class SettingsViewModel: ObservableObject {
     }
     
     func checkAllChanges() {
-        allFields = false
-        notAllFieldsWarning = true
-        
+        if editableUser.nickname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            allFields = false
+            notAllFieldsWarning = true
+            warning = "Отсутвует nickanme"
+        } else if editableUser.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            allFields = false
+            notAllFieldsWarning = true
+            warning = "Отсутвует имя"
+        } else if editableUser.surname.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            allFields = false
+            notAllFieldsWarning = true
+            warning = "Отсутвует фамилия"
+        } else if editableUser.age == -1 {
+            allFields = false
+            notAllFieldsWarning = true
+            warning = "Отсутвует возраст"
+        } else {
+            allFields = true
+            notAllFieldsWarning = false
+            warning = ""
+        }
     }
+    
     func saveSecurityChanges() {
         var origStr: String = user.mail
         var noChanges: Bool = true

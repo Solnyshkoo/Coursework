@@ -7,16 +7,13 @@ struct PersonalSettigs: View {
     @State private var shoosePhoto = false
     @State private var selectedColorIndex = 0
     @State private var selectedYear = ""
-    @State private var photo: UIImage?
     var years = Array(16 ... 100)
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     HStack(alignment: .center) {
-
-                        if  settingsViewModel.editableUser.image == nil {
-                            if photo == nil {
+                        if  settingsViewModel.photo == nil {
                             Circle()
                                 .frame(width: 150, height: 150)
                                 .clipShape(Circle())
@@ -29,32 +26,13 @@ struct PersonalSettigs: View {
 
                                 }.foregroundColor(ColorPalette.lightGray2)
                                 .sheet(isPresented: $shoosePhoto) {
-                                    ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                    ImagePicker(image: $settingsViewModel.photo, isPresented: $shoosePhoto)
                                 }
-                            } else {
-                                Image(uiImage: photo!)
-                                .resizable()
-                                .clipShape(Circle())
-                                .frame(width: 160, height: 160)
-                                .scaledToFit()
-                                .foregroundColor(ColorPalette.secondBackground)
-                                .overlay {
-                                    ZStack {
-                                        Circle().foregroundColor(ColorPalette.lightGray).opacity(0.5).frame(height: 160)
-                                        Image(systemName: "camera").resizable().frame(width: 80, height: 60)
-                                            .onTapGesture {
-                                                shoosePhoto.toggle()
-                                            }
-
-                                            .foregroundColor(ColorPalette.lightGray2)
-                                            .sheet(isPresented: $shoosePhoto) {
-                                                ImagePicker(image: $photo, isPresented: $shoosePhoto)
-                                            }
-                                    }
-                                }
-                            }
+                           
                         } else {
-                            settingsViewModel.editableUser.image?.centerSquareCropped()
+                            Image(uiImage: settingsViewModel.photo!)
+                                .resizable()
+                                .centerSquareCropped()
                                 .clipShape(Circle())
                                 .frame(width: 160, height: 160)
                                 .scaledToFit()
@@ -69,7 +47,7 @@ struct PersonalSettigs: View {
 
                                             .foregroundColor(ColorPalette.lightGray2)
                                             .sheet(isPresented: $shoosePhoto) {
-                                                ImagePicker(image: $photo, isPresented: $shoosePhoto)
+                                                ImagePicker(image: $settingsViewModel.photo, isPresented: $shoosePhoto)
                                             }
                                     }
                                 }
@@ -78,10 +56,7 @@ struct PersonalSettigs: View {
                     .padding(.bottom, 15)
                     VStack(alignment: .leading) {
                         ClassicTextField(labelText: "Имя", fieldText: "Введите имя", user: $settingsViewModel.editableUser.name).padding(.bottom, 15)
-
                         ClassicTextField(labelText: "Фамилия", fieldText: "Введите фамилию", user: $settingsViewModel.editableUser.surname).padding(.bottom, 15)
-
-                        ClassicTextField(labelText: "Отчество", fieldText: "Введите отчество(не обязательно)", user: $settingsViewModel.editableUser.patronymic).padding(.bottom, 15)
 
                         VStack(alignment: .leading) {
                             Text("Возраст").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
@@ -105,7 +80,6 @@ struct PersonalSettigs: View {
                             Divider()
                                 .padding(.bottom, 15)
                         }
-                        ClassicTextField(labelText: "Телефон", fieldText: "Введите телефон(не обязательно)", user: $settingsViewModel.editableUser.number).padding(.bottom, 15)
 
                         VStack(alignment: .leading) {
                             Text("Пол").font(.headline).fontWeight(.light).foregroundColor(Color(.label).opacity(0.75)).padding(.bottom, -3)
@@ -138,8 +112,8 @@ struct PersonalSettigs: View {
                             // .padding(.trailing, 10)
                     
                             Button(action: {
-                                if photo != nil {
-                                    settingsViewModel.editableUser.image = Image(uiImage: photo!)
+                                if settingsViewModel.photo != nil {
+                                    settingsViewModel.editableUser.image = Image(uiImage: settingsViewModel.photo!)
                                 }
                                 settingsViewModel.checkAllChanges()
                                 if settingsViewModel.allFields {
@@ -147,6 +121,8 @@ struct PersonalSettigs: View {
                                 }
                                 if settingsViewModel.saveChanges {
                                     man = settingsViewModel.editableUser
+//                                    man.image = Image(uiImage: settingsViewModel.photo!)
+                                   
                                 }
                             }) {
                                 Text("Сохранить").font(Font.system(size: 20, design: .default))

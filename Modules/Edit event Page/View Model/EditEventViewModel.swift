@@ -26,7 +26,7 @@ final class EditEventViewModel: ObservableObject {
         self.user = user
         self.event = eventInfo
         self.editableEvent = eventInfo
-        photo = UIImage(imageLiteralResourceName: "noImage") 
+        photo = UIImage(imageLiteralResourceName: "noImage")  //TODO:
     }
     
     

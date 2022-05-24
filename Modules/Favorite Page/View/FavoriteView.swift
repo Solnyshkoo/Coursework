@@ -15,32 +15,15 @@ struct FavoriteView: View {
                 ForEach($user.favorities) { item in
                     EventCell(info: item, people: $user, fullAcсess: true, canEdit: false)
                 }
-               
-//                ForEach((people.favorities).filter { "\($0.shortTitle)".contains(searchText.lowercased()) || searchText.isEmpty }) { item in
-//
-//                }
+                .onAppear {
+                    favoriteViewModel.getFavorites(user: user)
+                    user.favorities = favoriteViewModel.events
+                }
             }
             .navigationTitle("Избранное")
             .navigationBarBackButtonHidden(true)
-//            .toolbar(content: {
-//                ToolbarItem(placement: .navigation) {
-//                    Image(systemName: "arrow.left")
-//                        .foregroundColor(ColorPalette.navigationBarItem)
-//                        .onTapGesture {
-//
-//                        }
-//                }
-//            })
             Spacer()
         }.padding(.top, -70)
     }
 }
-//struct FavoriteView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            FavoriteView()
-//            FavoriteView()
-//                .preferredColorScheme(.dark)
-//        }
-//    }
-//}
+
