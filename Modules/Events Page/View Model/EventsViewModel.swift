@@ -81,7 +81,7 @@ final class EventsViewModel: ObservableObject {
         item.price = String(data.price)
         item.distination = data.address
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         item.data = dateFormatter.date(from: data.startingAt) ?? Date()
         item.description = data.partyDescription
         item.name = data.name

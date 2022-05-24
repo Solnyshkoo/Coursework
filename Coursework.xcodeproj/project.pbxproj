@@ -648,10 +648,10 @@
 			children = (
 				5EE034DE281F12CD00754267 /* Log in Page */,
 				5EE035112821936800754267 /* Organizer Page */,
+				5E3C291E283CDEA500352A85 /* Edit event Page */,
 				5ECD457E2832484C00729E2C /* Verification Page */,
 				5E896CDE2824908F00D67E92 /* New Event Page */,
 				5E5970A6281C88C900BF3240 /* Events Page */,
-				5E3C291E283CDEA500352A85 /* Edit event Page */,
 				5ECD45872832526E00729E2C /* Event detail Page */,
 				5ECD457528323F3400729E2C /* Event Participants Page */,
 				5EE035132821941700754267 /* Favorite Page */,

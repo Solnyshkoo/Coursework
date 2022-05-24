@@ -18,6 +18,7 @@ final class EditEventViewModel: ObservableObject {
     @Published var fourth: Bool = false
     @Published var fivth: Bool = false
     @Published var six: Bool = false
+    @Published var seven: Bool = false
     
     init(service: Service, user: UserInfo, eventInfo: EventModel ) {
         self.service = service
@@ -177,6 +178,30 @@ final class EditEventViewModel: ObservableObject {
                 }
             } else {
                 six = true
+            }
+            
+            if respond.distination != event.distination  && !showWarning {
+                DispatchQueue.main.async {
+                    self.service.changePartyAdress(token: self.token, adress: respond.distination, id: respond.id) { [weak self] result in
+                        guard let self = self else {return}
+                        switch result {
+                        case .success(let ans):
+                            DispatchQueue.main.async {
+                                self.seven = ans
+                            }
+                        case .failure(let error):
+                            DispatchQueue.main.async {
+                                self.showWarning = true
+                                self.textWarning = error.errorDescription!
+                                self.seven = false
+                            }
+                            
+                            
+                        }
+                    }
+                }
+            } else {
+                seven = true
             }
             
         }

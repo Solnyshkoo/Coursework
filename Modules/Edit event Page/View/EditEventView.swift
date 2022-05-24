@@ -78,9 +78,12 @@ struct EditEventView: View {
                             .cornerRadius(10)
                         Button(action: {
                             editEventViewModel.saveEvent()
-                            if editEventViewModel.first && editEventViewModel.second && editEventViewModel.third && editEventViewModel.fourth  && editEventViewModel.fivth && editEventViewModel.six  {
+                            if editEventViewModel.first && editEventViewModel.second && editEventViewModel.third && editEventViewModel.fourth  && editEventViewModel.fivth && editEventViewModel.six  && editEventViewModel.seven {
                                 let index = user.organiesed.firstIndex(where: {$0.id == editEventViewModel.editableEvent.id})
                                 user.organiesed[index!] = editEventViewModel.editableEvent
+                                if editEventViewModel.photo != nil {
+                                    user.organiesed[index!].mainPhoto = Image(uiImage: editEventViewModel.photo!)
+                                }
                                 self.mode.wrappedValue.dismiss()
                             }
 

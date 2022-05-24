@@ -233,7 +233,7 @@ final class LogInViewModel: ObservableObject {
         item.price = String(data.response.price)
         item.distination = data.response.address
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         item.data = dateFormatter.date(from: data.response.startingAt) ?? Date()
         print(data.response.startingAt)
         print( item.data)
