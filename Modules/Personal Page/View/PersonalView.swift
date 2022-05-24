@@ -126,9 +126,7 @@ struct PersonalView: View {
                                         Section {
                                              Button(action: {
                                                 self.showSettings.toggle()
-                                                 
-                                                     print(personalViewModel.events)
-                                                     print("___ll___")
+                                            
                                                  
                                             }) {
                                                 Label("Настройки", systemImage: "gearshape")

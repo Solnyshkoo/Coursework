@@ -21,7 +21,12 @@ final class SettingsViewModel: ObservableObject {
         token = tok
         self.user = user
         self.editableUser = user
-        photo =  user.image?.asUIImage()
+        photo = UIImage(imageLiteralResourceName: "noImage")
+//        if user.image == Image(uiImage: UIImage(imageLiteralResourceName: "noImage") ) {
+//            photo =  UIImage(imageLiteralResourceName: "noImage")
+//        } else {
+//        photo =  user.image?.asUIImage()
+//        }
 
     }
     
@@ -109,6 +114,8 @@ final class SettingsViewModel: ObservableObject {
                 }
             }
         }
+        
+        self.saveChanges = true
     }
     
     func checkAllChanges() {

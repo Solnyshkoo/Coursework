@@ -40,9 +40,11 @@ struct VerificationView: View {
                         .cornerRadius(10)
                     Button(action: {
                         verificationViewModel.checkPassport(data: data)
+                        self.mode.wrappedValue.dismiss()
                         if verificationViewModel.dataIsCorrect {
                             user.validate = true
                         }
+                        self.mode.wrappedValue.dismiss()
                     }) {
                         Text("Проверить").font(Font.system(size: 20, design: .default))
                             .padding(.trailing, 3)

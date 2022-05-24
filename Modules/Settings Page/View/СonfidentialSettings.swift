@@ -3,10 +3,8 @@ import SwiftUI
 
 struct СonfidentialSettings: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State var first: Bool = true
-    @State var second: Bool = true
-    @State var third: Bool = false
-    @State var fourth: Bool = true
+    @ObservedObject var settingsViewModel: SettingsViewModel
+    @Binding var man: UserInfo
     var body: some View {
         NavigationView {
             Form {
@@ -15,7 +13,7 @@ struct СonfidentialSettings: View {
                         Text("Разрешить просматривать аккаун").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
                         Spacer()
-                        if first {
+                        if man.settings.privateAccount {
                             Image("done")
                                 .resizable()
                                 .renderingMode(.template)
@@ -23,7 +21,7 @@ struct СonfidentialSettings: View {
                                 .foregroundColor(ColorPalette.text)
                         }
                     }.onTapGesture {
-                        self.first.toggle()
+                        self.man.settings.privateAccount.toggle()
                     }
                     
                     HStack {
@@ -31,7 +29,7 @@ struct СonfidentialSettings: View {
                             .padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
                         Spacer()
-                        if second {
+                        if man.settings.showList {
                             Image("done")
                                 .resizable()
                                 .renderingMode(.template)
@@ -39,7 +37,7 @@ struct СonfidentialSettings: View {
                                 .foregroundColor(ColorPalette.text)
                         }
                     }.onTapGesture {
-                        self.second.toggle()
+                        self.man.settings.showList.toggle()
                     }
                 }
                 
@@ -48,7 +46,7 @@ struct СonfidentialSettings: View {
                         Text("Разрешить показывать, мероприятия, которые организую я в профиле").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
                         Spacer()
-                        if third {
+                        if  man.settings.showGoingTo {
                             Image("done")
                                 .resizable()
                                 .renderingMode(.template)
@@ -56,13 +54,13 @@ struct СonfidentialSettings: View {
                                 .foregroundColor(ColorPalette.text)
                         }
                     }.onTapGesture {
-                        self.third.toggle()
+                        self.man.settings.showGoingTo.toggle()
                     }
                     HStack {
                         Text("Разрешить показывать свой аккаунт в списках, записавшихся на мероприятие").padding([.bottom, .top], 5)
                             .padding(.trailing, 30)
                         Spacer()
-                        if fourth {
+                        if man.settings.showCreated {
                             Image("done")
                                 .resizable()
                                 .renderingMode(.template)
@@ -70,7 +68,7 @@ struct СonfidentialSettings: View {
                                 .foregroundColor(ColorPalette.text)
                         }
                     }.onTapGesture {
-                        self.fourth.toggle()
+                        self.man.settings.showCreated.toggle()
                     }
                 }
                 
@@ -104,12 +102,5 @@ struct СonfidentialSettings: View {
                 }
             })
         }
-    }
-}
-
-struct СonfidentialSettings_Previews: PreviewProvider {
-    static var previews: some View {
-        СonfidentialSettings()
-            .preferredColorScheme(.dark)
     }
 }

@@ -108,9 +108,6 @@ struct PersonalSettigs: View {
                                 .padding()
                                 .background(ColorPalette.secondBackground)
                                 .cornerRadius(10)
-                            // .padding(.top, 10)
-                            // .padding(.trailing, 10)
-                    
                             Button(action: {
                                 if settingsViewModel.photo != nil {
                                     settingsViewModel.editableUser.image = Image(uiImage: settingsViewModel.photo!)

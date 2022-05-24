@@ -2,6 +2,8 @@ import Foundation
 import SwiftUI
 struct NotificationSettings: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    @ObservedObject var settingsViewModel: SettingsViewModel
+    @Binding var user: UserInfo
     @State var first: Bool = true
     @State var second: Bool = true
 
@@ -13,7 +15,7 @@ struct NotificationSettings: View {
                     Text("Уведомлять за три дня о мероприятии из избранном").padding([.bottom, .top], 5)
                         .padding(.trailing, 30)
                     Spacer()
-                    if first {
+                    if user.settings.notifications_about_favorites {
                         Image("done")
                             .resizable()
                             .renderingMode(.template)
@@ -21,18 +23,14 @@ struct NotificationSettings: View {
                             .foregroundColor(ColorPalette.text)
                     }
                 }.onTapGesture {
-                    self.first.toggle()
+                    self.user.settings.notifications_about_favorites .toggle()
                 }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
-                
                 HStack {
                     Text("Уведомлять за три дня о мероприятии, на которое я иду")
                         .padding([.bottom, .top], 5)
                         .padding(.trailing, 30)
                     Spacer()
-                    if second {
+                    if user.settings.notificationsAboutGoingTo {
                         Image("done")
                             .resizable()
                             .renderingMode(.template)
@@ -40,12 +38,8 @@ struct NotificationSettings: View {
                             .foregroundColor(ColorPalette.text)
                     }
                 }.onTapGesture {
-                    self.second.toggle()
+                    self.user.settings.notificationsAboutGoingTo.toggle()
                 }
-//                    .fullScreenCover(isPresented: $showFavorite) {
-//                        FavoriteView(people: $people)
-//                    }
-                
             }
             
         }
@@ -68,12 +62,4 @@ struct NotificationSettings: View {
             }                    })
         }
     }
-}
-
-
-struct NotificationSettings_Previews: PreviewProvider {
-static var previews: some View {
-    NotificationSettings()
-        .preferredColorScheme(.dark)
-}
 }

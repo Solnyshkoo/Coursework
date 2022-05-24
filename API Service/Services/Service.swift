@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UIKit
 final class Service {
-    static let adress = "https://3375-109-252-174-120.ngrok.io"
+    static let adress = "https://62a0-2a00-1370-8182-3789-9457-f89e-4b8e-f2e7.ngrok.io"
     
     func getUsersData(token: String, _ closure: @escaping (Result<UserData, InternetError>) -> Void) {
         guard let url = URL(string: "\(Service.adress)/user/get_info?access_token=\(token)".encodeUrl) else {
@@ -265,7 +265,10 @@ final class Service {
             print(data)
             guard
                 let data = data,
-                let image = try? JSONDecoder().decode(Lol.self, from: data)
+                let post = try? JSONSerialization.jsonObject(with: data, options: .json5Allowed) as? [String: Any],
+                let results = post["response"] as? [String: Any],
+                let pages = results["image"] as? String
+//                let image = try? JSONDecoder().decode(Kek.self, from: data)
 
             else {
                 guard let response = response as? HTTPURLResponse else { return }
@@ -280,7 +283,8 @@ final class Service {
                 closure(result)
                 return
             }
-            let str = image.response.image as String
+            print(pages)
+            let str = pages
             let newString =  str.replacingOccurrences(of: " ", with: "+")
         
             guard let newBase64String =  newString.components(separatedBy: ",").last else {
@@ -759,4 +763,16 @@ extension UIImage {
     func jpeg(_ quality: JPEGQuality) -> Data? {
         return self.jpegData(compressionQuality: quality.rawValue)
     }
+}
+
+import Foundation
+
+// MARK: - Kek
+struct Kek: Codable {
+    let response: ResponseKek
+}
+
+// MARK: - Response
+struct ResponseKek: Codable {
+    let image: String
 }

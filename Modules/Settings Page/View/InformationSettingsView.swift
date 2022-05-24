@@ -7,6 +7,7 @@ struct InformationSettingsView: View {
     @State var showPersonalSettings: Bool = false
     @State var showSecuriteSettings: Bool = false
     @State var showVerification: Bool = false
+    @State var showAlert: Bool = false
     var body: some View {
         NavigationView {
             Form {
@@ -33,12 +34,19 @@ struct InformationSettingsView: View {
                     }
                     
                     Button(action: {
+                        if user.validate {
+                            self.showAlert.toggle()
+                        }  else {
                         self.showVerification.toggle()
+                        }
                     }) {
                         Text("Пройти верификацию").foregroundColor(ColorPalette.buttonText)
                     }
                     .fullScreenCover(isPresented: $showVerification) {
                         VerificationView(verificationViewModel: VerificationViewModel(service: Service(), user: settingsViewModel.user), user: $user)
+                    }
+                    .alert("Вы уже прошли авторизацию!", isPresented: $showAlert) {
+                        Button("OK", role: .cancel) {}
                     }
                 }
                 

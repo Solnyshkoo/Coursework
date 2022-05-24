@@ -34,7 +34,7 @@ struct SettingsView: View {
                         Text("Конфиденциальность").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showСonfidentialSettings) {
-                        СonfidentialSettings()
+                        СonfidentialSettings(settingsViewModel: settingsViewModel, man: $user)
                     }
                 }
                 
@@ -45,7 +45,7 @@ struct SettingsView: View {
                         Text("Уведомления").foregroundColor(ColorPalette.text)
                     }
                     .fullScreenCover(isPresented: $showNotificationSettings) {
-                        NotificationSettings()
+                        NotificationSettings(settingsViewModel: settingsViewModel, user: $user)
                     }
                 }
                 
